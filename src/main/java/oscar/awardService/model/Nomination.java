@@ -71,8 +71,10 @@ public class Nomination {
     // toString method using string interpolation
     @Override
     public String toString() {
+
         return String.format("Nomination{year=%d, obtainedShares=%s, nominatedWork='%s', votes=%s, awards=%s}",
                 year, obtainedShares, nominatedWork, votes, awards);
+
     }
 }
 
