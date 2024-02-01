@@ -1,4 +1,4 @@
-package oscar.control;
+package oscar.awardService.control;
 
 public class controlPlacheHolder {
 }

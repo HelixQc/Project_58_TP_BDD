@@ -1,4 +1,4 @@
-package oscar.model;
+package oscar.awardService.model;
 
 public class modelPlaceHolder {
 }

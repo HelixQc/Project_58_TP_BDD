@@ -9,7 +9,11 @@
 4) Élaborer les interfaces en groupe //les methodes qui ce repete regulierement//
 5) Creer un fichier .txt pour faire le shema de la base de données 
 6) Creer un inMemoryRepository
-7) ajouter d'autre chose a faire a cette liste
+7) Creer les diagramme de chacun des userstory
+8) ajouter chacun des diagramme dans des readme.md avec le bon titre
+
+
+ajouter d'autre chose a faire a cette liste
 
 
 

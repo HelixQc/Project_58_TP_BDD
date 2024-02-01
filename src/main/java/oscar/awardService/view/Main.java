@@ -1,4 +1,4 @@
-package oscar.view;
+package oscar.awardService.view;
 
 public class Main {
     public static void main(String[] args) {
