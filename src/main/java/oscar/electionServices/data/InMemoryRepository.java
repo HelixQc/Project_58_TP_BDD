@@ -1,4 +1,5 @@
 package oscar.electionServices.data;
 
-public class dataPlaceHolder {
+public class InMemoryRepository {
+
 }
