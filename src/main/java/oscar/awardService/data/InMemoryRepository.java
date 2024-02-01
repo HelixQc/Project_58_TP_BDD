@@ -1,5 +1,5 @@
 package oscar.awardService.data;
 
-public class inMemoryRepository {
+public class InMemoryRepository {
 
 }

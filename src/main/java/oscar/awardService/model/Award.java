@@ -1,6 +1,7 @@
 package oscar.awardService.model;
 
 public class Award {
+
     private String name;
 
     // Constructor with parameters
@@ -8,9 +9,9 @@ public class Award {
         this.name = name;
     }
 
+    // Empty constructor
     public Award() {
     }
-    // Empty constructor
 
     // Getter for name
     public String getName() {
