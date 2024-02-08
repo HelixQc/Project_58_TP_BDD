@@ -2,6 +2,10 @@ package oscar.electionServices.model;
 
 import java.util.Date;
 
+/**
+ *Documentation
+ */
+
 public class Vote {
 
     private int shares;

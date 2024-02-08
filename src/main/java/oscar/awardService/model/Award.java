@@ -1,5 +1,10 @@
 package oscar.awardService.model;
 
+
+/**
+ *Documentation
+ */
+
 public class Award {
 
     private String name;
