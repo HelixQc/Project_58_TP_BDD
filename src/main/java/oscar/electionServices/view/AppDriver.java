@@ -4,7 +4,9 @@
 /*****************************************************---YOU'RE NEW APP---***********************************************************/
 
 package oscar.electionServices.view;
-
+/**
+ *Documentation
+ */
 public class AppDriver {
     public static void main(String[] args) {
         System.out.println("Projet Oscar in progress");

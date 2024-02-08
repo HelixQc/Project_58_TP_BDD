@@ -1,11 +1,12 @@
 package oscar.awardService.model;
-
 import oscar.electionServices.model.Vote;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.List;
 
+
+/**
+ *Documentation
+ */
 public class Nomination {
     private int year;
     private double obtainedShares;

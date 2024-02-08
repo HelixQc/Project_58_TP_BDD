@@ -4,6 +4,10 @@ import oscar.awardService.model.Award;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *Documentation
+ */
+
 public class Elector {
 
     private int weight;
