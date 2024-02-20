@@ -3,7 +3,7 @@
 /****************************************************---ABOUT TO PROGRAM---**********************************************************/
 /*****************************************************---YOU'RE NEW APP---***********************************************************/
 
-1) reformater la structure du code pour chaque user Stories
+1) reformater la structure du code pour chaque user Stories---Done
 2) attribuer chacun des user Story a chacun des membres de l'équipe
 3) Faire le diagram uml du code avec Intellij //regarder exemple du cours pour faire le diagramme si besoin//
 4) Élaborer les interfaces en groupe //les methodes qui ce repete regulierement//
