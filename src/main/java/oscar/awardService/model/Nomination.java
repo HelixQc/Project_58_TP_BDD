@@ -72,7 +72,7 @@ public class Nomination {
     @Override
     public String toString() {
 
-        return String.format("Nomination{year=%d, obtainedShares=%s, nominatedWork='%s', votes=%s, awards=%s}",
+        return String.format("Nomination year = %d, obtainedShares = %s, nominatedWork = '%s', votes = %s, awards = %s}",
                 year, obtainedShares, nominatedWork, votes, awards);
 
     }

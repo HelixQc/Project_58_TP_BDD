@@ -26,7 +26,7 @@ public class Award {
     // toString method
     @Override
     public String toString() {
-        return String.format("Award{name='%s'}", name);
+        return String.format("Award name = ' %s ' ", name);
     }
 }
 
