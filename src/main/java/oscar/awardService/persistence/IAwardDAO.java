@@ -5,11 +5,14 @@ import java.util.List;
 /**
  * CRUD
  */
-public interface IAwardDAO {
 
+public interface IAwardDAO {
+  
+    Award findAwardByName(String name);
     void createAward(Award award);
     void deleteAward(Award award);
-    List<Award> ReadAward(Award award);
+    List<Award> findAll(Award award);
     Award UpdateAward(Award award);
+
 
 }
