@@ -4,30 +4,40 @@ import oscar.awardService.model.Award;
 import oscar.awardService.model.Nomination;
 import java.util.List;
 
+/**
+ * Implements
+ * CRUD
+ * */
 
 public  class NominationDAO implements INominationDAO{
+    @Override
+    public Nomination findNominationById() {
+        return null;
+    }
+
+    @Override
+    public void createNomination(Nomination n) {
+
+    }
+
+    @Override
+    public void deleteNomination(Nomination n) {
+
+    }
+
+    @Override
+    public List<Award> findAllNomination(Nomination n) {
+        return null;
+    }
+
+    @Override
+    public Award UpdateNomination(Nomination n) {
+        return null;
+    }
 
     /**
      * implement
      * crud
      */
-    @Override
-    public void createAward(Nomination n) {
 
-    }
-
-    @Override
-    public void deleteAward(Nomination n) {
-
-    }
-
-    @Override
-    public List<Award> ReadAward(Nomination n) {
-        return null;
-    }
-
-    @Override
-    public Award UpdateAward(Nomination n) {
-        return null;
-    }
 }

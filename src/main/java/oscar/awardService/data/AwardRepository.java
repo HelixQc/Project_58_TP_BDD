@@ -1,9 +1,12 @@
-package oscar.awardService.persistence;
+package oscar.awardService.data;
 import oscar.awardService.model.Award;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *Documentation
+ */
 public class AwardRepository {
 
     // Singleton instance

@@ -1,17 +1,34 @@
 package oscar.awardService.persistence;
 
+import oscar.awardService.model.Award;
 import oscar.awardService.model.Nomination;
 
 import java.util.List;
 
 public class NominationDAO_DB implements INominationDAO{
+
     @Override
     public Nomination findNominationById() {
         return null;
     }
 
     @Override
-    public List<Nomination> findAll() {
+    public void createNomination(Nomination n) {
+
+    }
+
+    @Override
+    public void deleteNomination(Nomination n) {
+
+    }
+
+    @Override
+    public List<Award> findAllNomination(Nomination n) {
+        return null;
+    }
+
+    @Override
+    public Award UpdateNomination(Nomination n) {
         return null;
     }
 }

@@ -4,17 +4,16 @@
 /*****************************************************---YOU'RE NEW APP---***********************************************************/
 package oscar.awardService.view;
 
-
 import oscar.awardService.model.Award;
 import oscar.awardService.model.Nomination;
-import oscar.awardService.persistence.AwardRepository;
-import oscar.awardService.persistence.NominationRepository;
-
+import oscar.awardService.data.AwardRepository;
+import oscar.awardService.data.NominationRepository;
 import java.util.ArrayList;
 import java.util.List;
-=======
+
+
 /**
- *Documentation
+ *Test of Nomination
  */
 
 

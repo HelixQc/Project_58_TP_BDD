@@ -4,8 +4,11 @@ import oscar.awardService.model.Award;
 
 import java.awt.*;
 import java.util.List;
-
-public class AwardDAO_DB implements IAwardDAO {
+/**
+ * Implements
+ * CRUD
+ * */
+public class AwardDAO_DB implements IAwardDAO{
 
     @Override
     public Award findAwardByName(String name) {
@@ -13,9 +16,22 @@ public class AwardDAO_DB implements IAwardDAO {
     }
 
     @Override
-    public List<Award> findAll() {
+    public void createAward(Award award) {
+
+    }
+
+    @Override
+    public void deleteAward(Award award) {
+
+    }
+
+    @Override
+    public Award UpdateAward(Award award) {
         return null;
     }
 
-
+    @Override
+    public List<Award> findAllAward(Award award) {
+        return null;
+    }
 }

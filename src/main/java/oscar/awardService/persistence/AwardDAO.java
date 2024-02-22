@@ -9,6 +9,10 @@ import java.util.List;
 */
 public class AwardDAO implements IAwardDAO{
 
+    @Override
+    public Award findAwardByName(String name) {
+        return null;
+    }
 
     @Override
     public void createAward(Award award) {
@@ -21,7 +25,7 @@ public class AwardDAO implements IAwardDAO{
     }
 
     @Override
-    public List<Award> ReadAward(Award award) {
+    public List<Award> findAllAward(Award award) {
         return null;
     }
 

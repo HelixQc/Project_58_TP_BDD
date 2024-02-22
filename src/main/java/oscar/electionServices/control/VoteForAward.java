@@ -12,7 +12,7 @@ import oscar.electionServices.model.Elector;
  * awards selection process.
  */
 public class VoteForAward {
-
+    
     public Award addVote(Elector e){
         return null;
     }

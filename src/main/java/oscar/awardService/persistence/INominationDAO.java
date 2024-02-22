@@ -12,7 +12,7 @@ public interface INominationDAO {
 Nomination findNominationById();
     void createNomination(Nomination n);
     void deleteNomination(Nomination n);
-    List<Award> findAll(Nomination n);
+    List<Award> findAllNomination(Nomination n);
     Award UpdateNomination(Nomination n);
 
 }
