@@ -1,6 +1,8 @@
 package oscar.awardService.persistence;
 
 import oscar.awardService.model.Nomination;
+
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,14 +18,13 @@ public class NominationDAO_DB extends AwardServiceDAO implements INominationDAO{
             Statement st = this.connection.createStatement();
             ResultSet result = st.executeQuery(QueryBox.FindNominationById + id);
             if(result.next()) {
-                String movie = result.getString("");
-                int year = result.getInt("");
-                int ObtainedShared = result.getInt("");
-                String nominatedWork = result.getString("");
-                int fk =  result.getInt("");
+
+                int year = result.getInt("year");
+                int ObtainedShared = result.getInt("obtainedShares");
+                String nominatedWork = result.getString("nominatedWork");
 
                 // objectify the loaded information => unmarshalling
-                return new Nomination(id, movie, year, nominatedWork, new ArrayList<>());
+                return new Nomination(id, year, ObtainedShared ,nominatedWork, new ArrayList<>());
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -43,8 +44,28 @@ public class NominationDAO_DB extends AwardServiceDAO implements INominationDAO{
 
     @Override
     public List<Nomination> findAllNomination() {
-        return null;
+        List<Nomination> nominations = new ArrayList<>();
+        try {
+            Statement st = this.connection.createStatement();
+            ResultSet result = st.executeQuery(QueryBox.FindAllNomination);
+
+            while (result.next()) {
+
+                int id = result.getInt("id");
+                int year = result.getInt("year");
+                int obtainedShares = result.getInt("obtainedShares");
+                String nominatedWork = result.getString("nominatedWork");
+
+                // Create Nomination object and add it to the list
+                Nomination nomination = new Nomination(id, year, obtainedShares, nominatedWork, new ArrayList<>());
+                nominations.add(nomination);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return nominations;
     }
+
 
     @Override
     public Nomination UpdateNomination(Nomination n) {

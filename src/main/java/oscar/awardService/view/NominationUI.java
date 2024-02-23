@@ -3,6 +3,7 @@ package oscar.awardService.view;
 import oscar.awardService.control.SeeNomination;
 import oscar.awardService.data.NominationRepository;
 import oscar.awardService.model.Nomination;
+import oscar.awardService.persistence.NominationDAO_DB;
 
 import java.util.InputMismatchException;
 import java.util.List;
@@ -11,8 +12,10 @@ import java.util.Scanner;
 public class NominationUI {
 
     Scanner sc = new Scanner(System.in);
+
     public void startNominationUI() {
-        System.out.println("Please type in a number between 1 and 3 to naviguate in the option below");
+
+        System.out.println("Please type in a number between 1 and 3 to navigate in the option below");
         System.out.println("option 1 : show the nomination list");
         System.out.println("option 2 : UserStory");
         System.out.println("option 3 : next step");
@@ -58,5 +61,17 @@ public class NominationUI {
     public void userStoryController(){
         SeeNomination overWatch = new SeeNomination();
         System.out.println("The user story have not been implimented yet");
+    }
+
+    public void showAllNominationJDBC(){
+        NominationDAO_DB daoDb = new NominationDAO_DB();
+        List<Nomination> allNominations =  daoDb.findAllNomination();
+        for(int i = 0 ; i < allNominations.size(); i ++){
+            System.out.println("Id; "+ allNominations.get(i).getId());
+            System.out.println("Year; "+ allNominations.get(i).getYear());
+            System.out.println("Obtained Shares; "+ allNominations.get(i).getObtainedShares());
+            System.out.println("Nominated Work; "+ allNominations.get(i).getNominatedWork());
+            System.out.println("---------------------------------------------");
+        }
     }
 }

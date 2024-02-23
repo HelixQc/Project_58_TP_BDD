@@ -31,12 +31,12 @@ public class AwardRepository {
 
     // Method to initialize awards
     private void initializeAwards() {
-        awards.add(new Award("BestActor"));
-        awards.add(new Award("BestActress"));
-        awards.add(new Award("BestDirector"));
-        awards.add(new Award("BestPicture"));
-        awards.add(new Award("BestOriginalScreenplay"));
-        awards.add(new Award("BestMovie"));
+        awards.add(new Award("Best Actor"));
+        awards.add(new Award("Best Actress"));
+        awards.add(new Award("Best Director"));
+        awards.add(new Award("Best Picture"));
+        awards.add(new Award("Best Original Screenplay"));
+        awards.add(new Award("Best Movie"));
     }
 
     // Method to get all awards

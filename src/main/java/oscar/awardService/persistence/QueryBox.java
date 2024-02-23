@@ -5,5 +5,22 @@ package oscar.awardService.persistence;
  */
 
 public class QueryBox {
-    public static String FindNominationById;
+    public static String FindNominationById =
+            "SELECT * "+
+                    "FROM Nomination "+
+                    "WHERE id = "
+            ;
+    public static String FindAllNomination =
+            "SELECT *"+
+                    " FROM Nomination";
+
+
+    public static String FindAwardByName =
+            "SELECT * " +
+                    "FROM Award " +
+                    "WHERE name = ";
+
+    public static String FindAllAwards =
+            "SELECT * "+
+                    " FROM Award ";
 }
