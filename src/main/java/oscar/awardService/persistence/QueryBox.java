@@ -5,4 +5,5 @@ package oscar.awardService.persistence;
  */
 
 public class QueryBox {
+    public static String FindNominationById;
 }

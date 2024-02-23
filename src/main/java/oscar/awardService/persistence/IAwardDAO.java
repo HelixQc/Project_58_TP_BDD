@@ -9,8 +9,11 @@ import java.util.List;
 public interface IAwardDAO {
   
     Award findAwardByName(String name);
-    void createAward(Award award);
+    void createAward(String award);
     void deleteAward(Award award);
     Award UpdateAward(Award award);
-    List<Award> findAllAward(Award award);
+    List<Award> findAllAward();
+
+
+
 }

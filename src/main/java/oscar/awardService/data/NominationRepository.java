@@ -19,6 +19,7 @@ import java.util.List;
         // Private constructor to prevent instantiation from outside
         private NominationRepository() {
             nominations = new ArrayList<>();
+            populateNomination();
         }
 
         // Method to get the singleton instance
@@ -29,14 +30,12 @@ import java.util.List;
             return instance;
         }
 
-        // Method to add a nomination
-        public void addNomination(Nomination nomination) {
+        private void populateNomination(){
+            Nomination nomination = new Nomination(1,2024, 8.5, "Harry Potter", new ArrayList<>());
             nominations.add(nomination);
-        }
 
-        // Method to remove a nomination
-        public void removeNomination(Nomination nomination) {
-            nominations.remove(nomination);
+            Nomination nomination1 = new Nomination(2,2022, 7.5, "Star Wars", new ArrayList<>());
+            nominations.add(nomination1);
         }
 
         // Method to get all nominations

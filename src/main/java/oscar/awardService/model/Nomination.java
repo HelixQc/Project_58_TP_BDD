@@ -1,4 +1,5 @@
 package oscar.awardService.model;
+import oscar.awardService.data.AwardRepository;
 import oscar.electionServices.model.Vote;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
  *Documentation
  */
 public class Nomination {
+    private int id ;
     private int year;
     private double obtainedShares;
     private String nominatedWork;
@@ -15,65 +17,66 @@ public class Nomination {
     private List<Award> awards;
 
     // Empty constructor
-    public Nomination() {
+    public Nomination(int i, String movie, int year, String nominatedWork, ArrayList<Vote> votes) {
     }
 
     // Constructor with parameters
-    public Nomination(int year, double obtainedShares, String nominatedWork, List<Vote> votes) {
+    public Nomination(int id ,int year, double obtainedShares, String nominatedWork, List<Vote> votes) {
+        this.id = id;
         this.year = year;
         this.obtainedShares = obtainedShares;
         this.nominatedWork = nominatedWork;
         this.votes = new ArrayList<>();
-        this.awards = new ArrayList<>();
+        this.awards = AwardRepository.getInstance().awards;
     }
 
-    // Getters and setters for all fields
-
+    // Getters for all fields
     public int getYear() {
         return year;
     }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
     public double getObtainedShares() {
         return obtainedShares;
     }
-
-    public void setObtainedShares(double obtainedShares) {
-        this.obtainedShares = obtainedShares;
-    }
-
     public String getNominatedWork() {
         return nominatedWork;
     }
-
-    public void setNominatedWork(String nominatedWork) {
-        this.nominatedWork = nominatedWork;
-    }
-
     public List<Vote> getVotes() {
         return votes;
     }
-
-    public void setVotes(List<Vote> votes) {
-        this.votes = votes;
-    }
-
     public List<Award> getAwards() {
         return awards;
     }
+    public int getId() {
+        return id;
+    }
 
+
+
+    // Setters for all fields
+    public void setYear(int year) {
+        this.year = year;
+    }
+    public void setObtainedShares(double obtainedShares) {
+        this.obtainedShares = obtainedShares;
+    }
+    public void setNominatedWork(String nominatedWork) {
+        this.nominatedWork = nominatedWork;
+    }
+    public void setVotes(List<Vote> votes) {
+        this.votes = votes;
+    }
     public void setAwards(List<Award> awards) {
         this.awards = awards;
     }
+    public void setId(int id) {
+        this.id = id;
+    }
+
 
     // toString method using string interpolation
     @Override
     public String toString() {
-
-        return String.format("Nomination year = %d, obtainedShares = %s, nominatedWork = '%s', votes = %s, awards = %s}",
+        return String.format("Nomination year = %d, obtainedShares = %s, nominatedWork = '%s', votes = %s, awards = %s} \n",
                 year, obtainedShares, nominatedWork, votes, awards);
 
     }

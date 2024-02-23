@@ -10,10 +10,10 @@ import java.util.List;
 public class AwardRepository {
 
     // Singleton instance
-    private static AwardRepository instance;
+    private static AwardRepository instance = null;
 
     // List to hold awards
-    private List<Award> awards;
+    public List<Award> awards;
 
     // Private constructor to prevent instantiation from outside
     private AwardRepository() {
@@ -31,11 +31,12 @@ public class AwardRepository {
 
     // Method to initialize awards
     private void initializeAwards() {
-        awards.add(new Award("Best Actor"));
-        awards.add(new Award("Best Actress"));
-        awards.add(new Award("Best Director"));
-        awards.add(new Award("Best Picture"));
-        awards.add(new Award("Best Original Screenplay"));
+        awards.add(new Award("BestActor"));
+        awards.add(new Award("BestActress"));
+        awards.add(new Award("BestDirector"));
+        awards.add(new Award("BestPicture"));
+        awards.add(new Award("BestOriginalScreenplay"));
+        awards.add(new Award("BestMovie"));
     }
 
     // Method to get all awards
@@ -43,14 +44,5 @@ public class AwardRepository {
         return awards;
     }
 
-    // Method to add an award
-    public void addAward(Award award) {
-        awards.add(award);
-    }
-
-    // Method to remove an award
-    public void removeAward(Award award) {
-        awards.remove(award);
-    }
 }
 

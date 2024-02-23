@@ -16,7 +16,7 @@ public class AwardDAO_DB implements IAwardDAO{
     }
 
     @Override
-    public void createAward(Award award) {
+    public void createAward(String award) {
 
     }
 
@@ -31,7 +31,7 @@ public class AwardDAO_DB implements IAwardDAO{
     }
 
     @Override
-    public List<Award> findAllAward(Award award) {
+    public List<Award> findAllAward() {
         return null;
     }
 }

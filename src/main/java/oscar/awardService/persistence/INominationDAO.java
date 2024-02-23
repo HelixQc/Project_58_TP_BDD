@@ -9,10 +9,10 @@ import java.util.List;
 * CRUD
 */
 public interface INominationDAO {
-Nomination findNominationById();
-    void createNomination(Nomination n);
+    Nomination findNominationById(int i);
+    void createNomination(String name);
     void deleteNomination(Nomination n);
-    List<Award> findAllNomination(Nomination n);
-    Award UpdateNomination(Nomination n);
+    List<Nomination> findAllNomination();
+    Nomination UpdateNomination(Nomination n);
 
 }
