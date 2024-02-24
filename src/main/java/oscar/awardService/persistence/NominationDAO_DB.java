@@ -1,5 +1,6 @@
 package oscar.awardService.persistence;
 
+import oscar.awardService.model.Award;
 import oscar.awardService.model.Nomination;
 
 import java.sql.PreparedStatement;
@@ -12,6 +13,8 @@ import java.util.List;
 public class NominationDAO_DB extends AwardServiceDAO implements INominationDAO{
 
 
+    AwardDAO_DB awardDAO_db = new AwardDAO_DB();
+    List<Award> awards = awardDAO_db.findAllAward();
     @Override
     public Nomination findNominationById(int id) {
         try {
@@ -24,7 +27,7 @@ public class NominationDAO_DB extends AwardServiceDAO implements INominationDAO{
                 String nominatedWork = result.getString("nominatedWork");
 
                 // objectify the loaded information => unmarshalling
-                return new Nomination(id, year, ObtainedShared ,nominatedWork, new ArrayList<>());
+                return new Nomination(id, year, ObtainedShared ,nominatedWork,new ArrayList<>(), awards);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -57,7 +60,7 @@ public class NominationDAO_DB extends AwardServiceDAO implements INominationDAO{
                 String nominatedWork = result.getString("nominatedWork");
 
                 // Create Nomination object and add it to the list
-                Nomination nomination = new Nomination(id, year, obtainedShares, nominatedWork, new ArrayList<>());
+                Nomination nomination = new Nomination(id, year, obtainedShares, nominatedWork, new ArrayList<>(), awards);
                 nominations.add(nomination);
             }
         } catch (SQLException e) {

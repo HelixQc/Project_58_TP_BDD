@@ -17,17 +17,17 @@ public class Nomination {
     private List<Award> awards;
 
     // Empty constructor
-    public Nomination(int i,  int year, String nominatedWork, ArrayList<Vote> votes) {
+    public Nomination(int i,  int year, String nominatedWork, ArrayList<Vote> votes, ArrayList<Award> awards) {
     }
 
     // Constructor with parameters
-    public Nomination(int id ,int year, double obtainedShares, String nominatedWork, List<Vote> votes) {
+    public Nomination(int id ,int year, double obtainedShares, String nominatedWork, List<Vote> votes, List<Award> awards) {
         this.id = id;
         this.year = year;
         this.obtainedShares = obtainedShares;
         this.nominatedWork = nominatedWork;
         this.votes = new ArrayList<>();
-        this.awards = AwardRepository.getInstance().awards;
+        this.awards = awards;
     }
 
     // Getters for all fields

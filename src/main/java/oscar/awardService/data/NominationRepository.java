@@ -31,10 +31,10 @@ import java.util.List;
         }
 
         private void populateNomination(){
-            Nomination nomination = new Nomination(1,2024, 8.5, "Harry Potter", new ArrayList<>());
+            Nomination nomination = new Nomination(1,2024, 8.5, "Harry Potter", new ArrayList<>(), AwardRepository.getInstance().getAllAwards());
             nominations.add(nomination);
 
-            Nomination nomination1 = new Nomination(2,2022, 7.5, "Star Wars", new ArrayList<>());
+            Nomination nomination1 = new Nomination(2,2022, 7.5, "Star Wars", new ArrayList<>(), AwardRepository.getInstance().getAllAwards());
             nominations.add(nomination1);
         }
 
