@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *Documentation
+ *The Elector got the role to vote for an award
+ *Every elector got a different weight
  */
 
 public class Elector {

@@ -3,7 +3,8 @@ package oscar.electionServices.model;
 import java.util.Date;
 
 /**
- *Documentation
+ *This class is used to create Vote and stock it
+ *in the database or in the memory repository
  */
 
 public class Vote {
@@ -22,30 +23,24 @@ public class Vote {
     public Vote() {
     }
 
+    //***Getters***//
     public Elector getElector() {
         return elector;
     }
-
-    public void setElector(Elector elector) {
-        this.elector = elector;
-    }
-
-    // Getter for shares
     public double getShares() {
         return shares;
     }
-
-    // Setter for shares
-    public void setShares(int shares) {
-        this.shares = shares;
-    }
-
-    // Getter for execution
     public Date getExecution() {
         return execution;
     }
 
-    // Setter for execution
+    //***Setters***//
+    public void setElector(Elector elector) {
+        this.elector = elector;
+    }
+    public void setShares(int shares) {
+        this.shares = shares;
+    }
     public void setExecution(Date execution) {
         this.execution = execution;
     }
