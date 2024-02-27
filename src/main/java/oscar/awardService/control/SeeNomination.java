@@ -29,4 +29,34 @@ public class SeeNomination {
     public List<Nomination>consultWinner(){
         return null;
     }
+
+    public void userStoryController(){
+        System.out.println("---------------------------------------------");
+        for(int i = 0 ; i < consultNominationInMemoryRepository().size(); i++){
+            System.out.println("ID: "+consultNominationInMemoryRepository().get(i).getId());
+            System.out.println("Year: "+ consultNominationInMemoryRepository().get(i).getYear());
+            System.out.println("Obtained Shares: "+ consultNominationInMemoryRepository().get(i).getObtainedShares());
+            System.out.println("Nominated Work: "+ consultNominationInMemoryRepository().get(i).getNominatedWork());
+            System.out.println("---------------------------------------------");
+            System.out.println("---Awards---");
+            for(int j = 0 ; j <  consultNominationInMemoryRepository().get(i).getAwards().size(); j++)
+                System.out.println(consultNominationInMemoryRepository().get(i).getAwards().get(j).getName());
+            System.out.println("---------------------------------------------");
+        }
+    }
+
+    public void userStoryControllerJDBC(){
+        System.out.println("---------------------------------------------");
+        for(int i = 0 ; i < consultNominationJDBC().size(); i++){
+            System.out.println("ID: "+consultNominationJDBC().get(i).getId());
+            System.out.println("Year: "+consultNominationJDBC().get(i).getYear());
+            System.out.println("Obtained Shares: "+consultNominationJDBC().get(i).getObtainedShares());
+            System.out.println("Nominated Work: "+consultNominationJDBC().get(i).getNominatedWork());
+            System.out.println("---------------------------------------------");
+            System.out.println("---Awards---");
+            for(int j = 0 ; j < consultNominationJDBC().get(i).getAwards().size(); j++)
+                System.out.println(consultNominationJDBC().get(i).getAwards().get(j).getName());
+            System.out.println("---------------------------------------------");
+        }
+    }
 }
