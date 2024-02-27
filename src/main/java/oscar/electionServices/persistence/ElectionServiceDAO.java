@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public abstract class ElectionServiceDAO {
     //connection to Database is here!!!!
     protected static final String DB_HOST = "jbdc:mariadb://mysql-helixqc.alwaysdata.net:3306/";
-    protected static final String DB_NAME ="";
+    protected static final String DB_NAME ="helixqc_oscar";
     protected static final String DB_USER = "helixqc";
     protected static final String DB_PASSWORD = "Jujube98!";
     protected static final String DB_URL = DB_HOST + DB_NAME;
