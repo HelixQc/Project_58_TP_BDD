@@ -6,20 +6,30 @@ import java.util.List;
 
 
 /**
- *Documentation
+ * The Nomination class represents a nomination for an award in a particular year.
+ * It contains information such as the year, obtained shares, nominated work,
+ * associated votes, and the award for which the nomination is made.
  */
 public class Nomination {
-    private int id ;
-    private int year;
-    private double obtainedShares;
-    private String nominatedWork;
-    private List<Vote> votes; // A list to hold multiple Vote objects
-    private Award award;
+    private int id; // The unique identifier for the nomination
+    private int year; // The year of the nomination
+    private double obtainedShares; // The number of shares obtained by the nomination
+    private String nominatedWork; // The work nominated for the award
+    private List<Vote> votes; // A list to hold multiple Vote objects associated with this nomination
+    private Award award; // The award for which the nomination is made
 
     // Empty constructor
     public Nomination() {}
 
-    // Constructor with parameters
+    /**
+     * Constructor to initialize a Nomination object with specified parameters.
+     * @param id The unique identifier for the nomination
+     * @param year The year of the nomination
+     * @param obtainedShares The number of shares obtained by the nomination
+     * @param nominatedWork The work nominated for the award
+     * @param votes A list of votes associated with this nomination
+     * @param award The award for which the nomination is made
+     */
     public Nomination(int id ,int year, double obtainedShares, String nominatedWork, List<Vote> votes, Award award) {
         this.id = id;
         this.year = year;
@@ -72,7 +82,11 @@ public class Nomination {
     }
 
 
-    // toString method using string interpolation
+    /**
+     * Generates a string representation of the Nomination object.
+     * @return A string containing the year, obtained shares, nominated work,
+     *         associated votes, and award of the nomination.
+     */
     @Override
     public String toString() {
         return String.format("Nomination year = %d, obtainedShares = %s, nominatedWork = '%s', votes = %s, awards = %s} \n",
