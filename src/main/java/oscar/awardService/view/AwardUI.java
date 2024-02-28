@@ -10,11 +10,20 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+
+/**
+ * The AwardUI class provides a user interface for interacting with awards and nominations.
+ * It allows users to view a list of awards and choose between different methods for nominating movies.
+ */
 public class AwardUI {
 
     Scanner sc = new Scanner(System.in);
 
-
+    /**
+     * Starts the award user interface.
+     * It prompts the user to choose between different options such as viewing the list of awards
+     * or nominating a movie using different methods by typing in numbers.
+     */
     public void startTheAwardUI() {
 
         System.out.println("Please enter 1 the see the list of awards, 2 to nominate a movie or 3 go too the next step ");
@@ -58,7 +67,9 @@ public class AwardUI {
         } while (true);
     }
 
-
+    /**
+     * Displays the list of awards.
+     */
     public void showTheAwardList() {
 
         //Getting award repo
@@ -81,20 +92,26 @@ public class AwardUI {
         }
     }
 
-    //InMemoryRepository
+    /**
+     * Executes the user story method using the in-memory repository.
+     */
     public void userStoryMethode() {
         //Call the controler for the userStory
         AwardControl awardController = new AwardControl();
         awardController.chooseTheAwardAndNomination();
     }
 
-    //JDBC
+    /**
+     * Executes the user story method using JDBC.
+     */
     private void userStoryMethodeJDBC() {
         AwardControl_JDBC jdbc = new AwardControl_JDBC();
         jdbc.chooseTheAwardAndNominationJDBC();
     }
 
-    //JPA
+    /**
+     * Executes the user story method using JPA.
+     */
     private void userStoryMethodeJPA() {
     }
 
