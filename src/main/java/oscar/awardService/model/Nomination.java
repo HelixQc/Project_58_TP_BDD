@@ -17,8 +17,7 @@ public class Nomination {
     private List<Award> awards;
 
     // Empty constructor
-    public Nomination(int i,  int year, String nominatedWork, ArrayList<Vote> votes, ArrayList<Award> awards) {
-    }
+    public Nomination() {}
 
     // Constructor with parameters
     public Nomination(int id ,int year, double obtainedShares, String nominatedWork, List<Vote> votes, List<Award> awards) {

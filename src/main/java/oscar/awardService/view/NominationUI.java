@@ -59,7 +59,6 @@ public class NominationUI {
         }
     }
 
-
     public void showAllNominationJDBC(){
         NominationDAO_DB daoDb = new NominationDAO_DB();
         List<Nomination> allNominations =  daoDb.findAllNomination();

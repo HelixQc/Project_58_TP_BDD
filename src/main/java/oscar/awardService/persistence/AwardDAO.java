@@ -33,12 +33,11 @@ public class AwardDAO implements IAwardDAO{
         return  AwardRepository.getInstance().getAllAwards();
     }
 
-
-
     @Override
     public void deleteAward(Award award) {
-
+        AwardRepository.getInstance().getAllAwards().remove(award);
     }
+
     @Override
     public Award UpdateAward(Award award) {
         return null;

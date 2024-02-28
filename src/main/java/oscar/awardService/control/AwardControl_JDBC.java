@@ -2,10 +2,13 @@ package oscar.awardService.control;
 
 import oscar.awardService.model.Award;
 import oscar.awardService.model.Nomination;
+import oscar.awardService.model.Winners;
 import oscar.awardService.persistence.AwardDAO_DB;
 import oscar.awardService.persistence.NominationDAO_DB;
 import oscar.awardService.view.AwardUI;
 import oscar.awardService.view.NominationUI;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class AwardControl_JDBC {

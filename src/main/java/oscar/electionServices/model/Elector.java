@@ -16,11 +16,10 @@ public class Elector {
     private List<Award> awards;
 
     // constructor with parameters
-
-    public Elector(int weight, String name, List<Award> awards) {
+    public Elector(int weight, String name) {
         this.weight = weight;
         this.name = name;
-        this.awards = new ArrayList<>();
+
     }
 
     public List<Award> getAwards() {
@@ -58,8 +57,7 @@ public class Elector {
     // toString method
     @Override
     public String toString() {
-        return String.format("Elector {weight=%d, name='%s', awards=%s}", weight, name, awards);
-
+        return String.format("Elector {weight=%d, name='%s'}", weight, name);
     }
 }
 
