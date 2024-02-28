@@ -9,11 +9,20 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * The NominationUI class provides a user interface for interacting with nominations.
+ * It allows users to view a list of nominations and perform different actions related to nominations.
+ */
 public class NominationUI {
 
     Scanner sc = new Scanner(System.in);
     SeeNomination overWatch = new SeeNomination();
 
+    /**
+     * Starts the nomination user interface.
+     * It prompts the user to choose between different options such as viewing the list of nominations
+     * or executing user story 3.
+     */
     public void startNominationUI() {
 
         System.out.println("Please type in a number between 1 and 3 to navigate in the option below");
@@ -43,6 +52,9 @@ public class NominationUI {
         }while(true);
     }
 
+    /**
+     * Displays the list of all nominations.
+     */
     public void showAllNomination(){
 
         // Getting all nominations
