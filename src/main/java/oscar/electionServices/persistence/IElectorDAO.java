@@ -11,6 +11,6 @@ import java.util.List;
 public interface IElectorDAO {
     void createElector(Elector e);
     void deleteElector(Elector e);
-    List<Elector> readElector(Elector e);
+    List<Elector> readElector();
     Elector updateElector(Elector e);
 }

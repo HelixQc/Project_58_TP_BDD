@@ -58,6 +58,5 @@ public class SeeNomination {
                 System.out.println(consultNominationJDBC().get(i).getAwards().get(j).getName());
             System.out.println("---------------------------------------------");
         }
-
     }
 }

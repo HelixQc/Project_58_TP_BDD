@@ -7,7 +7,10 @@ import oscar.awardService.persistence.NominationDAO;
 import oscar.awardService.persistence.NominationDAO_DB;
 import oscar.awardService.view.AwardUI;
 import oscar.awardService.view.NominationUI;
+import oscar.electionServices.model.Vote;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -31,6 +34,7 @@ public class AwardControl {
     Award a;
     String awardAwnser;
     int answer;
+    Date today;
 
     public void chooseTheAwardAndNomination(){
 
@@ -67,6 +71,21 @@ public class AwardControl {
         }
     }
 
+    public void createNomination(){
+        System.out.println("Please enter the nomination work : ");
+        String responce = sc.nextLine();
+
+        System.out.println("Please enter the obtained shares: ");
+        double shares = sc.nextInt();
+
+        System.out.println("Choose the award categories in the list below: ");
+        aui.showTheAwardList();
+        String yourAwnser = sc.nextLine();
+
+        awardDAO.findAwardByName(yourAwnser);
+
+        new Nomination(3, today.getYear(),shares, responce, new ArrayList<>(),awardDAO.findAwardByName(yourAwnser));
+    }
     public String nominate(Award a, Nomination n){
         return "The Nominated word is  " + n.getNominatedWork()+ " it have been nominated in the Award category " + a.getName();
     }

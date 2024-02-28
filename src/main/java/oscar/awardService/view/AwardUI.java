@@ -17,7 +17,7 @@ public class AwardUI {
 
     public void startTheAwardUI() {
 
-        System.out.println("Please enter 1 the see the list of awards or 2 to nominate a movie or 3 to go too the next step ");
+        System.out.println("Please enter 1 the see the list of awards, 2 to nominate a movie or 3 go too the next step ");
 
         do {
             try {
