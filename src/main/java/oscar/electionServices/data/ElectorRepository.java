@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * The ElectorRepository class manages a collection of electors.
+ * It provides methods to interact with the electors data.
  */
 public class ElectorRepository {
 
@@ -21,7 +22,12 @@ public class ElectorRepository {
         electors = new ArrayList<>();
         populateElector();
     }
-    //Creating the instance
+
+    /**
+     * Returns the singleton instance of ElectorRepository.
+     * If the instance is not yet created, it creates one.
+     * @return The singleton instance of ElectorRepository
+     */
     public static ElectorRepository getInstance(){
         if(instance == null){
             instance = new ElectorRepository();
@@ -29,7 +35,7 @@ public class ElectorRepository {
         return instance;
     }
 
-    //Initiate the singleton data
+    //Populate the singleton data
     private void populateElector() {
         Elector e1 = new Elector(100,"Aramis");
         electors.add(e1);
