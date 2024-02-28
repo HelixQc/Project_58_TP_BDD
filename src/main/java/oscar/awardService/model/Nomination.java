@@ -14,19 +14,19 @@ public class Nomination {
     private double obtainedShares;
     private String nominatedWork;
     private List<Vote> votes; // A list to hold multiple Vote objects
-    private List<Award> awards;
+    private Award award;
 
     // Empty constructor
     public Nomination() {}
 
     // Constructor with parameters
-    public Nomination(int id ,int year, double obtainedShares, String nominatedWork, List<Vote> votes, List<Award> awards) {
+    public Nomination(int id ,int year, double obtainedShares, String nominatedWork, List<Vote> votes, Award award) {
         this.id = id;
         this.year = year;
         this.obtainedShares = obtainedShares;
         this.nominatedWork = nominatedWork;
         this.votes = new ArrayList<>();
-        this.awards = awards;
+        this.award = award;
     }
 
     // Getters for all fields
@@ -42,8 +42,8 @@ public class Nomination {
     public List<Vote> getVotes() {
         return votes;
     }
-    public List<Award> getAwards() {
-        return awards;
+    public Award getAwards() {
+        return award;
     }
     public int getId() {
         return id;
@@ -64,8 +64,8 @@ public class Nomination {
     public void setVotes(List<Vote> votes) {
         this.votes = votes;
     }
-    public void setAwards(List<Award> awards) {
-        this.awards = awards;
+    public void setAwards(Award awards) {
+        this.award = award;
     }
     public void setId(int id) {
         this.id = id;
@@ -76,7 +76,7 @@ public class Nomination {
     @Override
     public String toString() {
         return String.format("Nomination year = %d, obtainedShares = %s, nominatedWork = '%s', votes = %s, awards = %s} \n",
-                year, obtainedShares, nominatedWork, votes, awards);
+                year, obtainedShares, nominatedWork, votes, award);
 
     }
 }

@@ -39,8 +39,8 @@ public class SeeNomination {
             System.out.println("Nominated Work: "+ consultNominationInMemoryRepository().get(i).getNominatedWork());
             System.out.println("---------------------------------------------");
             System.out.println("---Awards---");
-            for(int j = 0 ; j <  consultNominationInMemoryRepository().get(i).getAwards().size(); j++)
-                System.out.println(consultNominationInMemoryRepository().get(i).getAwards().get(j).getName());
+            for(int j = 0 ; j <  nominationDAO.findAllNomination().size(); j++)
+                System.out.println(nominationDAO.findAllNomination().get(j).getAwards().getName());
             System.out.println("---------------------------------------------");
         }
     }
@@ -54,8 +54,8 @@ public class SeeNomination {
             System.out.println("Nominated Work: "+consultNominationJDBC().get(i).getNominatedWork());
             System.out.println("---------------------------------------------");
             System.out.println("---Awards---");
-            for(int j = 0 ; j < consultNominationJDBC().get(i).getAwards().size(); j++)
-                System.out.println(consultNominationJDBC().get(i).getAwards().get(j).getName());
+            for(int j = 0 ; j < nominationDAO_db.findAllNomination().size(); j++)
+                System.out.println(nominationDAO.findAllNomination().get(j).getAwards().getName());
             System.out.println("---------------------------------------------");
         }
     }
