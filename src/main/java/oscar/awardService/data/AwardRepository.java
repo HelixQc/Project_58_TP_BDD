@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *Documentation
+ * The AwardRepository class represents a repository for managing awards.
+ * It provides methods to interact with the awards data.
  */
 public class AwardRepository {
 
@@ -15,13 +16,20 @@ public class AwardRepository {
     // List to hold awards
     public List<Award> awards;
 
-    // Private constructor to prevent instantiation from outside
+    /**
+     * Private constructor to prevent instantiation from outside the class.
+     * Initializes the awards list and populates it with initial data.
+     */
     private AwardRepository() {
         awards = new ArrayList<>();
         initializeAwards();
     }
 
-    // Method to get the singleton instance
+    /**
+     * Returns the singleton instance of AwardRepository.
+     * If the instance is not yet created, it creates one.
+     * @return The singleton instance of AwardRepository
+     */
     public static AwardRepository getInstance() {
         if (instance == null) {
             instance = new AwardRepository();
@@ -29,7 +37,10 @@ public class AwardRepository {
         return instance;
     }
 
-    // Method to initialize awards
+    /**
+     * Initializes the awards list with some predefined awards.
+     * This method is called once during the initialization of the repository.
+     */
     private void initializeAwards() {
         awards.add(new Award("Best Actor"));
         awards.add(new Award("Best Actress"));
@@ -39,7 +50,10 @@ public class AwardRepository {
         awards.add(new Award("Best Movie"));
     }
 
-    // Method to get all awards
+    /**
+     * Retrieves all awards stored in the repository.
+     * @return A list containing all awards
+     */
     public List<Award> getAllAwards() {
         return awards;
     }
