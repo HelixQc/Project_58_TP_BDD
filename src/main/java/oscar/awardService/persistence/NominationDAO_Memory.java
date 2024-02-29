@@ -1,7 +1,6 @@
 package oscar.awardService.persistence;
 
 import oscar.awardService.data.NominationRepository;
-import oscar.awardService.model.Award;
 import oscar.awardService.model.Nomination;
 import java.util.List;
 
@@ -10,7 +9,7 @@ import java.util.List;
  * CRUD
  * */
 
-public  class NominationDAO implements INominationDAO {
+public  class NominationDAO_Memory implements INominationDAO {
 
     @Override
     public Nomination findNominationById(int i) {
@@ -19,8 +18,9 @@ public  class NominationDAO implements INominationDAO {
     }
 
     @Override
-    public void createNomination(String name) {
-
+    public void createNomination(Nomination n ) {
+        findAllNomination().add(n);
+        System.out.println("The nomination have been added with success");
     }
 
     @Override

@@ -23,4 +23,10 @@ public class QueryBox {
     public static String FindAllAwards =
             "SELECT * "+
                     " FROM Award ";
+
+    public static String FindAwardById =
+            "SELECT * "+
+                    "FROM Award "+
+                    "WHERE id = "
+            ;
 }

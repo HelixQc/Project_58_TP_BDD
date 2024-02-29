@@ -4,26 +4,17 @@ import oscar.awardService.control.AwardControl;
 import oscar.awardService.control.AwardControl_JDBC;
 import oscar.awardService.data.AwardRepository;
 import oscar.awardService.model.Award;
-import oscar.awardService.persistence.AwardDAO_DB;
+import oscar.awardService.persistence.AwardDAO_DB_JDBC;
 
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-
-/**
- * The AwardUI class provides a user interface for interacting with awards and nominations.
- * It allows users to view a list of awards and choose between different methods for nominating movies.
- */
 public class AwardUI {
 
     Scanner sc = new Scanner(System.in);
 
-    /**
-     * Starts the award user interface.
-     * It prompts the user to choose between different options such as viewing the list of awards
-     * or nominating a movie using different methods by typing in numbers.
-     */
+
     public void startTheAwardUI() {
 
         System.out.println("Please enter 1 the see the list of awards, 2 to nominate a movie or 3 go too the next step ");
@@ -67,9 +58,7 @@ public class AwardUI {
         } while (true);
     }
 
-    /**
-     * Displays the list of awards.
-     */
+
     public void showTheAwardList() {
 
         //Getting award repo
@@ -84,7 +73,7 @@ public class AwardUI {
 
     public void showTheAwardListJDBC(){
         //Getting the data
-        AwardDAO_DB awardDAODb = new AwardDAO_DB();
+        AwardDAO_DB_JDBC awardDAODb = new AwardDAO_DB_JDBC();
         List<Award> awards = awardDAODb.findAllAward();
 
         for(int i = 0 ; i < awards.size() ; i++ ){
@@ -92,26 +81,20 @@ public class AwardUI {
         }
     }
 
-    /**
-     * Executes the user story method using the in-memory repository.
-     */
+    //InMemoryRepository
     public void userStoryMethode() {
         //Call the controler for the userStory
         AwardControl awardController = new AwardControl();
-        awardController.chooseTheAwardAndNomination();
+        awardController.createNomination();
     }
 
-    /**
-     * Executes the user story method using JDBC.
-     */
+    //JDBC
     private void userStoryMethodeJDBC() {
         AwardControl_JDBC jdbc = new AwardControl_JDBC();
         jdbc.chooseTheAwardAndNominationJDBC();
     }
 
-    /**
-     * Executes the user story method using JPA.
-     */
+    //JPA
     private void userStoryMethodeJPA() {
     }
 

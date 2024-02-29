@@ -18,12 +18,10 @@ public class AppDriver {
     public static void main(String[] args) {
         System.out.println("Projet Oscar in progress");
 
-
         VoteForAward test = new VoteForAward();
         test.addVote();
-
-       /*
-        //Testing the UI of all the awards
+/*
+       //Testing the UI of all the awards
         AwardUI aUI = new AwardUI();
         aUI.startTheAwardUI();
 

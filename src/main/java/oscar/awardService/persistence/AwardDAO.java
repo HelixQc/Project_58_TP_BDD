@@ -1,45 +1,29 @@
 package oscar.awardService.persistence;
 
-import oscar.awardService.data.AwardRepository;
-import oscar.awardService.model.Award;
-
-import java.util.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 /**
- * implements
- * crud
-*/
-public class AwardDAO implements IAwardDAO{
+ *Here is the connection to the database.
+ * the data is stored on alwaydata.com
+ * every info will be in this DAO.
+ * Use MariaDB when you start the connection.
+ */
+public abstract class AwardDAO {
+    //connection to Database is here!!!!
+    protected static final String DB_HOST = "jdbc:mariadb://mysql-helixqc.alwaysdata.net:3306/";
+    protected static final String DB_NAME ="helixqc_oscar";
+    protected static final String DB_USER = "helixqc";
+    protected static final String DB_PASSWORD = "Jujube98!";
+    protected static final String DB_URL = DB_HOST + DB_NAME;
+    protected Connection connection ;
 
-    @Override
-    public Award findAwardByName(String name) {
-        List<Award> allAwards = AwardRepository.getInstance().getAllAwards();
-
-        for (Award award : allAwards) {
-            if (award.getName().equalsIgnoreCase(name)) {
-                return award;
-            }
+    public AwardDAO(){
+        try{
+                this.connection = DriverManager.getConnection(DB_URL,DB_USER,DB_PASSWORD);
+        }catch (SQLException e){
+            throw new RuntimeException(e);
         }
-        return null;
     }
 
-    @Override
-    public void createAward(String name) {
-        Award a = new Award(name);
-    }
-
-
-    @Override
-    public List<Award> findAllAward() {
-        return  AwardRepository.getInstance().getAllAwards();
-    }
-
-    @Override
-    public void deleteAward(Award award) {
-        AwardRepository.getInstance().getAllAwards().remove(award);
-    }
-
-    @Override
-    public Award UpdateAward(Award award) {
-        return null;
-    }
 }

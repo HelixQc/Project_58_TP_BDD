@@ -1,15 +1,11 @@
 package oscar.electionServices.control;
 
-import org.checkerframework.checker.units.qual.A;
-import oscar.awardService.data.AwardRepository;
-import oscar.awardService.model.Award;
 import oscar.awardService.model.Nomination;
 import oscar.awardService.model.Winners;
-import oscar.awardService.persistence.AwardDAO;
-import oscar.awardService.persistence.NominationDAO;
+import oscar.awardService.persistence.AwardDAO_Memory;
+import oscar.awardService.persistence.NominationDAO_Memory;
 import oscar.awardService.view.AwardUI;
 import oscar.awardService.view.NominationUI;
-import oscar.electionServices.model.Elector;
 import oscar.electionServices.model.Vote;
 import oscar.electionServices.persistence.ElectorDAO;
 
@@ -29,8 +25,8 @@ import java.util.Scanner;
 public class VoteForAward {
 
     private ElectorDAO electorDAO = new ElectorDAO();
-    private AwardDAO awardDAO = new AwardDAO();
-    private NominationDAO nominationDAO = new NominationDAO();
+    private AwardDAO_Memory awardDAO = new AwardDAO_Memory();
+    private NominationDAO_Memory nominationDAO = new NominationDAO_Memory();
     private Date today = new Date();
     private List<Nomination> filmWinners = new ArrayList<>();
     private List<Vote> votes = new ArrayList<>();
