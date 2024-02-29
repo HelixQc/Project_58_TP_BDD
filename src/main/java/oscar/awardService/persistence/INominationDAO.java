@@ -10,7 +10,7 @@ import java.util.List;
 */
 public interface INominationDAO {
     Nomination findNominationById(int i);
-    void createNomination(String name);
+    void createNomination(Nomination n );
     void deleteNomination(Nomination n);
     List<Nomination> findAllNomination();
     Nomination UpdateNomination(Nomination n);

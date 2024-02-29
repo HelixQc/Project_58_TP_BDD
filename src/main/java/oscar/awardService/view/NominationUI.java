@@ -3,7 +3,7 @@ package oscar.awardService.view;
 import oscar.awardService.control.SeeNomination;
 import oscar.awardService.data.NominationRepository;
 import oscar.awardService.model.Nomination;
-import oscar.awardService.persistence.NominationDAO_DB;
+import oscar.awardService.persistence.NominationDAO_DB_JDBC;
 
 import java.util.InputMismatchException;
 import java.util.List;
@@ -16,7 +16,7 @@ public class NominationUI {
 
     public void startNominationUI() {
 
-        System.out.println("Please type in a number between 1 and 3 to navigate in the option below");
+        System.out.println("Please type in a number between 1, 2 or 3 to navigate in the option below");
         System.out.println("option 1 : show the nomination list");
         System.out.println("option 2 : UserStory");
         System.out.println("option 3 : next step");
@@ -60,7 +60,7 @@ public class NominationUI {
     }
 
     public void showAllNominationJDBC(){
-        NominationDAO_DB daoDb = new NominationDAO_DB();
+        NominationDAO_DB_JDBC daoDb = new NominationDAO_DB_JDBC();
         List<Nomination> allNominations =  daoDb.findAllNomination();
         System.out.println("All Nominations :");
         System.out.println("---------------------------------------------");

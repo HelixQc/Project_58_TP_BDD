@@ -4,7 +4,7 @@ import oscar.awardService.control.AwardControl;
 import oscar.awardService.control.AwardControl_JDBC;
 import oscar.awardService.data.AwardRepository;
 import oscar.awardService.model.Award;
-import oscar.awardService.persistence.AwardDAO_DB;
+import oscar.awardService.persistence.AwardDAO_DB_JDBC;
 
 import java.util.InputMismatchException;
 import java.util.List;
@@ -14,8 +14,9 @@ public class AwardUI {
 
     Scanner sc = new Scanner(System.in);
 
-
     public void startTheAwardUI() {
+        AwardControl awardController = new AwardControl();
+        AwardControl_JDBC jdbc = new AwardControl_JDBC();
 
         System.out.println("Please enter 1 the see the list of awards, 2 to nominate a movie or 3 go too the next step ");
 
@@ -36,14 +37,14 @@ public class AwardUI {
                     awnser2 = sc.nextInt();
 
                     if(awnser2 == 1){
-                        userStoryMethode();
+
+                        awardController.createNomination();
                     } else if (awnser2 == 2) {
-                        userStoryMethodeJDBC();
+
+                        jdbc.chooseTheAwardAndNominationJDBC();
                     } else if (awnser2 == 3) {
-                        userStoryMethodeJPA();
-
+                        //userStoryMethodeJPA();
                     }
-
                     break;
                 } else if(answer == 3){
                     break;
@@ -68,34 +69,15 @@ public class AwardUI {
         for (int i = 0; i < AwardRepository.getInstance().getAllAwards().size(); i++) {
             System.out.println(awards.get(i).getName());
         }
-
     }
 
     public void showTheAwardListJDBC(){
         //Getting the data
-        AwardDAO_DB awardDAODb = new AwardDAO_DB();
+        AwardDAO_DB_JDBC awardDAODb = new AwardDAO_DB_JDBC();
         List<Award> awards = awardDAODb.findAllAward();
 
         for(int i = 0 ; i < awards.size() ; i++ ){
             System.out.println("Awards categories: "+awards.get(i).getName());
         }
     }
-
-    //InMemoryRepository
-    public void userStoryMethode() {
-        //Call the controler for the userStory
-        AwardControl awardController = new AwardControl();
-        awardController.chooseTheAwardAndNomination();
-    }
-
-    //JDBC
-    private void userStoryMethodeJDBC() {
-        AwardControl_JDBC jdbc = new AwardControl_JDBC();
-        jdbc.chooseTheAwardAndNominationJDBC();
-    }
-
-    //JPA
-    private void userStoryMethodeJPA() {
-    }
-
 }

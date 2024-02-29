@@ -3,7 +3,6 @@ package oscar.awardService.persistence;
 import oscar.awardService.model.Award;
 import oscar.awardService.model.Nomination;
 
-import java.awt.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,12 +13,32 @@ import java.util.List;
  * Implements
  * CRUD
  * */
-public class AwardDAO_DB extends AwardServiceDAO implements IAwardDAO {
+public class AwardDAO_DB_JDBC extends AwardDAO implements IAwardDAO {
+
+    public AwardDAO_DB_JDBC() {
+        super();
+    }
+
+
+    public Award findAwardByID(int id) {
+        try {
+            Statement st = this.connection.createStatement();
+            ResultSet result = st.executeQuery(QueryBox.FindAwardById + id);
+            if (result.next()) {
+                String name = result.getString("name");
+
+                // objectify the loaded information => unmarshalling
+                return new Award(name);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
 
     @Override
     public Award findAwardByName(String name) {
         try {
-
             PreparedStatement ps = this.connection.prepareStatement(QueryBox.FindAwardByName + "?");
             ps.setString(1, name);
             ResultSet result = ps.executeQuery();
@@ -66,5 +85,6 @@ public class AwardDAO_DB extends AwardServiceDAO implements IAwardDAO {
         }
         return awards;
     }
+
 }
 

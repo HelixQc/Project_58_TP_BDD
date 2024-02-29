@@ -2,13 +2,11 @@ package oscar.awardService.control;
 
 import oscar.awardService.model.Award;
 import oscar.awardService.model.Nomination;
-import oscar.awardService.model.Winners;
-import oscar.awardService.persistence.AwardDAO_DB;
-import oscar.awardService.persistence.NominationDAO_DB;
+import oscar.awardService.persistence.AwardDAO_DB_JDBC;
+import oscar.awardService.persistence.NominationDAO_DB_JDBC;
 import oscar.awardService.view.AwardUI;
 import oscar.awardService.view.NominationUI;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class AwardControl_JDBC {
@@ -16,8 +14,8 @@ public class AwardControl_JDBC {
     Scanner sc = new Scanner(System.in);
     NominationUI nui = new NominationUI();
     AwardUI aui = new AwardUI();
-    AwardDAO_DB awardDAO_db = new AwardDAO_DB();
-    NominationDAO_DB nominationDAO_DB = new NominationDAO_DB();
+    AwardDAO_DB_JDBC awardDAO_db = new AwardDAO_DB_JDBC();
+    NominationDAO_DB_JDBC nominationDAO_DB = new NominationDAO_DB_JDBC();
     Nomination n ;
     Award a;
     String awardAwnser;
@@ -49,7 +47,7 @@ public class AwardControl_JDBC {
         aui.showTheAwardListJDBC();
 
         this.awardAwnser = sc.nextLine();
-        this.a = awardDAO_db.findAwardByName(awardAwnser);
+        this.a = this.awardDAO_db.findAwardByName(awardAwnser);
 
         //Check if the award was found before proceeding
         if (a != null ) {

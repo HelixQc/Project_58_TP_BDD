@@ -1,35 +1,35 @@
--- Create tables
 
 CREATE TABLE Elector (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    weight INT NOT NULL,
-    name VARCHAR(255) NOT NULL
+                         id INT PRIMARY KEY AUTO_INCREMENT,
+                         weight INT NOT NULL,
+                         name VARCHAR(255) NOT NULL
+
 );
 
 CREATE TABLE Vote (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    shares INT NOT NULL,
-    execution DATE NOT NULL,
-    nomination_id INT,
-    elector_id INT,
-    FOREIGN KEY (nomination_id) REFERENCES Nomination(id),
-    FOREIGN KEY (elector_id) REFERENCES Elector(id)
+                      id INT PRIMARY KEY AUTO_INCREMENT,
+                      shares INT NOT NULL,
+                      execution DATE NOT NULL,
+                      nomination_id INT,
+                      elector_id INT,
+                      FOREIGN KEY (nomination_id) REFERENCES Nomination(id),
+                      FOREIGN KEY (elector_id) REFERENCES Elector(id)
 );
 
 -- Junction table for Award and Nomination many-to-many relationship
 CREATE TABLE AwardNomination (
-    award_id INT,
-    nomination_id INT,
-    PRIMARY KEY (award_id, nomination_id),
-    FOREIGN KEY (award_id) REFERENCES Award(id),
-    FOREIGN KEY (nomination_id) REFERENCES Nomination(id)
+                                 award_id INT,
+                                 nomination_id INT,
+                                 PRIMARY KEY (award_id, nomination_id),
+                                 FOREIGN KEY (award_id) REFERENCES Award(id),
+                                 FOREIGN KEY (nomination_id) REFERENCES Nomination(id)
 );
 
 -- Junction table for Award and Elector many-to-many relationship
 CREATE TABLE AwardElector (
-    award_id INT,
-    elector_id INT,
-    PRIMARY KEY (award_id, elector_id),
-    FOREIGN KEY (award_id) REFERENCES Award(id),
-    FOREIGN KEY (elector_id) REFERENCES Elector(id)
+                              award_id INT,
+                              elector_id INT,
+                              PRIMARY KEY (award_id, elector_id),
+                              FOREIGN KEY (award_id) REFERENCES Award(id),
+                              FOREIGN KEY (elector_id) REFERENCES Elector(id)
 );
