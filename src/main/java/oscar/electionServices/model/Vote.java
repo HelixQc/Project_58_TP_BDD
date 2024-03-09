@@ -14,7 +14,8 @@ public class Vote {
     private Elector elector;
 
     // Constructor with parameters
-    public Vote(int shares, Date execution, Elector elector) {
+    public Vote( int shares, Date execution, Elector elector) {
+
         this.shares = shares;
         this.execution = execution;
         this.elector = elector;

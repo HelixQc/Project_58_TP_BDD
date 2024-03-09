@@ -9,7 +9,7 @@ import java.util.List;
  * The ElectorDAO class provides methods to perform CRUD operations on electors.
  * It interacts with the ElectorRepository to access elector data.
  */
-public class ElectorDAO implements IElectorDAO {
+public class ElectorDAO_Memory implements IElectorDAO {
 
     ElectorRepository repo = ElectorRepository.getInstance();
 

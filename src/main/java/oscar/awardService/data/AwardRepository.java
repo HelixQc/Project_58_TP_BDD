@@ -42,12 +42,12 @@ public class AwardRepository {
      * This method is called once during the initialization of the repository.
      */
     private void initializeAwards() {
-        awards.add(new Award("Best Actor"));
-        awards.add(new Award("Best Actress"));
-        awards.add(new Award("Best Director"));
-        awards.add(new Award("Best Picture"));
-        awards.add(new Award("Best Original Screenplay"));
-        awards.add(new Award("Best Movie"));
+        awards.add(new Award(1,"Best Actor"));
+        awards.add(new Award(2,"Best Actress"));
+        awards.add(new Award(3,"Best Director"));
+        awards.add(new Award(4,"Best Picture"));
+        awards.add(new Award(5,"Best Original Screenplay"));
+        awards.add(new Award(6,"Best Movie"));
     }
 
     /**

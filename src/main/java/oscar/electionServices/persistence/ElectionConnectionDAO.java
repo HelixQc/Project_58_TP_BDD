@@ -11,7 +11,7 @@ import java.sql.SQLException;
  * Use MariaDB when you start the connection.
  */
 
-public abstract class ElectionServiceDAO {
+public abstract class ElectionConnectionDAO {
     //connection to Database is here!!!!
     protected static final String DB_HOST = "jbdc:mariadb://mysql-helixqc.alwaysdata.net:3306/";
     protected static final String DB_NAME ="helixqc_oscar";
@@ -20,7 +20,7 @@ public abstract class ElectionServiceDAO {
     protected static final String DB_URL = DB_HOST + DB_NAME;
     protected Connection connection;
 
-    public ElectionServiceDAO(){
+    public ElectionConnectionDAO(){
         try{
             this.connection = DriverManager.getConnection(DB_URL,DB_USER,DB_PASSWORD);
         }catch (SQLException e){

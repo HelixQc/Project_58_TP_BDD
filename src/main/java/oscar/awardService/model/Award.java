@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class Award {
 
+    private int id;
     private String name;
     private List<Award> awards;
 
@@ -18,7 +19,8 @@ public class Award {
      * Constructor to initialize an Award object with the specified name.
      * @param name The name of the award
      */
-    public Award(String name) {
+    public Award(int id, String name) {
+        this.id = id;
         this.name = name;
         this.awards = new ArrayList<>();
     }
@@ -27,6 +29,9 @@ public class Award {
     public Award() {}
 
     // Getters for all fields
+    public int getId() {
+        return id;
+    }
     public String getName() {
         return name;
     }
@@ -35,6 +40,9 @@ public class Award {
     }
 
     // Setters for all fields
+    public void setId(int id) {
+        this.id = id;
+    }
     public void setName(String name) {
         this.name = name;
     }
@@ -48,7 +56,7 @@ public class Award {
      */
     @Override
     public String toString() {
-        return String.format("Award name = ' %s ' \n", name);
+        return String.format("Award name = %s \n", name);
     }
 }
 

@@ -18,7 +18,7 @@ public class QueryBox {
     public static String FindAwardByName =
             "SELECT * " +
                     "FROM Award " +
-                    "WHERE name = ";
+                    "WHERE name = ?";
 
     public static String FindAllAwards =
             "SELECT * "+
@@ -29,4 +29,7 @@ public class QueryBox {
                     "FROM Award "+
                     "WHERE id = "
             ;
+    public static String CreateNomination =
+            "INSERT INTO Nomination(id, year, obtainedShares,nominatedWork, awardFK) VALUES "+
+            "(?,?,?,?,?)";
 }

@@ -17,8 +17,11 @@ public class AwardUI {
 
     public void startTheAwardUI() {
 
-        System.out.println("Please enter 1 the see the list of awards, 2 to nominate a movie or 3 go too the next step ");
+        AwardControl awardController = new AwardControl();
+        AwardControl_JDBC jdbc = new AwardControl_JDBC();
+        AwardDAO_DB_JDBC awardDAODb = new AwardDAO_DB_JDBC();
 
+        System.out.println("Please enter 1 the see the list of awards, 2 to nominate a movie or 3 go too the next step ");
         do {
             try {
                 int answer = sc.nextInt();
@@ -36,14 +39,14 @@ public class AwardUI {
                     awnser2 = sc.nextInt();
 
                     if(awnser2 == 1){
-                        userStoryMethode();
+                        awardController.createNomination();
+
                     } else if (awnser2 == 2) {
-                        userStoryMethodeJDBC();
+                        jdbc.createNominationJDBC();
+
                     } else if (awnser2 == 3) {
                         userStoryMethodeJPA();
-
                     }
-
                     break;
                 } else if(answer == 3){
                     break;
@@ -79,19 +82,6 @@ public class AwardUI {
         for(int i = 0 ; i < awards.size() ; i++ ){
             System.out.println("Awards categories: "+awards.get(i).getName());
         }
-    }
-
-    //InMemoryRepository
-    public void userStoryMethode() {
-        //Call the controler for the userStory
-        AwardControl awardController = new AwardControl();
-        awardController.createNomination();
-    }
-
-    //JDBC
-    private void userStoryMethodeJDBC() {
-        AwardControl_JDBC jdbc = new AwardControl_JDBC();
-        jdbc.chooseTheAwardAndNominationJDBC();
     }
 
     //JPA
