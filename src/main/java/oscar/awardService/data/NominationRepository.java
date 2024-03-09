@@ -3,6 +3,7 @@ package oscar.awardService.data;
 
 import oscar.awardService.model.Nomination;
 import oscar.awardService.persistence.AwardDAO_Memory;
+import oscar.electionServices.persistence.VoteDAO_Memory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
  */
     public class NominationRepository {
 
+        VoteDAO_Memory voteDAOMemory = new VoteDAO_Memory();
         AwardDAO_Memory awardDAO = new AwardDAO_Memory();
 
         // Singleton instance
@@ -47,7 +49,7 @@ import java.util.List;
          * This method is called once during the initialization of the repository.
          */
         private void populateNomination(){
-            Nomination nomination = new Nomination(1,2024, 8.5, "Harry Potter", new ArrayList<>(), awardDAO.findAwardByName("Best Movie"));
+            Nomination nomination = new Nomination(1,2024, 8.5, "Harry Potter", new ArrayList<>(), awardDAO.findAwardByName("Best Picture"));
             nominations.add(nomination);
 
             Nomination nomination1 = new Nomination(2,2022, 7.5, "Star Wars", new ArrayList<>(), awardDAO.findAwardByName("Best Movie"));

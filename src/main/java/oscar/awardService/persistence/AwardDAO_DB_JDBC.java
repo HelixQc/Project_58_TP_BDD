@@ -28,7 +28,7 @@ public class AwardDAO_DB_JDBC extends AwardDAO implements IAwardDAO {
                 String name = result.getString("name");
 
                 // objectify the loaded information => unmarshalling
-                return new Award(name);
+                return new Award(id ,name);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -39,12 +39,13 @@ public class AwardDAO_DB_JDBC extends AwardDAO implements IAwardDAO {
     @Override
     public Award findAwardByName(String name) {
         try {
-            PreparedStatement ps = this.connection.prepareStatement(QueryBox.FindAwardByName + "?");
-            ps.setString(1, name);
+            PreparedStatement ps = this.connection.prepareStatement(QueryBox.FindAwardByName);
+            ps.setString(1, name); // Set the name parameter safely
+
             ResultSet result = ps.executeQuery();
             if (result.next()) {
-                Award a = new Award(name);
-                return a;
+                int id = result.getInt("id");
+                return new Award(id, name);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -76,8 +77,9 @@ public class AwardDAO_DB_JDBC extends AwardDAO implements IAwardDAO {
             ResultSet result = st.executeQuery(QueryBox.FindAllAwards);
 
             while (result.next()) {
+                int id = result.getInt("id");
                 String name = result.getString("name");
-                Award a = new Award(name);
+                Award a = new Award(id ,name);
                 awards.add(a);
             }
         } catch (SQLException e) {

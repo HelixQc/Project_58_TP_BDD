@@ -1,5 +1,6 @@
 package oscar.electionServices.model;
 
+import oscar.awardService.data.AwardRepository;
 import oscar.awardService.model.Award;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,15 +12,25 @@ import java.util.List;
 
 public class Elector {
 
+    private int id;
     private int weight;
     private String name;
-    private List<Award> awards;
+    private List<Award> awards = AwardRepository.getInstance().getAllAwards();
+    private int awardElectorFk;
+
+    public int getId() {
+        return id;
+    }
+
+    public int getAwardElectorFk() {
+        return awardElectorFk;
+    }
 
     // constructor with parameters
-    public Elector(int weight, String name) {
+    public Elector(int weight, String name, int awardElectorFk) {
         this.weight = weight;
         this.name = name;
-
+        this.awardElectorFk = awardElectorFk;
     }
 
     public List<Award> getAwards() {

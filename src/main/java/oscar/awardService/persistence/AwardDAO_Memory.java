@@ -24,7 +24,7 @@ public class AwardDAO_Memory implements IAwardDAO{
 
     @Override
     public void createAward(String name) {
-        Award a = new Award(name);
+        Award a = new Award(7,name);
     }
 
 

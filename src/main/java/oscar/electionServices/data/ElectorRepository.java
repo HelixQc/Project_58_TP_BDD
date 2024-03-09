@@ -37,13 +37,13 @@ public class ElectorRepository {
 
     //Populate the singleton data
     private void populateElector() {
-        Elector e1 = new Elector(100,"Aramis");
+        Elector e1 = new Elector(100,"Aramis",2);
         electors.add(e1);
-        Elector e2 = new Elector(200,"Athos");
+        Elector e2 = new Elector(280,"Athos",5);
         electors.add(e2);
-        Elector e3 = new Elector(300,"D'Artagnan");
+        Elector e3 = new Elector(170,"D'Artagnan",1);
         electors.add(e3);
-        Elector e4 = new Elector(400, "Portos");
+        Elector e4 = new Elector(60, "Portos",5);
         electors.add(e4);
     }
 
