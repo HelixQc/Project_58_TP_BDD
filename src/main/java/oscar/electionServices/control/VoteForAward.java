@@ -72,7 +72,7 @@ public class VoteForAward {
         System.out.println("---------------------------------------------");
 
         this.filmWinners.add(nominationDAO.findNominationById(awnser));
-        this.votes.add(new Vote(shares, today, electorDAO.findElectorByWeight(shares)));
+        this.votes.add(new Vote(shares, today, electorDAO.findElectorByWeight(shares).getId(), nominationDAO.findNominationById(awnser).getId()));
 
         Winners w = new Winners(awardDAO.findAwardByName(responce),this.filmWinners, this.votes);
 

@@ -75,7 +75,7 @@ public class NominationDAO_DB_JDBC extends AwardDAO implements INominationDAO{
                 int year = result.getInt("year");
                 int obtainedShares = result.getInt("obtainedShares");
                 String nominatedWork = result.getString("nominatedWork");
-                int fk = result.getInt("awardFK");
+                //int fk = result.getInt("awardFK");
 
                 // Create Nomination object and add it to the list
                 Nomination nomination = new Nomination(id, year, obtainedShares, nominatedWork, new ArrayList<>(),new ArrayList<>());

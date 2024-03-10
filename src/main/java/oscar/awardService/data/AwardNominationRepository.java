@@ -33,10 +33,15 @@ public class AwardNominationRepository {
     }
 
     private void populateBridgeAwardNomination() {
-       bridgeAwardNomination.add(new AwardNomination(1,3));
-       bridgeAwardNomination.add(new AwardNomination(2,4));
-       bridgeAwardNomination.add(new AwardNomination(3,5));
-       bridgeAwardNomination.add(new AwardNomination(4,2));
-       bridgeAwardNomination.add(new AwardNomination(5,1));
+       bridgeAwardNomination.add(new AwardNomination(1,1));
+       bridgeAwardNomination.add(new AwardNomination(1,2));
+       bridgeAwardNomination.add(new AwardNomination(2,2));
+       bridgeAwardNomination.add(new AwardNomination(3,1));
+       bridgeAwardNomination.add(new AwardNomination(4,1));
+
+    }
+
+    public List<AwardNomination> getBridgeAwardNomination(){
+        return bridgeAwardNomination;
     }
 }
