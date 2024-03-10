@@ -50,7 +50,7 @@ public class AwardControl {
 
         awardDAO.findAwardByName(yourAwnser);
 
-        Nomination n = new Nomination(3, today.getYear(),shares, responce, new ArrayList<>(),awardDAO.findAwardByName(yourAwnser));
+        Nomination n = new Nomination(3, today.getYear(),shares, responce, new ArrayList<>(),new ArrayList<>());
 
         System.out.println(nominate(awardDAO.findAwardByName(yourAwnser), n ));
     }

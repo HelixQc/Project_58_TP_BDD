@@ -41,7 +41,7 @@ public class SeeNomination {
             System.out.println("---------------------------------------------");
             System.out.println("---Awards---");
             for(int j = 0 ; j <  nominationDAO.findAllNomination().size(); j++)
-                System.out.println(nominationDAO.findAllNomination().get(j).getAwards().getName());
+                System.out.println(nominationDAO.findAllNomination().get(j).getAwards());
             System.out.println("---------------------------------------------");
         }
     }

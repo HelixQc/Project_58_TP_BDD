@@ -1,0 +1,44 @@
+-- Insertion de données
+INSERT INTO Award (id, name) VALUES
+    (1, 'Best Actor'),
+    (2, 'Best Actress'),
+    (3, 'Best Picture'),
+    (4, 'Best Director'),
+    (5, 'Best Original Score'),
+    (6, 'Best Original Song');
+
+INSERT INTO Nomination (id, year, obtainedShares, nominatedWork) VALUES
+    (1, 2023, 250, 'The Shape of Water'),
+    (2, 2023, 320, 'La La Land'),
+    (3, 2023, 180, 'Moonlight'),
+    (4, 2023, 400, 'A Star is Born'),
+    (5, 2023, 280, 'Joker'),
+    (6, 2023, 310, 'Parasite');
+
+INSERT INTO Elector (id, weight, name) VALUES
+    (1, 150, 'John Smith'),
+    (2, 180, 'Emily Johnson'),
+    (3, 200, 'Michael Brown'),
+    (4, 170, 'Maria Garcia'),
+    (5, 190, 'David Lee');
+
+INSERT INTO Vote (id, shares, execution, nomination_id, elector_id) VALUES
+    (1, 50, '2023-02-15', 1, 1),
+    (2, 40, '2023-02-15', 1, 2),
+    (3, 60, '2023-02-16', 2, 3),
+    (4, 70, '2023-02-16', 3, 4),
+    (5, 80, '2023-02-17', 4, 5);
+
+INSERT INTO AwardNomination (award_id, nomination_id) VALUES
+    (1, 1),
+    (2, 2),
+    (3, 3),
+    (4, 4),
+    (5, 5);
+
+INSERT INTO AwardElector (award_id, elector_id) VALUES
+    (1, 1),
+    (2, 2),
+    (3, 3),
+    (4, 4),
+    (5, 5);

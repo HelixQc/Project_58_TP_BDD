@@ -1,9 +1,23 @@
+use helixqc_oscar;
+
+-- Create tables
+CREATE TABLE Award (
+                       id INT PRIMARY KEY AUTO_INCREMENT,
+                       name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Nomination (
+                            id INT PRIMARY KEY AUTO_INCREMENT,
+                            year INT NOT NULL,
+                            obtainedShares INT NOT NULL,
+                            nominatedWork VARCHAR(255) NOT NULL
+);
+-- Create tables
 
 CREATE TABLE Elector (
                          id INT PRIMARY KEY AUTO_INCREMENT,
                          weight INT NOT NULL,
                          name VARCHAR(255) NOT NULL
-
 );
 
 CREATE TABLE Vote (
