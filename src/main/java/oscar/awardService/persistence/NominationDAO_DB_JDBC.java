@@ -30,7 +30,7 @@ public class NominationDAO_DB_JDBC extends AwardDAO implements INominationDAO{
                 int fk = result.getInt("awardFK");
 
                 // objectify the loaded information => unmarshalling
-                return new Nomination(id, year, ObtainedShared ,nominatedWork,new ArrayList<>(), awardDAO_db.findAwardByID(fk));
+                return new Nomination(id, year, ObtainedShared ,nominatedWork,new ArrayList<>(), awardDAO_db.findAllAward());
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -47,7 +47,7 @@ public class NominationDAO_DB_JDBC extends AwardDAO implements INominationDAO{
             ps.setLong(2, n.getYear());
             ps.setDouble(3, n.getObtainedShares());
             ps.setString(4, n.getNominatedWork());
-            ps.setInt(5, n.getAwards().getId());
+            //ps.setInt(5, n.getAwards().getId());
             ps.executeUpdate();
             System.out.println("The nomination: "+ n.getNominatedWork() + " have been added with success");
 
@@ -78,7 +78,7 @@ public class NominationDAO_DB_JDBC extends AwardDAO implements INominationDAO{
                 int fk = result.getInt("awardFK");
 
                 // Create Nomination object and add it to the list
-                Nomination nomination = new Nomination(id, year, obtainedShares, nominatedWork, new ArrayList<>(),awardDAO_db.findAwardByID(fk));
+                Nomination nomination = new Nomination(id, year, obtainedShares, nominatedWork, new ArrayList<>(),new ArrayList<>());
                 nominations.add(nomination);
             }
         } catch (SQLException e) {

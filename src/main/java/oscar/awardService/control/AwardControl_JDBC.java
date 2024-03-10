@@ -39,7 +39,7 @@ public class AwardControl_JDBC {
 
         awardDAO_db.findAwardByName(yourAwnser);
 
-        Nomination n = new Nomination(2, today,shares, responce, new ArrayList<>(),awardDAO_db.findAwardByName(yourAwnser));
+        Nomination n = new Nomination(2, today,shares, responce, new ArrayList<>(),new ArrayList<>());
 
         System.out.println(nominate(awardDAO_db.findAwardByName(yourAwnser), n ));
 

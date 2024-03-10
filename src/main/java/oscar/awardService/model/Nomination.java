@@ -16,7 +16,7 @@ public class Nomination {
     private double obtainedShares; // The number of shares obtained by the nomination
     private String nominatedWork; // The work nominated for the award
     private List<Vote> votes; // A list to hold multiple Vote objects associated with this nomination
-    private Award award; // The award for which the nomination is made
+    private List<Award> awards; // The award for which the nomination is made
 
     // Empty constructor
     public Nomination() {}
@@ -28,15 +28,15 @@ public class Nomination {
      * @param obtainedShares The number of shares obtained by the nomination
      * @param nominatedWork The work nominated for the award
      * @param votes A list of votes associated with this nomination
-     * @param award The award for which the nomination is made
+     * @param awards The award for which the nomination is made
      */
-    public Nomination(int id ,int year, double obtainedShares, String nominatedWork, List<Vote> votes, Award award) {
+    public Nomination(int id ,int year, double obtainedShares, String nominatedWork, List<Vote> votes, List<Award> awards) {
         this.id = id;
         this.year = year;
         this.obtainedShares = obtainedShares;
         this.nominatedWork = nominatedWork;
         this.votes = new ArrayList<>();
-        this.award = award;
+        this.awards = awards;
     }
 
     // Getters for all fields
@@ -52,8 +52,8 @@ public class Nomination {
     public List<Vote> getVotes() {
         return votes;
     }
-    public Award getAwards() {
-        return award;
+    public List<Award> getAwards() {
+        return awards;
     }
     public int getId() {
         return id;
@@ -74,8 +74,8 @@ public class Nomination {
     public void setVotes(List<Vote> votes) {
         this.votes = votes;
     }
-    public void setAwards(Award awards) {
-        this.award = award;
+    public void setAwards(List<Award> awards) {
+        this.awards = awards;
     }
     public void setId(int id) {
         this.id = id;
@@ -89,8 +89,8 @@ public class Nomination {
      */
     @Override
     public String toString() {
-        return String.format("Nomination year = %d, obtainedShares = %s, nominatedWork = '%s', votes = %s, awards = %s} \n",
-                year, obtainedShares, nominatedWork, votes, award);
+        return String.format("Nomination year = %d, obtainedShares = %s, nominatedWork = '%s' \n",
+                year, obtainedShares, nominatedWork);
 
     }
 }

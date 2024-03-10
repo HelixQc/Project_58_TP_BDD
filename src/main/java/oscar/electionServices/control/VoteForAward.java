@@ -7,7 +7,7 @@ import oscar.awardService.persistence.NominationDAO_Memory;
 import oscar.awardService.view.AwardUI;
 import oscar.awardService.view.NominationUI;
 import oscar.electionServices.model.Vote;
-import oscar.electionServices.persistence.ElectorDAO;
+import oscar.electionServices.persistence.ElectorDAO_Memory;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,7 +24,7 @@ import java.util.Scanner;
  */
 public class VoteForAward {
 
-    private ElectorDAO electorDAO = new ElectorDAO();
+    private ElectorDAO_Memory electorDAO = new ElectorDAO_Memory();
     private AwardDAO_Memory awardDAO = new AwardDAO_Memory();
     private NominationDAO_Memory nominationDAO = new NominationDAO_Memory();
     private Date today = new Date();
@@ -75,7 +75,6 @@ public class VoteForAward {
         this.votes.add(new Vote(shares, today, electorDAO.findElectorByWeight(shares)));
 
         Winners w = new Winners(awardDAO.findAwardByName(responce),this.filmWinners, this.votes);
-
 
         System.out.println(w.getAward());
         System.out.println(w.getNomination().get(0).getNominatedWork());

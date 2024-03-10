@@ -13,7 +13,6 @@ public class Award {
 
     private int id;
     private String name;
-    private List<Award> awards;
 
     /**
      * Constructor to initialize an Award object with the specified name.
@@ -22,7 +21,7 @@ public class Award {
     public Award(int id, String name) {
         this.id = id;
         this.name = name;
-        this.awards = new ArrayList<>();
+
     }
 
     // Empty constructor
@@ -35,9 +34,7 @@ public class Award {
     public String getName() {
         return name;
     }
-    public List<Award> getAwards() {
-        return awards;
-    }
+
 
     // Setters for all fields
     public void setId(int id) {
@@ -46,9 +43,7 @@ public class Award {
     public void setName(String name) {
         this.name = name;
     }
-    public void setAwards(List<Award> awards) {
-        this.awards = awards;
-    }
+
 
     /**
      * Generates a string representation of the Award object.
