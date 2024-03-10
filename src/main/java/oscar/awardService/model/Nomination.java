@@ -35,7 +35,7 @@ public class Nomination {
         this.year = year;
         this.obtainedShares = obtainedShares;
         this.nominatedWork = nominatedWork;
-        this.votes = new ArrayList<>();
+        this.votes = votes;
         this.awards = awards;
     }
 
@@ -89,7 +89,7 @@ public class Nomination {
      */
     @Override
     public String toString() {
-        return String.format("Nomination year = %d, obtainedShares = %s, nominatedWork = '%s' \n",
+        return String.format("Nomination year = %d, obtainedShares = %s, nominatedWork = '%s'",
                 year, obtainedShares, nominatedWork);
 
     }

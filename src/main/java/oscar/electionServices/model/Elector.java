@@ -15,30 +15,19 @@ public class Elector {
     private int id;
     private int weight;
     private String name;
-    private List<Award> awards = AwardRepository.getInstance().getAllAwards();
-    private int awardElectorFk;
 
-    public int getId() {
-        return id;
-    }
 
-    public int getAwardElectorFk() {
-        return awardElectorFk;
-    }
+
+
+
+
 
     // constructor with parameters
-    public Elector(int weight, String name, int awardElectorFk) {
+    public Elector(int id, int weight, String name) {
+        this.id = id;
         this.weight = weight;
         this.name = name;
-        this.awardElectorFk = awardElectorFk;
-    }
 
-    public List<Award> getAwards() {
-        return awards;
-    }
-
-    public void setAwards(List<Award> awards) {
-        this.awards = awards;
     }
 
     // Empty constructor
@@ -49,17 +38,17 @@ public class Elector {
     public double getWeight() {
         return weight;
     }
+    public int getId() {
+        return id;
+    }
+    public String getName() {
+        return name;
+    }
 
     // Setter for weight
     public void setWeight(int weight) {
         this.weight = weight;
     }
-
-    // Getter for name
-    public String getName() {
-        return name;
-    }
-
     // Setter for name
     public void setName(String name) {
         this.name = name;

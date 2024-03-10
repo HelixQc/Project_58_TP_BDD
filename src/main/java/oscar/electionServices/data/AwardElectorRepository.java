@@ -14,7 +14,7 @@ public class AwardElectorRepository {
     //Singleton patters to return the repo
     private static AwardElectorRepository instance = null;
 
-    //Date we need
+    //Data we need
     private List<AwardElector> bridgeAwardElector;
 
     //***PrivateConstructor***//
@@ -24,11 +24,12 @@ public class AwardElectorRepository {
     }
 
     private void populateTheBridge() {
-        bridgeAwardElector.add(new AwardElector(1,2));
-        bridgeAwardElector.add(new AwardElector(2,1));
-        bridgeAwardElector.add(new AwardElector(3,4));
-        bridgeAwardElector.add(new AwardElector(4,3));
-        bridgeAwardElector.add(new AwardElector(5,4));
+        bridgeAwardElector.add(new AwardElector(1,1));
+        bridgeAwardElector.add(new AwardElector(2,2));
+        bridgeAwardElector.add(new AwardElector(3,1));
+        bridgeAwardElector.add(new AwardElector(4,4));
+        bridgeAwardElector.add(new AwardElector(5,2));
+        bridgeAwardElector.add(new AwardElector(6,3));
     }
 
     //Returning the instance!!!

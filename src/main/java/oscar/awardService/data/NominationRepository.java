@@ -16,7 +16,9 @@ import java.util.List;
     public class NominationRepository {
 
         VoteDAO_Memory voteDAOMemory = new VoteDAO_Memory();
-        AwardDAO_Memory awardDAO = new AwardDAO_Memory();
+        AwardDAO_Memory awardDAOMemory = new AwardDAO_Memory();
+
+
 
         // Singleton instance
         private static NominationRepository instance;
@@ -50,10 +52,10 @@ import java.util.List;
          * This method is called once during the initialization of the repository.
          */
         private void populateNomination(){
-            Nomination nomination = new Nomination(1,2024, 8.5, "Harry Potter", VoteRepository.getInstance().getAllVote(), AwardRepository.getInstance().getAllAwards());
+            Nomination nomination = new Nomination(1,2024, 8.5, "Harry Potter", voteDAOMemory.readVote(),awardDAOMemory.findAllAward());
             nominations.add(nomination);
 
-            Nomination nomination1 = new Nomination(2,2022, 7.5, "Star Wars", VoteRepository.getInstance().getAllVote(), AwardRepository.getInstance().getAllAwards());
+            Nomination nomination1 = new Nomination(2,2022, 7.5, "Star Wars", voteDAOMemory.readVote(), awardDAOMemory.findAllAward());
             nominations.add(nomination1);
         }
 
