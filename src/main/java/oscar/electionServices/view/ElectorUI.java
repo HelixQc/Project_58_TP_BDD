@@ -19,11 +19,10 @@ public class ElectorUI {
 
     public void startElectorUI() {
 
-
             System.out.println("Please type in a number between 1, 2 or 3 to navigate in the option below");
-            System.out.println("option 1 : show the nomination list");
-            System.out.println("option 2 : vote");
-            System.out.println("option 3 : next Step");
+            System.out.println("option 1 : Show the nomination list");
+            System.out.println("option 2 : Vote");
+            System.out.println("option 3 : Next Step");
 
            do{
                 try{

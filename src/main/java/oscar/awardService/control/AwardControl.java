@@ -1,7 +1,9 @@
 package oscar.awardService.control;
 
+import oscar.awardService.data.AwardRepository;
 import oscar.awardService.model.Award;
 import oscar.awardService.model.Nomination;
+import oscar.awardService.persistence.JDBC.AwardDAO_DB_JDBC;
 import oscar.awardService.persistence.Memory.AwardDAO_Memory;
 import oscar.awardService.persistence.Memory.NominationDAO_Memory;
 import oscar.awardService.persistence.JDBC.NominationDAO_DB_JDBC;
@@ -10,6 +12,7 @@ import oscar.awardService.view.NominationUI;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -23,8 +26,6 @@ import java.util.Scanner;
 public class AwardControl {
 
     Scanner sc = new Scanner(System.in);
-    NominationUI nui = new NominationUI();
-    AwardUI aui = new AwardUI();
     AwardDAO_Memory awardDAO = new AwardDAO_Memory();
     NominationDAO_Memory nominationDAO = new NominationDAO_Memory();
     NominationDAO_DB_JDBC nominationDAO_DB = new NominationDAO_DB_JDBC();
@@ -45,7 +46,7 @@ public class AwardControl {
         sc.nextLine();
 
         System.out.println("Choose the award categories in the list below: ");
-        aui.showTheAwardList();
+        showTheAwardList();
         String yourAwnser = sc.nextLine();
 
         awardDAO.findAwardByName(yourAwnser);
@@ -58,4 +59,19 @@ public class AwardControl {
     public String nominate(Award a, Nomination n){
         return "The Nominated word is  " + n.getNominatedWork()+ " it have been nominated in the Award category " + a.getName();
     }
+
+    public void showTheAwardList() {
+
+        //Getting award repo
+        List<Award> awards = AwardRepository.getInstance().getAllAwards();
+
+        //Print the Data
+        for (int i = 0; i < AwardRepository.getInstance().getAllAwards().size(); i++) {
+            System.out.println(awards.get(i).getName());
+        }
+
+    }
+
+
+
 }

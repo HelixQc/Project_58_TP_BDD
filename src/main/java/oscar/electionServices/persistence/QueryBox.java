@@ -25,4 +25,13 @@ public class QueryBox {
             "INSERT INTO Vote(shares, execution, nomination_id, elector_id) " +
                     "VALUE(?,?,?,?)";
 
+    //***AwardElector***//
+    public static String FindAllAwardElector =
+            "SELECT *" +
+                    "FROM AwardElector";
+
+    public static String CreateAwardElector =
+            "INSERT INTO AwardElector(award_id,elector_id) " +
+                    "VALUE(?,?)";
+
 }

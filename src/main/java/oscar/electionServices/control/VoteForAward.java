@@ -1,5 +1,6 @@
 package oscar.electionServices.control;
 
+import oscar.awardService.control.AwardControl;
 import oscar.awardService.control.NominationControl;
 import oscar.awardService.data.AwardNominationRepository;
 import oscar.awardService.model.AwardNomination;
@@ -31,7 +32,7 @@ public class VoteForAward {
     private Scanner sc = new Scanner(System.in);
 
     private NominationControl nc = new NominationControl();
-    private AwardUI aUI = new AwardUI();
+    private AwardControl ac = new AwardControl();
     private ElectorController ec = new ElectorController();
     private ElectorDAO_Memory electorDAOMemory = new ElectorDAO_Memory();
     private ElectorDAO_JDBC electorDAO_jdbc = new ElectorDAO_JDBC();
@@ -59,7 +60,7 @@ public class VoteForAward {
         System.out.println("---------------------------------------------");
 
         System.out.println("Select the award you want to vote for: ");
-        this.aUI.showTheAwardList();
+        this.ac.showTheAwardList();
         String responce = sc.nextLine();
         this.awardDAO.findAwardByName(responce);
         //awardDAO.deleteAward(awardDAO.findAwardByName(responce));
@@ -86,7 +87,7 @@ public class VoteForAward {
         System.out.println("---------------------------------------------");
 
         System.out.println("Select the award you want to vote for: ");
-        this.aUI.showTheAwardList();
+        this.ac.showTheAwardList();
         String responce = sc.nextLine();
         this.awardDAO.findAwardByName(responce);
         //awardDAO.deleteAward(awardDAO.findAwardByName(responce));

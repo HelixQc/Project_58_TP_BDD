@@ -19,7 +19,7 @@ public class AwardUI {
 
         AwardControl awardController = new AwardControl();
         AwardControl_JDBC jdbc = new AwardControl_JDBC();
-        AwardDAO_DB_JDBC awardDAODb = new AwardDAO_DB_JDBC();
+        //AwardDAO_DB_JDBC awardDAODb = new AwardDAO_DB_JDBC();
 
         System.out.println("Please type in a number between 1 and 3 to navigate in the option below");
         System.out.println("option 1 : Show the Awards list ");
@@ -29,7 +29,7 @@ public class AwardUI {
             try {
                 int answer = sc.nextInt();
                 if (answer == 1) {
-                    showTheAwardList();
+                    awardController.showTheAwardList();
                     break;
                 } else if (answer == 2) {
                     int awnser2 ;
@@ -66,27 +66,6 @@ public class AwardUI {
     }
 
 
-    public void showTheAwardList() {
-
-        //Getting award repo
-        List<Award> awards = AwardRepository.getInstance().getAllAwards();
-
-        //Print the Data
-        for (int i = 0; i < AwardRepository.getInstance().getAllAwards().size(); i++) {
-            System.out.println(awards.get(i).getName());
-        }
-
-    }
-
-    public void showTheAwardListJDBC(){
-        //Getting the data
-        AwardDAO_DB_JDBC awardDAODb = new AwardDAO_DB_JDBC();
-        List<Award> awards = awardDAODb.findAllAward();
-
-        for(int i = 0 ; i < awards.size() ; i++ ){
-            System.out.println("Awards categories: "+awards.get(i).getName());
-        }
-    }
 
     //JPA
     private void userStoryMethodeJPA() {
