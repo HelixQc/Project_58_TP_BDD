@@ -1,7 +1,9 @@
-package oscar.awardService.persistence;
+package oscar.awardService.persistence.Memory;
 
 import oscar.awardService.data.NominationRepository;
 import oscar.awardService.model.Nomination;
+import oscar.awardService.persistence.INominationDAO;
+
 import java.util.List;
 
 /**

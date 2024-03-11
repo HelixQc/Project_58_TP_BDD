@@ -2,12 +2,8 @@ package oscar.awardService.view;
 
 import oscar.awardService.control.NominationControl;
 import oscar.awardService.control.SeeNomination;
-import oscar.awardService.data.NominationRepository;
-import oscar.awardService.model.Nomination;
-import oscar.awardService.persistence.NominationDAO_DB_JDBC;
 
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
 /**

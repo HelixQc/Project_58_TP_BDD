@@ -9,7 +9,7 @@ import java.sql.SQLException;
  * every info will be in this DAO.
  * Use MariaDB when you start the connection.
  */
-public abstract class AwardDAO {
+public abstract class ConnectionAwardDAO {
     //connection to Database is here!!!!
     protected static final String DB_HOST = "jdbc:mariadb://mysql-helixqc.alwaysdata.net:3306/";
     protected static final String DB_NAME ="helixqc_oscar";
@@ -18,7 +18,7 @@ public abstract class AwardDAO {
     protected static final String DB_URL = DB_HOST + DB_NAME;
     protected Connection connection ;
 
-    public AwardDAO(){
+    public ConnectionAwardDAO(){
         try{
                 this.connection = DriverManager.getConnection(DB_URL,DB_USER,DB_PASSWORD);
         }catch (SQLException e){

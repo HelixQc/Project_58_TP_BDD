@@ -4,7 +4,7 @@ import oscar.awardService.control.AwardControl;
 import oscar.awardService.control.AwardControl_JDBC;
 import oscar.awardService.data.AwardRepository;
 import oscar.awardService.model.Award;
-import oscar.awardService.persistence.AwardDAO_DB_JDBC;
+import oscar.awardService.persistence.JDBC.AwardDAO_DB_JDBC;
 
 import java.util.InputMismatchException;
 import java.util.List;

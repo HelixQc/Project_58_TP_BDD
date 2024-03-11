@@ -7,7 +7,7 @@ import oscar.awardService.model.Award;
 import oscar.awardService.model.AwardNomination;
 import oscar.awardService.model.Nomination;
 import oscar.awardService.model.Winner;
-import oscar.awardService.persistence.NominationDAO_Memory;
+import oscar.awardService.persistence.Memory.NominationDAO_Memory;
 import oscar.electionServices.model.Vote;
 
 import java.util.ArrayList;
@@ -50,6 +50,8 @@ public class CalculateVote {
 
     public double calculerShare(Nomination nomination) {
         double myShares = 0;
+        double maxShare = 0;
+        Nomination winner = new Nomination();
         for (Vote vote : nomination.getVotes()) {
             if (nomination.getId() == vote.getNomination_id()) {
                 myShares += vote.getShares();
@@ -110,11 +112,11 @@ public class CalculateVote {
       }
   }
 
-   /* public static void main(String[] args) {
+    public static void main(String[] args) {
         CalculateVote test = new CalculateVote();
 
         test.VoteFilter();
         test.printeWinners(test.VoteFilter());
         //test.filtrerWinners();
-    }*/
+    }
 }

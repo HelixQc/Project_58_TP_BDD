@@ -1,7 +1,5 @@
 package oscar.electionServices.model;
 
-import oscar.awardService.persistence.NominationDAO_Memory;
-
 import java.util.Date;
 
 /**

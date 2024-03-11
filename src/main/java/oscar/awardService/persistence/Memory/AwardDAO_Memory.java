@@ -1,14 +1,15 @@
-package oscar.awardService.persistence;
+package oscar.awardService.persistence.Memory;
 
 import oscar.awardService.data.AwardRepository;
 import oscar.awardService.model.Award;
+import oscar.awardService.persistence.IAwardDAO;
 
 import java.util.List;
 /**
  * implements
  * crud
 */
-public class AwardDAO_Memory implements IAwardDAO{
+public class AwardDAO_Memory implements IAwardDAO {
 
     @Override
     public Award findAwardByName(String name) {
