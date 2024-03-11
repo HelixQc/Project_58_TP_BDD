@@ -2,7 +2,7 @@ package oscar.awardService.control;
 
 import oscar.awardService.data.NominationRepository;
 import oscar.awardService.model.Nomination;
-import oscar.awardService.persistence.NominationDAO_DB_JDBC;
+import oscar.awardService.persistence.JDBC.NominationDAO_DB_JDBC;
 
 import java.util.List;
 

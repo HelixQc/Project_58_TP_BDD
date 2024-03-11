@@ -2,9 +2,8 @@ package oscar.awardService.data;
 
 
 import oscar.awardService.model.Nomination;
-import oscar.awardService.persistence.AwardDAO_Memory;
-import oscar.electionServices.data.VoteRepository;
-import oscar.electionServices.persistence.VoteDAO_Memory;
+import oscar.awardService.persistence.Memory.AwardDAO_Memory;
+import oscar.electionServices.persistence.Memory.VoteDAO_Memory;
 
 import java.util.ArrayList;
 import java.util.List;

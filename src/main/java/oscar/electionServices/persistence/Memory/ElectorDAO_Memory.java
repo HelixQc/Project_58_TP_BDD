@@ -1,7 +1,8 @@
-package oscar.electionServices.persistence;
+package oscar.electionServices.persistence.Memory;
 
 import oscar.electionServices.data.ElectorRepository;
 import oscar.electionServices.model.Elector;
+import oscar.electionServices.persistence.IElectorDAO;
 
 import java.util.List;
 

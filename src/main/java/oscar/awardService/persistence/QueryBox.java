@@ -30,6 +30,7 @@ public class QueryBox {
                     "WHERE id = "
             ;
     public static String CreateNomination =
-            "INSERT INTO Nomination(id, year, obtainedShares,nominatedWork, awardFK) VALUES "+
-            "(?,?,?,?,?)";
+            "INSERT INTO Nomination( year, obtainedShares,nominatedWork) VALUES "+
+            "(?,?,?)";
+
 }
