@@ -1,6 +1,6 @@
 package oscar.awardService.data;
 
-import oscar.awardService.model.Winners;
+import oscar.awardService.model.Winner;
 import oscar.awardService.persistence.AwardDAO_Memory;
 import oscar.awardService.persistence.NominationDAO_Memory;
 import oscar.electionServices.persistence.VoteDAO_Memory;
@@ -18,12 +18,12 @@ public class WinnersRepository {
     private static WinnersRepository instance = null;
 
     //Winners list
-    public List<Winners> winnersList;
+    public List<Winner> winnersList;
 
     //private constructor
     private WinnersRepository(){
         winnersList = new ArrayList<>();
-        populateWinners();
+        //populateWinners();
     }
 
     public static WinnersRepository getInstance() {
@@ -33,7 +33,7 @@ public class WinnersRepository {
         return instance;
     }
 
-    private void populateWinners() {
+  /*  private void populateWinners() {
         winnersList.add(new Winners(awardDAOMemory.findAwardByName("Best Actor"), nominationDAOMemory.findAllNomination(),voteDAO.readVote()));
         winnersList.add(new Winners(awardDAOMemory.findAwardByName("Best Actress"), nominationDAOMemory.findAllNomination(),voteDAO.readVote()));
         winnersList.add(new Winners(awardDAOMemory.findAwardByName("Best Director"), nominationDAOMemory.findAllNomination(),voteDAO.readVote()));
@@ -41,8 +41,8 @@ public class WinnersRepository {
         winnersList.add(new Winners(awardDAOMemory.findAwardByName("Best Original Screenplay"), nominationDAOMemory.findAllNomination(),voteDAO.readVote()));
         winnersList.add(new Winners(awardDAOMemory.findAwardByName("Best Movie"), nominationDAOMemory.findAllNomination(),voteDAO.readVote()));
     }
-
-    public List<Winners> getAllWinnersList(){
+*/
+    public List<Winner> getAllWinnersList(){
         return winnersList;
     }
 }

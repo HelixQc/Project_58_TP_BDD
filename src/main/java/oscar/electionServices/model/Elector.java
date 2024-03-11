@@ -16,12 +16,6 @@ public class Elector {
     private int weight;
     private String name;
 
-
-
-
-
-
-
     // constructor with parameters
     public Elector(int id, int weight, String name) {
         this.id = id;
@@ -35,7 +29,7 @@ public class Elector {
     }
 
     // Getter for weight
-    public double getWeight() {
+    public int getWeight() {
         return weight;
     }
     public int getId() {

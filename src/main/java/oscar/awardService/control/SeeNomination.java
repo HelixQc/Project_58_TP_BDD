@@ -19,7 +19,7 @@ public class SeeNomination {
 
     NominationDAO_Memory nominationDAO = new NominationDAO_Memory();
     NominationDAO_DB_JDBC nominationDAO_db = new NominationDAO_DB_JDBC();
-
+    NominationControl nc = new NominationControl();
 
     public List<Nomination> consultNominationInMemoryRepository(){
         return nominationDAO.findAllNomination();
@@ -47,8 +47,7 @@ public class SeeNomination {
     }
     public void userStoryControllerJDBC(){
 
-        NominationUI nUI = new NominationUI();
-        nUI.showAllNominationJDBC();
+        nc.showAllNominationJDBC();
         System.out.println("---------------------------------------------");
         AwardUI aUI = new AwardUI();
         aUI.showTheAwardListJDBC();

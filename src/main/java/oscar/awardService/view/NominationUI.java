@@ -1,5 +1,6 @@
 package oscar.awardService.view;
 
+import oscar.awardService.control.NominationControl;
 import oscar.awardService.control.SeeNomination;
 import oscar.awardService.data.NominationRepository;
 import oscar.awardService.model.Nomination;
@@ -17,6 +18,7 @@ public class NominationUI {
 
     Scanner sc = new Scanner(System.in);
     SeeNomination overWatch = new SeeNomination();
+    NominationControl nc = new NominationControl();
 
     /**
      * Starts the nomination user interface.
@@ -27,14 +29,14 @@ public class NominationUI {
 
         System.out.println("Please type in a number between 1, 2 or 3 to navigate in the option below");
         System.out.println("option 1 : show the nomination list");
-        System.out.println("option 2 : UserStory");
-        System.out.println("option 3 : next step");
+        System.out.println("option 2 : display the winners");
+        System.out.println("option 3 : End program");
 
         do{
             try{
                 int awnser = sc.nextInt();
                 if(awnser==1){
-                    showAllNomination();
+                    nc.showAllNomination();
                     break;
                 } else if (awnser==2) {
                     overWatch.userStoryController();
@@ -52,36 +54,5 @@ public class NominationUI {
         }while(true);
     }
 
-    /**
-     * Displays the list of all nominations.
-     */
-    public void showAllNomination(){
 
-        // Getting all nominations
-        List<Nomination> allNominations = NominationRepository.getInstance().getAllNominations();
-        System.out.println("All Nominations :");
-        System.out.println("---------------------------------------------");
-
-        for(int i = 0 ; i < allNominations.size(); i++) {
-            System.out.println("nomination: "+ i);
-            System.out.println("Year: "+allNominations.get(i).getYear());
-            System.out.println("Nominated Work: "+allNominations.get(i).getNominatedWork());
-            System.out.println("Obtained Shares: "+allNominations.get(i).getObtainedShares());
-            System.out.println("---------------------------------------------");
-        }
-    }
-
-    public void showAllNominationJDBC(){
-        NominationDAO_DB_JDBC daoDb = new NominationDAO_DB_JDBC();
-        List<Nomination> allNominations =  daoDb.findAllNomination();
-        System.out.println("All Nominations :");
-        System.out.println("---------------------------------------------");
-        for(int i = 0 ; i < allNominations.size(); i ++){
-            System.out.println("Id; "+ allNominations.get(i).getId());
-            System.out.println("Year; "+ allNominations.get(i).getYear());
-            System.out.println("Obtained Shares; "+ allNominations.get(i).getObtainedShares());
-            System.out.println("Nominated Work; "+ allNominations.get(i).getNominatedWork());
-            System.out.println("---------------------------------------------");
-        }
-    }
 }
