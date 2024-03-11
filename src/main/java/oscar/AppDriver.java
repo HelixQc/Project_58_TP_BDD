@@ -11,7 +11,7 @@ import oscar.electionServices.view.ElectorUI;
 
 
 /**
- *Test of Nomination
+ *Test the App
  */
 
 public class AppDriver {

@@ -16,20 +16,23 @@ import java.util.List;
  */
 public class SeeNomination {
 
-    NominationDAO_Memory nominationDAO = new NominationDAO_Memory();
-    NominationDAO_DB_JDBC nominationDAO_db = new NominationDAO_DB_JDBC();
-    NominationControl nc = new NominationControl();
+    private NominationDAO_Memory nominationDAO = new NominationDAO_Memory();
+    private NominationDAO_DB_JDBC nominationDAO_db = new NominationDAO_DB_JDBC();
+    private NominationControl nc = new NominationControl();
+    private AwardControl ac = new AwardControl();
+    private AwardControl_JDBC ac_JDBC = new AwardControl_JDBC();
 
-    public List<Nomination> consultNominationInMemoryRepository(){
+    private List<Nomination> consultNominationInMemoryRepository(){
         return nominationDAO.findAllNomination();
     }
-    public List<Nomination> consultNominationJDBC(){
+    private List<Nomination> consultNominationJDBC(){
         return nominationDAO_db.findAllNomination();
     }
-    public List<Nomination>consultWinner(){
+    private List<Nomination>consultWinner(){
         return null;
     }
 
+    //Verifier la redondance du code
     public void userStoryController(){
         System.out.println("---------------------------------------------");
         for(int i = 0 ; i < consultNominationInMemoryRepository().size(); i++){
@@ -39,17 +42,17 @@ public class SeeNomination {
             System.out.println("Nominated Work: "+ consultNominationInMemoryRepository().get(i).getNominatedWork());
             System.out.println("---------------------------------------------");
             System.out.println("---Awards---");
-            for(int j = 0 ; j <  nominationDAO.findAllNomination().size(); j++)
-                System.out.println(nominationDAO.findAllNomination().get(j).getAwards());
-            System.out.println("---------------------------------------------");
+            ac.showTheAwardList();
         }
     }
+
+
     public void userStoryControllerJDBC(){
 
         nc.showAllNominationJDBC();
         System.out.println("---------------------------------------------");
-        AwardUI aUI = new AwardUI();
-        aUI.showTheAwardListJDBC();
+
+        ac_JDBC.showTheAwardListJDBC();
     }
 
 }

@@ -24,8 +24,8 @@ public class NominationUI {
     public void startNominationUI() {
 
         System.out.println("Please type in a number between 1, 2 or 3 to navigate in the option below");
-        System.out.println("option 1 : show the nomination list");
-        System.out.println("option 2 : display the winners");
+        System.out.println("option 1 : Show the nomination list");
+        System.out.println("option 2 : Display the winners");
         System.out.println("option 3 : End program");
 
         do{

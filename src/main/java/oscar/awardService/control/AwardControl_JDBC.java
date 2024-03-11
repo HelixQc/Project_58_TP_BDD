@@ -8,13 +8,13 @@ import oscar.awardService.view.AwardUI;
 import oscar.awardService.view.NominationUI;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class AwardControl_JDBC {
 
     Scanner sc = new Scanner(System.in);
-    NominationUI nui ;
-    AwardUI aui = new AwardUI();
+
     AwardDAO_DB_JDBC awardDAO_db = new AwardDAO_DB_JDBC();
     NominationDAO_DB_JDBC nominationDAO_DB = new NominationDAO_DB_JDBC();
     Nomination n ;
@@ -33,7 +33,7 @@ public class AwardControl_JDBC {
         sc.nextLine();
 
         System.out.println("Choose the award categories in the list below: ");
-        aui.showTheAwardListJDBC();
+        showTheAwardListJDBC();
         String yourAwnser = sc.nextLine();
 
         awardDAO_db.findAwardByName(yourAwnser);
@@ -47,5 +47,15 @@ public class AwardControl_JDBC {
 
     public String nominate(Award a, Nomination n){
         return "The Nominated word is  " + n.getNominatedWork()+ " it have been nominated in the Award category " + a.getName();
+    }
+
+    public void showTheAwardListJDBC(){
+        //Getting the data
+
+        List<Award> awards = awardDAO_db.findAllAward();
+
+        for(int i = 0 ; i < awards.size() ; i++ ){
+            System.out.println("Awards categories: "+awards.get(i).getName());
+        }
     }
 }

@@ -13,7 +13,4 @@ public interface IAwardDAO {
     void deleteAward(Award award);
     Award UpdateAward(Award award);
     List<Award> findAllAward();
-
-
-
 }
