@@ -21,7 +21,10 @@ public class AwardUI {
         AwardControl_JDBC jdbc = new AwardControl_JDBC();
         AwardDAO_DB_JDBC awardDAODb = new AwardDAO_DB_JDBC();
 
-        System.out.println("Please enter 1 the see the list of awards, 2 to nominate a movie or 3 go too the next step ");
+        System.out.println("Please type in a number between 1 and 3 to navigate in the option below");
+        System.out.println("option 1 : Show the Awards list ");
+        System.out.println("option 2 : Nominate a nominated work ");
+        System.out.println("option 3 : Next step ");
         do {
             try {
                 int answer = sc.nextInt();
@@ -53,6 +56,7 @@ public class AwardUI {
                 }else{
                     System.out.println("Please enter either 1, 2 or 3 ");
                 }
+                sc.next();
             } catch (InputMismatchException e) {
                 System.out.println("Please enter a valid number");
                 // Clear the input buffer

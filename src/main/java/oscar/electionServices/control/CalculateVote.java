@@ -6,125 +6,115 @@ import oscar.awardService.data.AwardRepository;
 import oscar.awardService.model.Award;
 import oscar.awardService.model.AwardNomination;
 import oscar.awardService.model.Nomination;
+import oscar.awardService.model.Winner;
 import oscar.awardService.persistence.NominationDAO_Memory;
-import oscar.electionServices.data.AwardElectorRepository;
-import oscar.electionServices.data.ElectorRepository;
-import oscar.electionServices.model.AwardElector;
-import oscar.electionServices.model.Elector;
 import oscar.electionServices.model.Vote;
-import oscar.electionServices.persistence.VoteDAO_Memory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CalculateVote {
 
-
-    private int i = 0;
-
-    private VoteDAO_Memory voteDAO = new VoteDAO_Memory();
     private NominationDAO_Memory nominationDAOMemory = new NominationDAO_Memory();
 
-    private List<Vote> votes = voteDAO.readVote();
     private List<AwardNomination> bridgesAwardNomination = AwardNominationRepository.getInstance().getBridgeAwardNomination();
-    private List<AwardElector> bridgesAwardElector = AwardElectorRepository.getInstance().getBridgeAwardElector();
     private List<Nomination> nominations = nominationDAOMemory.findAllNomination();
     private List<Award> awards = AwardRepository.getInstance().getAllAwards();
-    private List<Elector> electors = ElectorRepository.getInstance().getAllElectors();
+    private List<Winner> winners;
+    private List<Winner> realWinners = new ArrayList<>();
 
-    public void test() {
 
+    public List<Winner> VoteFilter() {
+
+        this.winners = new ArrayList<>();
         for (Award a : awards) {
-            System.out.println();
-            System.out.println(a.getName());
-
+            //System.out.println();
+            //System.out.println(a.getName());
             for (Nomination n : nominations) {
-                for (Vote vote : votes) {
-                    for (AwardNomination an : bridgesAwardNomination) {
-                        if (a.getId() == an.getAward_id()) {
-                            for (AwardElector ae : bridgesAwardElector) {
-                                if (ae.getAward_id() == a.getId()) {
-                                    if (an.getNomination_id() == n.getId() && vote.getNomination_id() == an.getNomination_id()) {
-                                        System.out.println(n);
-                                        System.out.println(vote.getShares());
-                                        System.out.println(vote);
+                for (AwardNomination an : bridgesAwardNomination) {
+                    if (a.getId() == an.getAward_id()) {
+                        if (an.getNomination_id() == n.getId()) {
+                            //System.out.println(n);
+                            //System.out.println(calculerShare(n));
 
-                                        System.out.println();
-                                    }
-                                }
-                            }
+
+                                this.winners.add(new Winner(a, n, calculerShare(n)));
+
                         }
                     }
                 }
-                System.out.println(calculerMaxShare());
             }
         }
+        return this.winners;
     }
 
-
-    private double calculerMaxShare() {
+    public double calculerShare(Nomination nomination) {
         double myShares = 0;
-
-        // On récupère le nominatedWork du premier élément de la liste des nominations (s'il existe)
-
-        String nominatedWork = (nominations.size() > i) ? nominations.get(i).getNominatedWork() : "";
-
-        for (Nomination nomination : nominations) {
-            // On vérifie si le nominatedWork de la nomination correspond à celui récupéré précédemment
-            if (nomination.getNominatedWork().equals(nominatedWork)) {
-                for (Vote vote : nomination.getVotes()) {
-                    // On ajoute les shares uniquement si les conditions sont remplies
-                    if (nomination.getId() == vote.getNomination_id()) {
-                        myShares += vote.getShares();
-                    }
-                }
-                i++;
+        for (Vote vote : nomination.getVotes()) {
+            if (nomination.getId() == vote.getNomination_id()) {
+                myShares += vote.getShares();
             }
         }
         return myShares;
     }
 
-    public static void main(String[] args) {
-        CalculateVote test = new CalculateVote();
-        NominationDAO_Memory nominationDAOMemory = new NominationDAO_Memory();
-        //test.calculateAllVoteMemory();
-
-        test.test();
-        System.out.println(test.calculerMaxShare());
+  /*  public double calculerMaxShares(List<Winner>winners){
+        double maxShare = 0 ;
+        for(Winner winner : winners){
+            if(winner.getShares() > maxShare){
+                maxShare = winner.getShares();
+            }
+        }
+        return maxShare;
     }
 
 
-     /* private double calculerMaxShare() {
+    public List<Winner> checkRealWinners() {
+        double maxShare1 = 0;
 
-        double myShares = 0;
-
-        for (Nomination nomination : nominations) {
-            for (Vote vote : nomination.getVotes()) {
-                if (nomination.getNominatedWork() == nomination.getNominatedWork() && nomination.getId() == vote.getNomination_id() && bridgesAwardNomination.get(nomination.getId()-1).getNomination_id() == nomination.getId()) {
-                    myShares += vote.getShares();
-
-                }
+        for (int i = 0; i < winners.size(); i++) {
+            if (maxShare1 < winners.get(i).getShares()) {
+                maxShare1 = winners.get(i).getShares();
             }
         }
-        return myShares;
+
+
+        for (Winner winner : winners) {
+            if (winner.getShares() == maxShare1) {
+                System.out.println(winner);
+                realWinners.add(winner);
+            }
+        }
+        return realWinners;
+    }
+
+
+   public void filtrerWinners(){
+        for(Nomination nomination : nominations){
+            System.out.println(nomination.getNominatedWork());
+            for(Winner winner : winners ){
+                if(winner.getNominations() == nomination){
+                    System.out.println(winner.getAward().getName());
+                }
+            }
+            System.out.println();
+        }
     }
 */
+  public void printeWinners(List<Winner> winners) {
 
+      for (Winner winner : winners) {
+          System.out.println(winner);
+          System.out.println();
 
-       /* public double calculateAllVoteMemory(){
-        int i = 0;
-        testVoteList = new ArrayList<>();
-        for (Nomination nomination : nominationDAOMemory.findAllNomination()) {
-            for (Winners winner : winnersList) {
-                if (nomination.getAwards().equals(winner.getAward())) {
-                    testVoteList.add(voteDAO.readVote().get(i));
-                    maxShares += testVoteList.get(i).getShares();
-                    nomination.setVotes(testVoteList);
-                    i++;
-                }
-            }
-        }
-        System.out.println(maxShares);
-        return maxShares;
+      }
+  }
+
+   /* public static void main(String[] args) {
+        CalculateVote test = new CalculateVote();
+
+        test.VoteFilter();
+        test.printeWinners(test.VoteFilter());
+        //test.filtrerWinners();
     }*/
-
 }
