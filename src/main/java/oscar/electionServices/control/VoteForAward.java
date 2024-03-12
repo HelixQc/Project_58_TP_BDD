@@ -58,7 +58,8 @@ public class VoteForAward {
     private VoteDAO_JDBC voteDAO_jdbc = new VoteDAO_JDBC();
     private AwardNominationDAO_JDBC awardNominationDAO_jdbc = new AwardNominationDAO_JDBC();
     private AwardElectorDAO_JDBC awardElectorDAO_jdbc = new AwardElectorDAO_JDBC();
-
+/*
+not need it for now!!!
     //InMemory Section
     private List<Vote> votes_Memory = voteDAOMemory.readVote();
     private List<AwardNomination> awardNominationsBridges_Memory = awardNominationDAOMemory.readAwardNomination();
@@ -68,7 +69,7 @@ public class VoteForAward {
     private List<Vote> votes_JDBC = voteDAO_jdbc.readVote();
     private List<AwardNomination> getAwardNominationsBridges_JDBC = awardNominationDAO_jdbc.readAwardNomination();
     private List<AwardElector> getAwardElectorBridge_JDBC = awardElectorDAO_jdbc.readAwardElector();
-
+*/
     public void createVoteMemory(){
 
         Elector me = ec.wichElectorMemory(electorDAOMemory.readElector());
@@ -122,9 +123,9 @@ public class VoteForAward {
         AwardElector aeTemp = new AwardElector(awardDAO_db_jdbc.findAwardByName(responce).getId() ,me.getId());
 
         //Update program
-        this.votes_JDBC.add(voteTemp);
-        this.getAwardNominationsBridges_JDBC.add(anTemp);
-        this.getAwardElectorBridge_JDBC.add(aeTemp);
+        this.voteDAO_jdbc.readVote().add(voteTemp);
+        this.awardNominationDAO_jdbc.readAwardNomination().add(anTemp);
+        this.awardElectorDAO_jdbc.readAwardElector().add(aeTemp);
 
         //UpdateDataBase
         voteDAO_jdbc.createVote(voteTemp);

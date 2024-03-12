@@ -2,9 +2,9 @@ package oscar.awardService.model;
 
 public class Winner {
 
-    Award award;
-    Nomination nominations;
-    double shares;
+    private Award award;
+    private Nomination nominations;
+    private double shares;
 
 
     //***Getters***//

@@ -34,4 +34,5 @@ public class QueryBox {
             "INSERT INTO AwardElector(award_id,elector_id) " +
                     "VALUE(?,?)";
 
+
 }

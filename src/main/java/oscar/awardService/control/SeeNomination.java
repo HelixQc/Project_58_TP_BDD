@@ -1,14 +1,16 @@
 package oscar.awardService.control;
 
-import oscar.awardService.data.AwardNominationRepository;
-import oscar.awardService.data.AwardRepository;
+
 import oscar.awardService.model.Award;
 import oscar.awardService.model.AwardNomination;
 import oscar.awardService.model.Nomination;
 import oscar.awardService.model.Winner;
+import oscar.awardService.persistence.JDBC.AwardDAO_DB_JDBC;
+import oscar.awardService.persistence.JDBC.AwardNominationDAO_JDBC;
+import oscar.awardService.persistence.Memory.AwardDAO_Memory;
+import oscar.awardService.persistence.Memory.AwardNominationDAO_Memory;
 import oscar.awardService.persistence.Memory.NominationDAO_Memory;
 import oscar.awardService.persistence.JDBC.NominationDAO_DB_JDBC;
-import oscar.awardService.view.AwardUI;
 import oscar.electionServices.model.Vote;
 
 import java.util.ArrayList;
@@ -23,24 +25,32 @@ import java.util.List;
  */
 public class SeeNomination {
 
+    //InMemory DAO
     private NominationDAO_Memory nominationDAOMemory = new NominationDAO_Memory();
+    private AwardNominationDAO_Memory brigdesAwardNominationMemory = new AwardNominationDAO_Memory();
+    private AwardDAO_Memory awardDAOMemory = new AwardDAO_Memory();
 
-    private List<AwardNomination> bridgesAwardNomination = AwardNominationRepository.getInstance().getBridgeAwardNomination();
-    private List<Nomination> nominations = nominationDAOMemory.findAllNomination();
-    private List<Award> awards = AwardRepository.getInstance().getAllAwards();
-    private List<Winner> winners;
+
+    //JDBC DAO
+    private NominationDAO_DB_JDBC nominationDAO_db_jdbc = new NominationDAO_DB_JDBC();
+    private AwardNominationDAO_JDBC awardNominationDAO_jdbc = new AwardNominationDAO_JDBC();
+    private AwardDAO_DB_JDBC awardDAO_db_jdbc = new AwardDAO_DB_JDBC();
 
 
     public List<Winner> VoteFilterMemory() {
 
+        List<AwardNomination> bridgesAwardNomination = brigdesAwardNominationMemory.readAwardNomination();
+        List<Nomination> nominations = nominationDAOMemory.findAllNomination();
+        List<Award> awards = awardDAOMemory.findAllAward();
         double maxShare = 0 ;
         double totalShare = 0 ;
         Winner winnerTemp = new Winner();
-        this.winners = new ArrayList<>();
 
-        for (Award a : this.awards) {
-            for (Nomination n : this.nominations) {
-                for (AwardNomination an : this.bridgesAwardNomination) {
+        List<Winner> winners = new ArrayList<>();
+
+        for (Award a : awards) {
+            for (Nomination n : nominations) {
+                for (AwardNomination an : bridgesAwardNomination) {
                     if (a.getId() == an.getAward_id()) {
                         if (an.getNomination_id() == n.getId()) {
                             totalShare = calculerShare(n);
@@ -54,10 +64,43 @@ public class SeeNomination {
                 }
             }
             //List the winner
-            this.winners.add(winnerTemp);
+            winners.add(winnerTemp);
             maxShare = 0;
         }
-        return this.winners;
+        return winners;
+    }
+
+    public List<Winner> VoteFilterJDBC() {
+
+        List<AwardNomination> bridgesAwardNomination = awardNominationDAO_jdbc.readAwardNomination();
+        List<Nomination> nominations = nominationDAO_db_jdbc.findAllNomination();
+        List<Award> awards = awardDAO_db_jdbc.findAllAward();
+        double maxShare = 0 ;
+        double totalShare = 0 ;
+        Winner winnerTemp = new Winner();
+        List<Winner> winners = new ArrayList<>();
+
+        for (Award a : awardDAO_db_jdbc.findAllAward()) {
+            System.out.println(a);
+            for (Nomination n : nominationDAO_db_jdbc.findAllNomination()) {
+                for (AwardNomination an : awardNominationDAO_jdbc.readAwardNomination()) {
+                    if (a.getId() == an.getAward_id()) {
+                        if (an.getNomination_id() == n.getId()) {
+                            totalShare = calculerShare(n);
+                            if(maxShare < totalShare){
+                                maxShare = totalShare;
+                                winnerTemp = new Winner(a, n , totalShare);
+
+                            }
+                        }
+                    }
+                }
+            }
+            //List the winner
+            winners.add(winnerTemp);
+            maxShare = 0;
+        }
+        return winners;
     }
 
     public double calculerShare(Nomination nomination) {
@@ -80,6 +123,27 @@ public class SeeNomination {
                 System.out.println();
             }
         }
+    }
+
+    public static void main(String[] args) {
+        AwardDAO_DB_JDBC awardDAO_db_jdbc = new AwardDAO_DB_JDBC();
+        AwardNominationDAO_JDBC awardNominationDAO_jdbc = new AwardNominationDAO_JDBC();
+        NominationDAO_DB_JDBC nominationDAO_db_jdbc = new NominationDAO_DB_JDBC();
+        SeeNomination test = new SeeNomination();
+
+        //test.printeWinners(test.VoteFilterJDBC());
+
+        for(AwardNomination an : awardNominationDAO_jdbc.readAwardNomination()){
+            System.out.println(an);
+        }
+        for(Nomination n : nominationDAO_db_jdbc.findAllNomination()){
+            System.out.println(n);
+        }
+
+        for(Award a : awardDAO_db_jdbc.findAllAward()){
+            System.out.println(a);
+        }
+
     }
 }
 

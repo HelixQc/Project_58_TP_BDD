@@ -21,6 +21,7 @@ public class NominationUI {
     private AwardControl ac = new AwardControl();
     private SeeNomination v = new SeeNomination();
     private List<Winner> winnersMemory = v.VoteFilterMemory();
+    private List<Winner> winnerJDBC = v.VoteFilterJDBC();
 
     /**
      * Starts the nomination user interface.
@@ -55,6 +56,7 @@ public class NominationUI {
                     break;
                 } else if (awnser==2) {
                     v.printeWinners(this.winnersMemory);
+                    v.printeWinners(this.winnerJDBC);
                     break;
                 } else if (awnser == 3) {
                     break;

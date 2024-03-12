@@ -1,6 +1,5 @@
 package oscar.awardService.control;
 
-
 import oscar.awardService.model.Nomination;
 import oscar.awardService.persistence.JDBC.NominationDAO_DB_JDBC;
 import oscar.awardService.persistence.Memory.NominationDAO_Memory;

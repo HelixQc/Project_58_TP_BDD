@@ -22,7 +22,8 @@ public class AwardElectorDAO_JDBC extends ElectionConnectionDAO implements IAwar
             ps.setInt(1,ae.getAward_id());
             ps.setInt(2,ae.getElector_id());
             ps.executeQuery();
-            
+
+            System.out.println("The bridge have been updated with success");
         }catch (SQLException sql){
             throw new RuntimeException(sql);
         }
