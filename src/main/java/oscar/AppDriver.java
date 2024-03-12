@@ -8,8 +8,6 @@ import oscar.awardService.view.AwardUI;
 import oscar.awardService.view.NominationUI;
 import oscar.electionServices.control.VoteForAward;
 import oscar.electionServices.view.ElectorUI;
-
-
 /**
  *Test the App
  */

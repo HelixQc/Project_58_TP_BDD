@@ -1,9 +1,9 @@
 package oscar.electionServices.persistence.JDBC;
 
 
+import oscar.awardService.persistence.ConnectionDAO;
 import oscar.electionServices.persistence.QueryBox;
 import oscar.electionServices.model.Vote;
-import oscar.electionServices.persistence.ElectionConnectionDAO;
 import oscar.electionServices.persistence.IVoteDAO;
 
 import java.sql.PreparedStatement;
@@ -14,12 +14,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class VoteDAO_JDBC extends ElectionConnectionDAO implements IVoteDAO {
+public class VoteDAO_JDBC extends ConnectionDAO implements IVoteDAO {
 
 
     @Override
-    public void findVoteById() {
-
+    public Vote findVoteById(int id) {
+        return null;
     }
 
     @Override
@@ -41,8 +41,6 @@ public class VoteDAO_JDBC extends ElectionConnectionDAO implements IVoteDAO {
         }catch (SQLException sql){
             throw new RuntimeException(sql);
         }
-
-
     }
 
     @Override

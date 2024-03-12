@@ -1,11 +1,10 @@
 package oscar.electionServices.persistence.JDBC;
 
+import oscar.awardService.persistence.ConnectionDAO;
 import oscar.electionServices.model.AwardElector;
-import oscar.electionServices.persistence.ElectionConnectionDAO;
 import oscar.electionServices.persistence.IAwardElector;
 import oscar.electionServices.persistence.QueryBox;
 
-import javax.swing.event.ListDataEvent;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,7 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AwardElectorDAO_JDBC extends ElectionConnectionDAO implements IAwardElector {
+public class AwardElectorDAO_JDBC extends ConnectionDAO implements IAwardElector {
     @Override
     public void createAwardElector(AwardElector ae) {
         try{

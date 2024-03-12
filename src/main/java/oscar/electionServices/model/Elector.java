@@ -1,19 +1,24 @@
 package oscar.electionServices.model;
 
-import oscar.awardService.data.AwardRepository;
-import oscar.awardService.model.Award;
-import java.util.ArrayList;
-import java.util.List;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 /**
  *The Elector got the role to vote for an award
  *Every elector got a different weight
  */
-
+@Entity
+@Table(name = "Elector")
 public class Elector {
 
+    @Id
+    @Column(name = "id")
     private int id;
+    @Column(name = "weight")
     private int weight;
+    @Column(name = "name")
     private String name;
 
     // constructor with parameters

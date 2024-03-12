@@ -1,17 +1,22 @@
 package oscar.awardService.model;
 
 
-import java.util.ArrayList;
-import java.util.List;
+import jakarta.persistence.*;
 
 /**
  * The Award class represents an award category.
  * It contains information about the name of the award and can optionally
  * hold a list of sub-awards if the award is hierarchical.
  */
+@Entity
+@Table(name="Award")
 public class Award {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private int id;
+    @Column(name="name")
     private String name;
 
     /**

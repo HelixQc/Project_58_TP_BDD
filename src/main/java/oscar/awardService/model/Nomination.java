@@ -1,22 +1,44 @@
 package oscar.awardService.model;
-import oscar.awardService.data.AwardRepository;
-import oscar.electionServices.model.Vote;
-import java.util.ArrayList;
-import java.util.List;
 
+import jakarta.persistence.*;
+import oscar.electionServices.model.Vote;
+import java.util.List;
 
 /**
  * The Nomination class represents a nomination for an award in a particular year.
  * It contains information such as the year, obtained shares, nominated work,
  * associated votes, and the award for which the nomination is made.
  */
+@Entity
+@Table(name="Nomination")
 public class Nomination {
-    private int id; // The unique identifier for the nomination
-    private int year; // The year of the nomination
-    private double obtainedShares; // The number of shares obtained by the nomination
-    private String nominatedWork; // The work nominated for the award
-    private List<Vote> votes; // A list to hold multiple Vote objects associated with this nomination
-    private List<Award> awards; // The award for which the nomination is made
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
+    private int id;
+    @Column(name="year")
+    private int year;
+    @Column(name="obtainedShares")
+    private double obtainedShares;
+    @Column(name="nominatedWork")
+    private String nominatedWork;
+
+    @ManyToMany
+    @JoinTable(
+            name = "Vote",
+            joinColumns = @JoinColumn(name = "nomination_id" ),
+            inverseJoinColumns = @JoinColumn(name = "id")
+    )
+    private List<Vote> votes;
+
+    @ManyToMany
+    @JoinTable(
+            name = "AwardNomination",
+            joinColumns = @JoinColumn(name = "nomination_id"),
+            inverseJoinColumns = @JoinColumn(name = "award_id")
+    )
+    private List<Award> awards;
 
     // Empty constructor
     public Nomination() {}

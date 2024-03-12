@@ -1,18 +1,30 @@
 package oscar.electionServices.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 import java.util.Date;
 
 /**
  *This class is used to create Vote and stock it
  *in the database or in the memory repository
  */
-
+@Entity
+@Table(name = "Vote")
 public class Vote {
 
+    @Id
+    @Column(name = "id")
     private int id;
+    @Column(name = "shares")
     private int shares;
+    @Column(name = "execution")
     private Date execution;
+    @Column(name = "elector_id")
     private int elector_id;
+    @Column(name = "nomination_id")
     private int nomination_id ;
 
 
