@@ -17,11 +17,15 @@ public class AwardElectorDAO_JDBC extends ElectionConnectionDAO implements IAwar
     @Override
     public void createAwardElector(AwardElector ae) {
         try{
+
             PreparedStatement ps = this.connection.prepareStatement(QueryBox.CreateAwardElector);
+            ps.setInt(1,ae.getAward_id());
+            ps.setInt(2,ae.getElector_id());
+            ps.executeQuery();
+            
         }catch (SQLException sql){
             throw new RuntimeException(sql);
         }
-
     }
 
     @Override
