@@ -1,24 +1,18 @@
 package oscar.awardService.view;
 
 import oscar.awardService.control.AwardControl;
-import oscar.awardService.control.AwardControl_JDBC;
-import oscar.awardService.data.AwardRepository;
-import oscar.awardService.model.Award;
-import oscar.awardService.persistence.JDBC.AwardDAO_DB_JDBC;
 
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
 public class AwardUI {
 
     Scanner sc = new Scanner(System.in);
-    private AwardControl awardController = new AwardControl();
 
-    //private AwardDAO_DB_JDBC awardDAODb_JDBC = new AwardDAO_DB_JDBC();
 
     public void startTheAwardUI() {
 
+        AwardControl awardController = new AwardControl();
         System.out.println("Please type in a number 1 or 2 to navigate in the option below");
         System.out.println("option 1 : Nominate a nominated work  ");
         System.out.println("option 2 : Next step ");
@@ -42,13 +36,13 @@ public class AwardUI {
                         awnser2 = sc.nextInt();
 
                         if(awnser2 == 1){
-                            this.awardController.createNomination();
+                            awardController.createNomination();
 
                         } else if (awnser2 == 2) {
-                            this.awardController.createNominationJDBC();
+                            awardController.createNominationJDBC();
 
                         } else if (awnser2 == 3) {
-                            userStoryMethodeJPA();
+                            awardController.createNominationJPA();
                         }
                         break;
                     }catch (InputMismatchException ee){
@@ -66,11 +60,6 @@ public class AwardUI {
                 sc.next();
             }
         } while (true);
-    }
-
-    //JPA
-    private void userStoryMethodeJPA() {
-        System.out.println("not ready yet");
     }
 
 }

@@ -1,10 +1,9 @@
 package oscar.awardService.persistence.JDBC;
 
 import oscar.awardService.model.AwardNomination;
-import oscar.awardService.persistence.ConnectionAwardDAO;
+import oscar.awardService.persistence.ConnectionDAO;
 import oscar.awardService.persistence.IAwardNomination;
 import oscar.awardService.persistence.QueryBox;
-import oscar.electionServices.model.AwardElector;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,7 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AwardNominationDAO_JDBC extends ConnectionAwardDAO implements IAwardNomination {
+public class AwardNominationDAO_JDBC extends ConnectionDAO implements IAwardNomination {
     @Override
     public void createAwardNomination(AwardNomination an) {
         try{

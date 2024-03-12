@@ -114,4 +114,8 @@ public class ElectorUI {
             }while(true);
     }
 
+    public static void main(String[] args) {
+        ElectorUI ui = new ElectorUI();
+        ui.startElectorUI();
+    }
 }

@@ -22,6 +22,7 @@ public class NominationUI {
     private SeeNomination v = new SeeNomination();
     private List<Winner> winnersMemory = v.VoteFilterMemory();
     private List<Winner> winnerJDBC = v.VoteFilterJDBC();
+    private List<Winner> winnerJPA  = v.VoteFilterJPA();
 
     /**
      * Starts the nomination user interface.
@@ -58,6 +59,11 @@ public class NominationUI {
                     sc.nextLine();
                     System.out.println("---------------------------------------------");
 
+                    System.out.println("---------------------------------------------");
+                    System.out.println("---Nominations---JPA---");
+                    nc.showAllNominationJPA();
+                    System.out.println("---Awards---JPA---");
+                    ac.showTheAwardListJPA();
                     String awnser2;
 
                     //ameliorer la gestion des exception ici!!!
@@ -98,6 +104,10 @@ public class NominationUI {
         System.out.println("---------------------------------------------");
         System.out.println("---Winners---JDBC---");
         v.printeWinners(this.winnerJDBC);
+
+        System.out.println("---------------------------------------------");
+        System.out.println("---Winners---JPA---");
+        v.printeWinners(this.winnerJPA);
     }
 
 }

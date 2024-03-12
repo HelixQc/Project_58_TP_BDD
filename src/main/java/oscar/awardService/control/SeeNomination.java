@@ -26,18 +26,11 @@ import java.util.List;
 
 public class SeeNomination {
 
-    //InMemory DAO
-    private NominationDAO_Memory nominationDAOMemory = new NominationDAO_Memory();
-    private AwardNominationDAO_Memory brigdesAwardNominationMemory = new AwardNominationDAO_Memory();
-    private AwardDAO_Memory awardDAOMemory = new AwardDAO_Memory();
-
-    //JDBC DAO
-    private NominationDAO_DB_JDBC nominationDAO_db_jdbc = new NominationDAO_DB_JDBC();
-    private AwardNominationDAO_JDBC awardNominationDAO_jdbc = new AwardNominationDAO_JDBC();
-    private AwardDAO_DB_JDBC awardDAO_db_jdbc = new AwardDAO_DB_JDBC();
 
     public List<Winner> VoteFilterMemory() {
-
+        NominationDAO_Memory nominationDAOMemory = new NominationDAO_Memory();
+        AwardNominationDAO_Memory brigdesAwardNominationMemory = new AwardNominationDAO_Memory();
+        AwardDAO_Memory awardDAOMemory = new AwardDAO_Memory();
         List<AwardNomination> bridgesAwardNomination = brigdesAwardNominationMemory.readAwardNomination();
         List<Nomination> nominations = nominationDAOMemory.findAllNomination();
         List<Award> awards = awardDAOMemory.findAllAward();
@@ -71,6 +64,10 @@ public class SeeNomination {
 
     public List<Winner> VoteFilterJDBC() {
 
+        NominationDAO_DB_JDBC nominationDAO_db_jdbc = new NominationDAO_DB_JDBC();
+        AwardNominationDAO_JDBC awardNominationDAO_jdbc = new AwardNominationDAO_JDBC();
+        AwardDAO_DB_JDBC awardDAO_db_jdbc = new AwardDAO_DB_JDBC();
+
         List<AwardNomination> bridgesAwardNomination = awardNominationDAO_jdbc.readAwardNomination();
         List<Nomination> nominations = nominationDAO_db_jdbc.findAllNomination();
         List<Award> awards = awardDAO_db_jdbc.findAllAward();
@@ -99,6 +96,10 @@ public class SeeNomination {
             maxShare = 0;
         }
         return winners;
+    }
+
+    public List<Winner> VoteFilterJPA() {
+        return null;
     }
 
     public double calculerShare(Nomination nomination) {

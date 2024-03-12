@@ -1,7 +1,7 @@
 package oscar.awardService.persistence.JDBC;
 
 import oscar.awardService.model.Award;
-import oscar.awardService.persistence.ConnectionAwardDAO;
+import oscar.awardService.persistence.ConnectionDAO;
 import oscar.awardService.persistence.IAwardDAO;
 import oscar.awardService.persistence.QueryBox;
 
@@ -15,7 +15,7 @@ import java.util.List;
  * Implements
  * CRUD
  * */
-public class AwardDAO_DB_JDBC extends ConnectionAwardDAO implements IAwardDAO {
+public class AwardDAO_DB_JDBC extends ConnectionDAO implements IAwardDAO {
 
     public AwardDAO_DB_JDBC() {
         super();

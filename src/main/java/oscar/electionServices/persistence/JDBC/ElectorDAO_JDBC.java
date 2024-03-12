@@ -1,7 +1,7 @@
 package oscar.electionServices.persistence.JDBC;
 
+import oscar.awardService.persistence.ConnectionDAO;
 import oscar.electionServices.model.Elector;
-import oscar.electionServices.persistence.ElectionConnectionDAO;
 import oscar.electionServices.persistence.IElectorDAO;
 import oscar.electionServices.persistence.QueryBox;
 
@@ -13,7 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ElectorDAO_JDBC extends ElectionConnectionDAO implements IElectorDAO {
+public class ElectorDAO_JDBC extends ConnectionDAO implements IElectorDAO {
 
     @Override
     public void createElector(Elector e) {

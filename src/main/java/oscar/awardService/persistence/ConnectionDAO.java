@@ -11,7 +11,7 @@ import java.sql.SQLException;
  * Use MariaDB when you start the connection.
  */
 
-public abstract class ConnectionAwardDAO {
+public abstract class ConnectionDAO {
 
     //connection to Database is here!!!!
     protected static final String DB_HOST = "jdbc:mariadb://mysql-helixqc.alwaysdata.net:3306/";
@@ -21,7 +21,7 @@ public abstract class ConnectionAwardDAO {
     protected static final String DB_URL = DB_HOST + DB_NAME;
     protected Connection connection ;
 
-    public ConnectionAwardDAO(){
+    public ConnectionDAO(){
         try{
                 this.connection = DriverManager.getConnection(DB_URL,DB_USER,DB_PASSWORD);
         }catch (SQLException e){

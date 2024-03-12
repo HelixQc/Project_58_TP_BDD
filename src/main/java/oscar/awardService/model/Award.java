@@ -1,10 +1,7 @@
 package oscar.awardService.model;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 /**
  * The Award class represents an award category.
@@ -16,6 +13,7 @@ import jakarta.persistence.Table;
 public class Award {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private int id;
     @Column(name="name")

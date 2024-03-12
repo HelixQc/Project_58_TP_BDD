@@ -2,10 +2,9 @@ package oscar.awardService.persistence.JDBC;
 
 import oscar.awardService.model.Award;
 import oscar.awardService.model.Nomination;
-import oscar.awardService.persistence.ConnectionAwardDAO;
+import oscar.awardService.persistence.ConnectionDAO;
 import oscar.awardService.persistence.INominationDAO;
 import oscar.awardService.persistence.QueryBox;
-import oscar.awardService.view.NominationUI;
 import oscar.electionServices.persistence.JDBC.VoteDAO_JDBC;
 
 import java.sql.PreparedStatement;
@@ -15,7 +14,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NominationDAO_DB_JDBC extends ConnectionAwardDAO implements INominationDAO {
+public class NominationDAO_DB_JDBC extends ConnectionDAO implements INominationDAO {
 
 
     VoteDAO_JDBC voteDAO_jdbc = new VoteDAO_JDBC();

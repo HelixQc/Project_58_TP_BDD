@@ -30,7 +30,10 @@ public class AwardDAO_JPA implements IAwardDAO {
 
     @Override
     public Award findAwardByName(String name) {
-        return null;
+        Query query = em.createQuery("SELECT a FROM Award a WHERE a.name = :name", Award.class);
+        query.setParameter("name", name);
+        List<Award> resultList = query.getResultList();
+        return resultList.isEmpty() ? null : resultList.get(0);
     }
 
     @Override

@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import oscar.electionServices.model.Vote;
 import java.util.List;
 
-
 /**
  * The Nomination class represents a nomination for an award in a particular year.
  * It contains information such as the year, obtained shares, nominated work,
@@ -15,6 +14,7 @@ import java.util.List;
 public class Nomination {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private int id;
     @Column(name="year")
@@ -27,16 +27,16 @@ public class Nomination {
     @ManyToMany
     @JoinTable(
             name = "Vote",
-            joinColumns = @JoinColumn(name = "" ),
-            inverseJoinColumns = @JoinColumn( name = "" )
+            joinColumns = @JoinColumn(name = "nomination_id" ),
+            inverseJoinColumns = @JoinColumn(name = "id")
     )
     private List<Vote> votes;
 
     @ManyToMany
     @JoinTable(
-            name = "Award",
-            joinColumns = @JoinColumn(name = ""),
-            inverseJoinColumns = @JoinColumn(name = "")
+            name = "AwardNomination",
+            joinColumns = @JoinColumn(name = "nomination_id"),
+            inverseJoinColumns = @JoinColumn(name = "award_id")
     )
     private List<Award> awards;
 

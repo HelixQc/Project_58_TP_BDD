@@ -63,4 +63,7 @@ public class ElectorDAO_JPA implements IElectorDAO {
     }
 
 
+    public Elector findElectorByWeight(int weight) {
+        return null;
+    }
 }

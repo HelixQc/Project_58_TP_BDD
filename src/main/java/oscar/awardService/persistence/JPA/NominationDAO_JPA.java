@@ -23,13 +23,10 @@ public class NominationDAO_JPA implements INominationDAO {
         this.em = emf.createEntityManager();
     }
 
-    public Nomination findAwardById(int id){
-        return em.find(Nomination.class, id);
-    }
 
     @Override
     public Nomination findNominationById(int i) {
-        return null;
+        return em.find(Nomination.class, i);
     }
 
     @Override
