@@ -33,4 +33,10 @@ public class QueryBox {
             "INSERT INTO Nomination( year, obtainedShares,nominatedWork) VALUES "+
             "(?,?,?)";
 
+    public static String CreateAwardNomination =
+            "INSERT INTO AwardNomination(award_id,nomination_id) " +
+                    "VALUE(?,?)";
+    public static String FindAllAwardNomination=
+            "SELECT *" +
+                    "FROM AwardNomination";
 }
