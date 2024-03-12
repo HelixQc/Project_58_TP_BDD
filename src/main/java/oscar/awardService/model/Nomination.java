@@ -24,12 +24,7 @@ public class Nomination {
     @Column(name="nominatedWork")
     private String nominatedWork;
 
-    @ManyToMany
-    @JoinTable(
-            name = "Vote",
-            joinColumns = @JoinColumn(name = "nomination_id" ),
-            inverseJoinColumns = @JoinColumn(name = "id")
-    )
+    @OneToMany(mappedBy = "nomination")
     private List<Vote> votes;
 
     @ManyToMany

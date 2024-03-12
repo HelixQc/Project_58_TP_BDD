@@ -21,7 +21,7 @@ public class ElectorDAO_JDBC extends ConnectionDAO implements IElectorDAO {
         try{
 
             PreparedStatement ps = this.connection.prepareStatement(QueryBox.CreateElector);
-            ps.setInt(1,e.getWeight());
+            ps.setDouble(1,e.getWeight());
             ps.setString(2, e.getName());
             ps.executeQuery();
 
@@ -50,8 +50,8 @@ public class ElectorDAO_JDBC extends ConnectionDAO implements IElectorDAO {
             ResultSet result = st.executeQuery(QueryBox.FindAllElectors);
 
             while(result.next()){
-                int electorID = result.getInt("id");
-                int shareWeight = result.getInt("weight");
+                Integer electorID = result.getInt("id");
+                Double shareWeight = result.getDouble("weight");
                 String name = result.getString("name");
                 Elector elector = new Elector(electorID, shareWeight, name);
                 electors.add(elector);
@@ -75,8 +75,8 @@ public class ElectorDAO_JDBC extends ConnectionDAO implements IElectorDAO {
             ResultSet result = st.executeQuery(QueryBox.FindElectorByWeight + weight);
 
             if(result.next()){
-                int id = result.getInt("id");
-                int sharesWeight = result.getInt("weight");
+                Integer id = result.getInt("id");
+                Double sharesWeight = result.getDouble("weight");
                 String name = result.getString("name");
 
                 return  new Elector(id,sharesWeight,name);

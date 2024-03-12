@@ -61,7 +61,7 @@ public class VoteDAO_JDBC extends ConnectionDAO implements IVoteDAO {
             while(result.next()){
 
                 int voteid = result.getInt("id");
-                int voteShares = result.getInt("shares");
+                Double voteShares = result.getDouble("shares");
                 Date executionDate = result.getDate("execution");
                 int nomination_id = result.getInt("nomination_id");
                 int elector_id = result.getInt("elector_id");

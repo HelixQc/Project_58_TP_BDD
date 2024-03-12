@@ -141,7 +141,7 @@ not need it for now!!!
         System.out.println("The vote have been register with success");
     }
 
-    //Testing needed
+    //Testing needed one test have been done plz delete your test in the db after if it passes!!!
     public void createVoteJPA() {
 
         NominationDAO_JPA nominationDAO_jpa = new NominationDAO_JPA();
@@ -172,6 +172,7 @@ not need it for now!!!
         AwardElector aeTemp = new AwardElector(awardDAO_jpa.findAwardByName(responce).getId() ,me.getId());*/
 
         voteDAO_jpa.createVote(voteTemp);
+        System.out.println("The vote have been added with success");
 
     }
 }
