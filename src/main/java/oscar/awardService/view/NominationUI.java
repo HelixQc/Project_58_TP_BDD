@@ -37,8 +37,11 @@ public class NominationUI {
 
         do{
             try{
+
                 int awnser = sc.nextInt();
                 if(awnser==1){
+
+                    ///Ameliorer laffichage pour optimer cette methode
                     System.out.println("---------------------------------------------");
                     System.out.println("---Nominations---Memory---");
                     this.nc.showAllNomination();
@@ -47,16 +50,32 @@ public class NominationUI {
                     this.ac.showTheAwardListMemory();
 
                     System.out.println("---------------------------------------------");
+                    System.out.println("---Nominations---JDBC---");
                     nc.showAllNominationJDBC();
                     System.out.println("---Awards---JDBC---");
                     ac.showTheAwardListJDBC();
 
+                    sc.nextLine();
+                    System.out.println("---------------------------------------------");
 
+                    String awnser2;
 
+                    //ameliorer la gestion des exception ici!!!
+                    System.out.println("Do you want to see the winner? (Yes/No) ");
+                    do{
+                        awnser2 = sc.nextLine();
+                        if(awnser2.equalsIgnoreCase("yes")){
+                            displayWinner();
+                            break;
+                        }else if(awnser2.equalsIgnoreCase("no")){
+                            break;
+                        }else{
+                            System.out.println("We need yes or no");
+                        }
+                    }while(true);
                     break;
                 } else if (awnser==2) {
-                    v.printeWinners(this.winnersMemory);
-                    v.printeWinners(this.winnerJDBC);
+                    displayWinner();
                     break;
                 } else if (awnser == 3) {
                     break;
@@ -69,4 +88,16 @@ public class NominationUI {
             }
         }while(true);
     }
+
+
+    public void displayWinner(){
+        System.out.println("---------------------------------------------");
+        System.out.println("---Winners---Memory---");
+        v.printeWinners(this.winnersMemory);
+
+        System.out.println("---------------------------------------------");
+        System.out.println("---Winners---JDBC---");
+        v.printeWinners(this.winnerJDBC);
+    }
+
 }

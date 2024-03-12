@@ -23,6 +23,7 @@ import java.util.List;
  * so I can look for trends and
  * statistics in film awards.
  */
+
 public class SeeNomination {
 
     //InMemory DAO
@@ -30,12 +31,10 @@ public class SeeNomination {
     private AwardNominationDAO_Memory brigdesAwardNominationMemory = new AwardNominationDAO_Memory();
     private AwardDAO_Memory awardDAOMemory = new AwardDAO_Memory();
 
-
     //JDBC DAO
     private NominationDAO_DB_JDBC nominationDAO_db_jdbc = new NominationDAO_DB_JDBC();
     private AwardNominationDAO_JDBC awardNominationDAO_jdbc = new AwardNominationDAO_JDBC();
     private AwardDAO_DB_JDBC awardDAO_db_jdbc = new AwardDAO_DB_JDBC();
-
 
     public List<Winner> VoteFilterMemory() {
 
@@ -81,7 +80,6 @@ public class SeeNomination {
         List<Winner> winners = new ArrayList<>();
 
         for (Award a : awardDAO_db_jdbc.findAllAward()) {
-            System.out.println(a);
             for (Nomination n : nominationDAO_db_jdbc.findAllNomination()) {
                 for (AwardNomination an : awardNominationDAO_jdbc.readAwardNomination()) {
                     if (a.getId() == an.getAward_id()) {
@@ -123,27 +121,6 @@ public class SeeNomination {
                 System.out.println();
             }
         }
-    }
-
-    public static void main(String[] args) {
-        AwardDAO_DB_JDBC awardDAO_db_jdbc = new AwardDAO_DB_JDBC();
-        AwardNominationDAO_JDBC awardNominationDAO_jdbc = new AwardNominationDAO_JDBC();
-        NominationDAO_DB_JDBC nominationDAO_db_jdbc = new NominationDAO_DB_JDBC();
-        SeeNomination test = new SeeNomination();
-
-        //test.printeWinners(test.VoteFilterJDBC());
-
-        for(AwardNomination an : awardNominationDAO_jdbc.readAwardNomination()){
-            System.out.println(an);
-        }
-        for(Nomination n : nominationDAO_db_jdbc.findAllNomination()){
-            System.out.println(n);
-        }
-
-        for(Award a : awardDAO_db_jdbc.findAllAward()){
-            System.out.println(a);
-        }
-
     }
 }
 

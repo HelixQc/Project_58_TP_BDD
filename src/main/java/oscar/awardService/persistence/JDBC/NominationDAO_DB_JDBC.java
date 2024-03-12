@@ -6,6 +6,7 @@ import oscar.awardService.persistence.ConnectionAwardDAO;
 import oscar.awardService.persistence.INominationDAO;
 import oscar.awardService.persistence.QueryBox;
 import oscar.awardService.view.NominationUI;
+import oscar.electionServices.persistence.JDBC.VoteDAO_JDBC;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,6 +18,7 @@ import java.util.List;
 public class NominationDAO_DB_JDBC extends ConnectionAwardDAO implements INominationDAO {
 
 
+    VoteDAO_JDBC voteDAO_jdbc = new VoteDAO_JDBC();
     AwardDAO_DB_JDBC awardDAO_db = new AwardDAO_DB_JDBC();
     List<Award> awards = awardDAO_db.findAllAward();
     int maxID = 0;
@@ -34,7 +36,7 @@ public class NominationDAO_DB_JDBC extends ConnectionAwardDAO implements INomina
                 int fk = result.getInt("awardFK");
 
                 // objectify the loaded information => unmarshalling
-                return new Nomination(id, year, ObtainedShared ,nominatedWork,new ArrayList<>(), awardDAO_db.findAllAward());
+                return new Nomination(id, year, ObtainedShared ,nominatedWork,voteDAO_jdbc.readVote(), awards);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -82,7 +84,7 @@ public class NominationDAO_DB_JDBC extends ConnectionAwardDAO implements INomina
                 //int fk = result.getInt("awardFK");
 
                 // Create Nomination object and add it to the list
-                Nomination nomination = new Nomination(id, year, obtainedShares, nominatedWork, new ArrayList<>(),new ArrayList<>());
+                Nomination nomination = new Nomination(id, year, obtainedShares, nominatedWork, voteDAO_jdbc.readVote(),awards);
                 nominations.add(nomination);
             }
         } catch (SQLException e) {

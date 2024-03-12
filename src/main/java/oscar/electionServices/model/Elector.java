@@ -1,10 +1,5 @@
 package oscar.electionServices.model;
 
-import oscar.awardService.data.AwardRepository;
-import oscar.awardService.model.Award;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *The Elector got the role to vote for an award
  *Every elector got a different weight

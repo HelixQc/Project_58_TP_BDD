@@ -3,13 +3,16 @@ package oscar.awardService.persistence;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
 /**
  *Here is the connection to the database.
  * the data is stored on alwaydata.com
  * every info will be in this DAO.
  * Use MariaDB when you start the connection.
  */
+
 public abstract class ConnectionAwardDAO {
+
     //connection to Database is here!!!!
     protected static final String DB_HOST = "jdbc:mariadb://mysql-helixqc.alwaysdata.net:3306/";
     protected static final String DB_NAME ="helixqc_oscar";
