@@ -6,7 +6,7 @@ import oscar.electionServices.model.Vote;
 import java.util.List;
 
 public interface IVoteDAO {
-    void findVoteById();
+    Vote findVoteById(int id);
 
     void createVote(Vote v);
     void deleteVote(Vote v);

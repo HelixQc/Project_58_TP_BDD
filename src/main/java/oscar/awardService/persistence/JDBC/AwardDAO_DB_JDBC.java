@@ -57,7 +57,7 @@ public class AwardDAO_DB_JDBC extends ConnectionAwardDAO implements IAwardDAO {
 
 
     @Override
-    public void createAward(String award) {
+    public void createAward(Award award) {
 
     }
 

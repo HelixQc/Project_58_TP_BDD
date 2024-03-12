@@ -18,8 +18,8 @@ public class VoteDAO_JDBC extends ElectionConnectionDAO implements IVoteDAO {
 
 
     @Override
-    public void findVoteById() {
-
+    public Vote findVoteById(int id) {
+        return null;
     }
 
     @Override

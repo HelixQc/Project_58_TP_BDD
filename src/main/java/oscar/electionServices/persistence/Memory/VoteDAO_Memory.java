@@ -10,8 +10,8 @@ public class VoteDAO_Memory implements IVoteDAO {
     VoteRepository memory = VoteRepository.getInstance();
 
     @Override
-    public void findVoteById() {
-
+    public Vote findVoteById(int id) {
+        return null;
     }
 
     @Override
