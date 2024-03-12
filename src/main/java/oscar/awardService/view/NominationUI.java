@@ -1,9 +1,13 @@
 package oscar.awardService.view;
 
+import oscar.awardService.control.AwardControl;
 import oscar.awardService.control.NominationControl;
 import oscar.awardService.control.SeeNomination;
+import oscar.awardService.model.Winner;
+
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -13,8 +17,10 @@ import java.util.Scanner;
 public class NominationUI {
 
     Scanner sc = new Scanner(System.in);
-    SeeNomination overWatch = new SeeNomination();
-    NominationControl nc = new NominationControl();
+    private NominationControl nc = new NominationControl();
+    private AwardControl ac = new AwardControl();
+    private SeeNomination v = new SeeNomination();
+    private List<Winner> winnersMemory = v.VoteFilterMemory();
 
     /**
      * Starts the nomination user interface.
@@ -24,7 +30,7 @@ public class NominationUI {
     public void startNominationUI() {
 
         System.out.println("Please type in a number between 1, 2 or 3 to navigate in the option below");
-        System.out.println("option 1 : Show the nomination list");
+        System.out.println("option 1 : Display the nomination list and the award list");
         System.out.println("option 2 : Display the winners");
         System.out.println("option 3 : End program");
 
@@ -32,11 +38,23 @@ public class NominationUI {
             try{
                 int awnser = sc.nextInt();
                 if(awnser==1){
-                    nc.showAllNomination();
+                    System.out.println("---------------------------------------------");
+                    System.out.println("---Nominations---Memory---");
+                    this.nc.showAllNomination();
+                    System.out.println("---Awards---Memory---");
+
+                    this.ac.showTheAwardListMemory();
+
+                    System.out.println("---------------------------------------------");
+                    nc.showAllNominationJDBC();
+                    System.out.println("---Awards---JDBC---");
+                    ac.showTheAwardListJDBC();
+
+
+
                     break;
                 } else if (awnser==2) {
-                    overWatch.userStoryController();
-                    overWatch.userStoryControllerJDBC();
+                    v.printeWinners(this.winnersMemory);
                     break;
                 } else if (awnser == 3) {
                     break;
@@ -49,6 +67,4 @@ public class NominationUI {
             }
         }while(true);
     }
-
-
 }

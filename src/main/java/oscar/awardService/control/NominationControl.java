@@ -47,6 +47,4 @@ public class NominationControl {
             System.out.println("---------------------------------------------");
         }
     }
-
-
 }

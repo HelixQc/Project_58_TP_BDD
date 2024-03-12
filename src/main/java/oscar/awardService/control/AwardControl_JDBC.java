@@ -15,8 +15,7 @@ public class AwardControl_JDBC {
 
     Scanner sc = new Scanner(System.in);
 
-    AwardDAO_DB_JDBC awardDAO_db = new AwardDAO_DB_JDBC();
-    NominationDAO_DB_JDBC nominationDAO_DB = new NominationDAO_DB_JDBC();
+
     Nomination n ;
     Award a;
     String awardAwnser;
@@ -24,38 +23,4 @@ public class AwardControl_JDBC {
     int answer;
 
 
-    public void createNominationJDBC(){
-        System.out.println("Please enter the nomination work : ");
-        String responce = sc.nextLine();
-
-        System.out.println("Please enter the obtained shares: ");
-        double shares = sc.nextDouble();
-        sc.nextLine();
-
-        System.out.println("Choose the award categories in the list below: ");
-        showTheAwardListJDBC();
-        String yourAwnser = sc.nextLine();
-
-        awardDAO_db.findAwardByName(yourAwnser);
-
-        Nomination n = new Nomination(2, today,shares, responce, new ArrayList<>(),new ArrayList<>());
-
-        System.out.println(nominate(awardDAO_db.findAwardByName(yourAwnser), n ));
-
-        nominationDAO_DB.createNomination(n);
-    }
-
-    public String nominate(Award a, Nomination n){
-        return "The Nominated word is  " + n.getNominatedWork()+ " it have been nominated in the Award category " + a.getName();
-    }
-
-    public void showTheAwardListJDBC(){
-        //Getting the data
-
-        List<Award> awards = awardDAO_db.findAllAward();
-
-        for(int i = 0 ; i < awards.size() ; i++ ){
-            System.out.println("Awards categories: "+awards.get(i).getName());
-        }
-    }
 }

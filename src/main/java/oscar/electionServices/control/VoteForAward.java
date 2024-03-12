@@ -4,14 +4,21 @@ import oscar.awardService.control.AwardControl;
 import oscar.awardService.control.NominationControl;
 import oscar.awardService.data.AwardNominationRepository;
 import oscar.awardService.model.AwardNomination;
+import oscar.awardService.persistence.JDBC.AwardDAO_DB_JDBC;
+import oscar.awardService.persistence.JDBC.AwardNominationDAO_JDBC;
+import oscar.awardService.persistence.JDBC.NominationDAO_DB_JDBC;
 import oscar.awardService.persistence.Memory.AwardDAO_Memory;
+import oscar.awardService.persistence.Memory.AwardNominationDAO_Memory;
 import oscar.awardService.persistence.Memory.NominationDAO_Memory;
 import oscar.awardService.view.AwardUI;
 import oscar.electionServices.data.AwardElectorRepository;
 import oscar.electionServices.model.AwardElector;
 import oscar.electionServices.model.Elector;
 import oscar.electionServices.model.Vote;
+import oscar.electionServices.persistence.JDBC.AwardElectorDAO_JDBC;
 import oscar.electionServices.persistence.JDBC.ElectorDAO_JDBC;
+import oscar.electionServices.persistence.JDBC.VoteDAO_JDBC;
+import oscar.electionServices.persistence.Memory.AwardElectorDAO_Memory;
 import oscar.electionServices.persistence.Memory.ElectorDAO_Memory;
 import oscar.electionServices.persistence.Memory.VoteDAO_Memory;
 
@@ -34,19 +41,33 @@ public class VoteForAward {
     private NominationControl nc = new NominationControl();
     private AwardControl ac = new AwardControl();
     private ElectorController ec = new ElectorController();
-    private ElectorDAO_Memory electorDAOMemory = new ElectorDAO_Memory();
-    private ElectorDAO_JDBC electorDAO_jdbc = new ElectorDAO_JDBC();
-    private AwardDAO_Memory awardDAO = new AwardDAO_Memory();
-    private NominationDAO_Memory nominationDAO = new NominationDAO_Memory();
-    private VoteDAO_Memory voteDAOMemory = new VoteDAO_Memory();
     private Date today = new Date();
 
+    //Memory
+    private ElectorDAO_Memory electorDAOMemory = new ElectorDAO_Memory();
+    private AwardDAO_Memory awardDAOMemory = new AwardDAO_Memory();
+    private NominationDAO_Memory nominationDAOMemory = new NominationDAO_Memory();
+    private VoteDAO_Memory voteDAOMemory = new VoteDAO_Memory();
+    private AwardNominationDAO_Memory awardNominationDAOMemory = new AwardNominationDAO_Memory();
+    private AwardElectorDAO_Memory awardElectorDAOMemory = new AwardElectorDAO_Memory();
+
+    //DB JDBC
+    private ElectorDAO_JDBC electorDAO_jdbc = new ElectorDAO_JDBC();
+    private AwardDAO_DB_JDBC awardDAO_db_jdbc = new AwardDAO_DB_JDBC();
+    private NominationDAO_DB_JDBC nominationDAO_db_jdbc = new NominationDAO_DB_JDBC();
+    private VoteDAO_JDBC voteDAO_jdbc = new VoteDAO_JDBC();
+    private AwardNominationDAO_JDBC awardNominationDAO_jdbc = new AwardNominationDAO_JDBC();
+    private AwardElectorDAO_JDBC awardElectorDAO_jdbc = new AwardElectorDAO_JDBC();
 
     //InMemory Section
-    private List<Vote> votes = voteDAOMemory.readVote();
-    private List<AwardNomination> awardNominationsBridges = AwardNominationRepository.getInstance().getBridgeAwardNomination();
-    private List<AwardElector> awardElectorBridge = AwardElectorRepository.getInstance().getBridgeAwardElector();
+    private List<Vote> votes_Memory = voteDAOMemory.readVote();
+    private List<AwardNomination> awardNominationsBridges_Memory = awardNominationDAOMemory.readAwardNomination();
+    private List<AwardElector> awardElectorBridge_Memory = awardElectorDAOMemory.readAwardElector();
 
+    //JDBC Section
+    private List<Vote> votes_JDBC = voteDAO_jdbc.readVote();
+    private List<AwardNomination> getAwardNominationsBridges_JDBC = awardNominationDAO_jdbc.readAwardNomination();
+    private List<AwardElector> getAwardElectorBridge_JDBC = awardElectorDAO_jdbc.readAwardElector();
 
     public void createVoteMemory(){
 
@@ -54,26 +75,29 @@ public class VoteForAward {
         System.out.println("Choose the nomination by ID in the list below: ");
         this.nc.showAllNomination();
         int awnser = sc.nextInt();
-        this.nominationDAO.findNominationById(awnser);
+        this.nominationDAOMemory.findNominationById(awnser);
         sc.nextLine();
 
         System.out.println("---------------------------------------------");
 
         System.out.println("Select the award you want to vote for: ");
-        this.ac.showTheAwardList();
+        this.ac.showTheAwardListMemory();
         String responce = sc.nextLine();
-        this.awardDAO.findAwardByName(responce);
+        this.awardDAOMemory.findAwardByName(responce);
         //awardDAO.deleteAward(awardDAO.findAwardByName(responce));
 
         System.out.println("---------------------------------------------");
 
+        Vote voteTemp = new Vote(me.getWeight(), today, me.getId(), nominationDAOMemory.findNominationById(awnser).getId());
+        AwardNomination anTemp = new AwardNomination( awardDAOMemory.findAwardByName(responce).getId() ,nominationDAOMemory.findNominationById(awnser).getId());
+        AwardElector aeTemp = new AwardElector(awardDAOMemory.findAwardByName(responce).getId() ,me.getId());
 
-        this.votes.add(new Vote(me.getWeight(), today, me.getId(), nominationDAO.findNominationById(awnser).getId()));
-        this.awardNominationsBridges.add(new AwardNomination( awardDAO.findAwardByName(responce).getId() ,nominationDAO.findNominationById(awnser).getId()));
-        this.awardElectorBridge.add(new AwardElector( awardDAO.findAwardByName(responce).getId() ,me.getId()));
+        this.voteDAOMemory.createVote(voteTemp);
+        this.awardNominationDAOMemory.createAwardNomination(anTemp);
+        this.awardElectorDAOMemory.createAwardElector(aeTemp);
+
         System.out.println("The vote have been register with success");
     }
-
 
     public void createVoteJDBC(){
 
@@ -81,27 +105,35 @@ public class VoteForAward {
         System.out.println("Choose the nomination by ID in the list below: ");
         this.nc.showAllNomination();
         int awnser = sc.nextInt();
-        this.nominationDAO.findNominationById(awnser);
+        this.nominationDAO_db_jdbc.findNominationById(awnser);
         sc.nextLine();
 
         System.out.println("---------------------------------------------");
 
         System.out.println("Select the award you want to vote for: ");
-        this.ac.showTheAwardList();
+        this.ac.showTheAwardListJDBC();
         String responce = sc.nextLine();
-        this.awardDAO.findAwardByName(responce);
-        //awardDAO.deleteAward(awardDAO.findAwardByName(responce));
+        this.awardDAO_db_jdbc.findAwardByName(responce);
 
         System.out.println("---------------------------------------------");
 
+        Vote voteTemp = new Vote(me.getWeight(), today, me.getId(), nominationDAO_db_jdbc.findNominationById(awnser).getId());
+        AwardNomination anTemp = new AwardNomination(awardDAO_db_jdbc.findAwardByName(responce).getId() ,nominationDAO_db_jdbc.findNominationById(awnser).getId());
+        AwardElector aeTemp = new AwardElector(awardDAO_db_jdbc.findAwardByName(responce).getId() ,me.getId());
 
-        //this section need to be change for jdbc
-        //this.votes.add(new Vote(me.getWeight(), today, me.getId(), nominationDAO.findNominationById(awnser).getId()));
-        //this.awardNominationsBridges.add(new AwardNomination( awardDAO.findAwardByName(responce).getId() ,nominationDAO.findNominationById(awnser).getId()));
-        //this.awardElectorBridge.add(new AwardElector( awardDAO.findAwardByName(responce).getId() ,me.getId()));
+        //Update program
+        this.votes_JDBC.add(voteTemp);
+        this.getAwardNominationsBridges_JDBC.add(anTemp);
+        this.getAwardElectorBridge_JDBC.add(aeTemp);
+
+        //UpdateDataBase
+        voteDAO_jdbc.createVote(voteTemp);
+        awardNominationDAO_jdbc.createAwardNomination(anTemp);
+        awardElectorDAO_jdbc.createAwardElector(aeTemp);
+
         System.out.println("The vote have been register with success");
     }
 
-
-
+    public void createVoteJPA() {
+    }
 }
