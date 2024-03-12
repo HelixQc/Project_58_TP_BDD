@@ -1,9 +1,6 @@
 package oscar.electionServices.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 /**
  *The Elector got the role to vote for an award
@@ -14,15 +11,16 @@ import jakarta.persistence.Table;
 public class Elector {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Integer id;
     @Column(name = "weight")
-    private int weight;
+    private Double weight;
     @Column(name = "name")
     private String name;
 
     // constructor with parameters
-    public Elector(int id, int weight, String name) {
+    public Elector(Integer id, Double weight, String name) {
         this.id = id;
         this.weight = weight;
         this.name = name;
@@ -34,10 +32,10 @@ public class Elector {
     }
 
     // Getter for weight
-    public int getWeight() {
+    public Double getWeight() {
         return weight;
     }
-    public int getId() {
+    public Integer getId() {
         return id;
     }
     public String getName() {
@@ -45,7 +43,7 @@ public class Elector {
     }
 
     // Setter for weight
-    public void setWeight(int weight) {
+    public void setWeight(Double weight) {
         this.weight = weight;
     }
     // Setter for name

@@ -41,10 +41,10 @@ public class VoteRepository {
 
     //Creating votes
     private void populateVotes() {
-        votes.add(new Vote(100,today,electorDAO.findElectorByWeight(100).getId(), 1));
-        votes.add(new Vote(280,today,electorDAO.findElectorByWeight(280).getId(),2));
-        votes.add(new Vote(170,today,electorDAO.findElectorByWeight(170).getId(),1));
-        votes.add(new Vote(60,today,electorDAO.findElectorByWeight(60).getId(),1));
+        votes.add(new Vote(100.0,today,electorDAO.findElectorByWeight(100).getId(), 1));
+        votes.add(new Vote(280.0,today,electorDAO.findElectorByWeight(280).getId(),2));
+        votes.add(new Vote(170.0,today,electorDAO.findElectorByWeight(170).getId(),1));
+        votes.add(new Vote(60.0,today,electorDAO.findElectorByWeight(60).getId(),1));
     }
 
     //Returning the vote list

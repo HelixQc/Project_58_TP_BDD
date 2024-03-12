@@ -1,12 +1,9 @@
 package oscar.electionServices.view;
 
-import oscar.awardService.control.NominationControl;
-import oscar.awardService.model.Nomination;
-import oscar.awardService.view.NominationUI;
+
 import oscar.electionServices.control.ElectorController;
 import oscar.electionServices.control.VoteForAward;
-import oscar.electionServices.persistence.JDBC.ElectorDAO_JDBC;
-import oscar.electionServices.persistence.Memory.ElectorDAO_Memory;
+
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -112,10 +109,5 @@ public class ElectorUI {
                     sc.next();
                 }
             }while(true);
-    }
-
-    public static void main(String[] args) {
-        ElectorUI ui = new ElectorUI();
-        ui.startElectorUI();
     }
 }

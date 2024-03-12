@@ -1,9 +1,7 @@
 package oscar.electionServices.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import org.hibernate.sql.ast.tree.from.MappedByTableGroup;
 
 import java.util.Date;
 
@@ -16,20 +14,24 @@ import java.util.Date;
 public class Vote {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Integer id;
     @Column(name = "shares")
-    private int shares;
+    private Double shares;
     @Column(name = "execution")
     private Date execution;
-    @Column(name = "elector_id")
-    private int elector_id;
+
+    /*@ManyToOne*/
+    @Column(name="elector_id")
+    private Integer elector_id;
+
     @Column(name = "nomination_id")
-    private int nomination_id ;
+    private Integer nomination_id ;
 
 
     // Constructor with parameters
-    public Vote(int shares, Date execution, int elector_id, int nomination_id) {
+    public Vote(Double shares, Date execution, Integer elector_id, Integer nomination_id) {
         this.shares = shares;
         this.execution = execution;
         this.elector_id = elector_id;
@@ -42,32 +44,32 @@ public class Vote {
 
 
     //***Getters***//
-    public int getId(){return id;}
+    public Integer getId(){return id;}
     public double getShares() {
         return shares;
     }
     public Date getExecution() {
         return execution;
     }
-    public int getElector_id() {
+    public Integer getElector_id() {
         return elector_id;
     }
-    public int getNomination_id() {
+    public Integer getNomination_id() {
         return nomination_id;
     }
 
     //***Setters***//
-    public void setId(int id){this.id = id;}
-    public void setShares(int shares) {
+    public void setId(Integer id){this.id = id;}
+    public void setShares(Double shares) {
         this.shares = shares;
     }
     public void setExecution(Date execution) {
         this.execution = execution;
     }
-    public void setElector_id(int elector_id) {
+    public void setElector_id(Integer elector_id) {
         this.elector_id = elector_id;
     }
-    public void setNomination_id(int nomination_id) {
+    public void setNomination_id(Integer nomination_id) {
         this.nomination_id = nomination_id;
     }
 

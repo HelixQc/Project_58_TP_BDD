@@ -21,8 +21,8 @@ public class VoteDAO_JPA implements IVoteDAO {
         PersistenceUnitInfo pui = new OscarPersistenceUnitInfo();
         EntityManagerFactory emf = new HibernatePersistenceProvider()
                 .createContainerEntityManagerFactory(pui, null);
-
         this.em = emf.createEntityManager();
+
     }
 
     @Override
@@ -51,13 +51,11 @@ public class VoteDAO_JPA implements IVoteDAO {
     public void deleteVote(Vote v) {
 
     }
-
     @Override
     public List<Vote> readVote() {
         Query query = em.createQuery("select v FROM Vote v");
         return query.getResultList();
     }
-
     @Override
     public void updateVote(Vote e) {
 

@@ -15,7 +15,7 @@ public class Award {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    private int id;
+    private Integer id;
     @Column(name="name")
     private String name;
 
@@ -33,7 +33,7 @@ public class Award {
     public Award() {}
 
     // Getters for all fields
-    public int getId() {
+    public Integer getId() {
         return id;
     }
     public String getName() {
@@ -42,7 +42,7 @@ public class Award {
 
 
     // Setters for all fields
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public void setName(String name) {

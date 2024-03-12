@@ -147,7 +147,7 @@ public class ElectorController {
         System.out.println("Please enter your name : ");
         String name = sc.nextLine();
         System.out.println("Please enter your shares weight: ");
-        int share = sc.nextInt();
+        double share = sc.nextInt();
 
         Elector me = new Elector(idOfNewElector,share,name );
         return me;
@@ -162,7 +162,7 @@ public class ElectorController {
         System.out.println("Please enter your name : ");
         String name = sc.nextLine();
         System.out.println("Please enter your shares weight: ");
-        int share = sc.nextInt();
+        double share = sc.nextInt();
 
         Elector me = new Elector(idOfNewElector,share,name );
         electorDAO_jdbc.createElector(me);
@@ -175,7 +175,7 @@ public class ElectorController {
         System.out.println("Please enter your name : ");
         String name = sc.nextLine();
         System.out.println("Please enter your shares weight: ");
-        int share = sc.nextInt();
+        double share = sc.nextInt();
 
         Elector me = new Elector(idNewElector,share,name);
         electorDAO_jpa.createElector(me);
