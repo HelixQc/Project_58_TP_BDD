@@ -1,10 +1,10 @@
 package oscar.electionServices.control;
 
+
 import oscar.electionServices.model.Elector;
 import oscar.electionServices.persistence.JDBC.ElectorDAO_JDBC;
 import oscar.electionServices.persistence.JPA.ElectorDAO_JPA;
 import oscar.electionServices.persistence.Memory.ElectorDAO_Memory;
-import oscar.electionServices.view.ElectorUI;
 
 import java.util.List;
 import java.util.Scanner;
@@ -113,8 +113,8 @@ public class ElectorController {
             return electorDAO_jpa.findElectorById(id);
         } else if (yesOrNo.equalsIgnoreCase("no")) {
 
-            createNewElectorJDBC();
-            return createNewElectorJDBC();
+            createNewElectorJPA();
+            return createNewElectorJPA();
 
         } else if (electorDAO_jpa.findElectorById(id) == null) {
             System.out.println("the elector you choose is not in my database please reselect your elector: ");
@@ -154,8 +154,6 @@ public class ElectorController {
     }
 
 
-
-
     public Elector createNewElectorJDBC() {
         ElectorDAO_JDBC electorDAO_jdbc = new ElectorDAO_JDBC();
         int idOfNewElector = maxIdOfElector(electorDAO_jdbc.readElector());
@@ -171,13 +169,13 @@ public class ElectorController {
 
     public Elector createNewElectorJPA(){
         ElectorDAO_JPA electorDAO_jpa = new ElectorDAO_JPA();
-        int idNewElector = maxIdOfElector(electorDAO_jpa.readElector());
+        Integer idNewElector = maxIdOfElector(electorDAO_jpa.readElector());
         System.out.println("Please enter your name : ");
         String name = sc.nextLine();
         System.out.println("Please enter your shares weight: ");
         double share = sc.nextInt();
 
-        Elector me = new Elector(idNewElector,share,name);
+        Elector me = new Elector(share,name);
         electorDAO_jpa.createElector(me);
         return me;
     }

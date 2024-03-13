@@ -22,13 +22,11 @@ public class Vote {
     @Column(name = "execution")
     private Date execution;
 
-    /*@ManyToOne*/
     @Column(name="elector_id")
     private Integer elector_id;
 
     @Column(name = "nomination_id")
     private Integer nomination_id ;
-
 
     // Constructor with parameters
     public Vote(Double shares, Date execution, Integer elector_id, Integer nomination_id) {
@@ -41,7 +39,6 @@ public class Vote {
     // Empty constructor
     public Vote() {
     }
-
 
     //***Getters***//
     public Integer getId(){return id;}

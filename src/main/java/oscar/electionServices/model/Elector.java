@@ -27,11 +27,17 @@ public class Elector {
 
     }
 
+    // constructor for JPA
+    public Elector(Double weight, String name){
+        this.weight = weight;
+        this.name = name;
+    }
+
     // Empty constructor
     public Elector() {
     }
 
-    // Getter for weight
+    // Getter //
     public Double getWeight() {
         return weight;
     }
@@ -42,11 +48,10 @@ public class Elector {
         return name;
     }
 
-    // Setter for weight
+    // Setter //
     public void setWeight(Double weight) {
         this.weight = weight;
     }
-    // Setter for name
     public void setName(String name) {
         this.name = name;
     }
