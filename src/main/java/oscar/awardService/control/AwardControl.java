@@ -27,8 +27,8 @@ import java.util.Scanner;
 public class AwardControl {
 
     Scanner sc = new Scanner(System.in);
-    int today = 2024;
-    int maxID = 0;
+    private int today = 2024;
+    private int maxID = 0;
 
 
     public void createNomination(){
@@ -50,7 +50,7 @@ public class AwardControl {
 
         awardDAOMemory.findAwardByName(yourAwnser);
 
-        Nomination n = new Nomination(3, today,shares, responce, voteDAOMemory.readVote() ,awardDAOMemory.findAllAward());
+        Nomination n = new Nomination(3, this.today,shares, responce, voteDAOMemory.readVote() ,awardDAOMemory.findAllAward());
 
         nominationDAOMemory.findAllNomination().add(n);
         System.out.println(nominate(awardDAOMemory.findAwardByName(yourAwnser), n ));
@@ -77,7 +77,7 @@ public class AwardControl {
         awardDAO_db_JDBC.findAwardByName(yourAwnser);
 
 
-        Nomination n = new Nomination(defineMaxId(), today,shares, responce, voteDAO_jdbc.readVote(),awardDAO_db_JDBC.findAllAward());
+        Nomination n = new Nomination(defineMaxId(), this.today,shares, responce, voteDAO_jdbc.readVote(),awardDAO_db_JDBC.findAllAward());
 
         System.out.println(nominate(awardDAO_db_JDBC.findAwardByName(yourAwnser), n ));
 
@@ -104,7 +104,7 @@ public class AwardControl {
         awardDAO_jpa.findAwardByName(yourAwnser);
 
         //Need fixe with jpa
-        Nomination n = new Nomination(defineMaxId(), today, shares, responce,voteDAO_jpa.readVote(),awardDAO_jpa.findAllAward());
+        Nomination n = new Nomination(defineMaxId(), this.today, shares, responce,voteDAO_jpa.readVote(),awardDAO_jpa.findAllAward());
 
         nominationDAO_jpa.createNomination(n);
 
@@ -145,15 +145,15 @@ public class AwardControl {
     public int defineMaxId(){
         AwardDAO_JPA awardDAO_jpa = new AwardDAO_JPA();
         for(Award a : awardDAO_jpa.findAllAward()){
-            if(maxID < a.getId()){
-                maxID = a.getId();
+            if(this.maxID < a.getId()){
+                this.maxID = a.getId();
             }
         }
-        return maxID+1;
+        return this.maxID+1;
     }
 
     public String nominate(Award a, Nomination n){
-        return "The Nominated word is  " + n.getNominatedWork()+ " it have been nominated in the Award category " + a.getName();
+        return "The Nominated work is " + n.getNominatedWork()+ " it have been nominated in the Award category " + a.getName();
     }
 
 }

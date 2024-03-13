@@ -11,22 +11,17 @@ import java.util.Scanner;
 
 public class ElectorController {
 
-    private Scanner sc = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
 
 
-    public Elector wichElectorMemory(List<Elector> electors) {
+    public Elector whichElectorMemory(List<Elector> electors) {
         int weight;
         ElectorDAO_Memory electorDAOMemory = new ElectorDAO_Memory();
 
         ///Gestion d'exception!!!!
         String yesOrNo;
         System.out.println("Are you a elector from the list below? ");
-        for (Elector elector : electors) {
-            System.out.println("ID: " + elector.getId());
-            System.out.println("Shares Weight: " + elector.getWeight());
-            System.out.println("Name: " + elector.getName());
-            System.out.println("---------------------------------------------");
-        }
+        showElectorListMemory();
 
         yesOrNo = sc.nextLine();
 
@@ -38,7 +33,6 @@ public class ElectorController {
             return electorDAOMemory.findElectorByWeight(weight);
         } else if (yesOrNo.equalsIgnoreCase("no")) {
 
-            createNewElectorMemory();
             return createNewElectorMemory();
 
         } else {
@@ -48,19 +42,15 @@ public class ElectorController {
     }
 
 
-    public Elector wichElectorJDBC(List<Elector> electors) {
+    public Elector whichElectorJDBC(List<Elector> electors) {
+
 
         ElectorDAO_JDBC electorDAO_jdbc = new ElectorDAO_JDBC();
         int weight = 0;
         ///Gestion d'exception!!!!
         String yesOrNo;
         System.out.println("Are you a elector from the list below? (Yes/No) ");
-        for (Elector elector : electors) {
-            System.out.println("ID: " + elector.getId());
-            System.out.println("Shares Weight: " + elector.getWeight());
-            System.out.println("Name: " + elector.getName());
-            System.out.println("---------------------------------------------");
-        }
+        showElectorListJDBC();
 
         yesOrNo = sc.nextLine();
 
@@ -68,12 +58,12 @@ public class ElectorController {
         if (yesOrNo.equalsIgnoreCase("yes")) {
             System.out.println("Please enter your share weight: ");
             weight = sc.nextInt();
-
             return electorDAO_jdbc.findElectorByWeight(weight);
+
+
         } else if (yesOrNo.equalsIgnoreCase("no")) {
 
-            createNewElectorJDBC();
-            return createNewElectorJDBC();
+            return  createNewElectorJDBC();
 
         } else if (electorDAO_jdbc.findElectorByWeight(weight) == null) {
             System.out.println("the elector you choose is not in my database please reselect your elector: ");
@@ -89,19 +79,14 @@ public class ElectorController {
 
 
 
-    public Elector wichElectorJPA(List<Elector> electors) {
+    public Elector whichElectorJPA(List<Elector> electors) {
 
         ElectorDAO_JPA electorDAO_jpa = new ElectorDAO_JPA();
         int id = 0;
         ///Gestion d'exception!!!!
         String yesOrNo;
         System.out.println("Are you a elector from the list below? (Yes/No) ");
-        for (Elector elector : electors) {
-            System.out.println("ID: " + elector.getId());
-            System.out.println("Shares Weight: " + elector.getWeight());
-            System.out.println("Name: " + elector.getName());
-            System.out.println("---------------------------------------------");
-        }
+        showElectorListJPA();
 
         yesOrNo = sc.nextLine();
 
@@ -113,10 +98,10 @@ public class ElectorController {
             return electorDAO_jpa.findElectorById(id);
         } else if (yesOrNo.equalsIgnoreCase("no")) {
 
-            createNewElectorJPA();
             return createNewElectorJPA();
 
         } else if (electorDAO_jpa.findElectorById(id) == null) {
+
             System.out.println("the elector you choose is not in my database please reselect your elector: ");
             id = sc.nextInt();
 
@@ -142,6 +127,7 @@ public class ElectorController {
 
 
     public Elector createNewElectorMemory() {
+
         ElectorDAO_Memory electorDAOMemory = new ElectorDAO_Memory();
         int idOfNewElector = maxIdOfElector(electorDAOMemory.readElector());
         System.out.println("Please enter your name : ");
@@ -149,8 +135,8 @@ public class ElectorController {
         System.out.println("Please enter your shares weight: ");
         double share = sc.nextInt();
 
-        Elector me = new Elector(idOfNewElector,share,name );
-        return me;
+        return new Elector(idOfNewElector,share,name );
+
     }
 
 
@@ -168,8 +154,8 @@ public class ElectorController {
     }
 
     public Elector createNewElectorJPA(){
+
         ElectorDAO_JPA electorDAO_jpa = new ElectorDAO_JPA();
-        Integer idNewElector = maxIdOfElector(electorDAO_jpa.readElector());
         System.out.println("Please enter your name : ");
         String name = sc.nextLine();
         System.out.println("Please enter your shares weight: ");
@@ -210,5 +196,11 @@ public class ElectorController {
             System.out.println("Elector share weight: "+e.getWeight());
             System.out.println("-----------------------------------");
         }
+    }
+
+    public static void main(String[] args) {
+        ElectorController test =  new ElectorController();
+        ElectorDAO_Memory dao = new ElectorDAO_Memory();
+        test.whichElectorMemory(dao.readElector());
     }
 }

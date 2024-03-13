@@ -6,7 +6,7 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
 import jakarta.persistence.spi.PersistenceUnitInfo;
 import org.hibernate.jpa.HibernatePersistenceProvider;
-import oscar.OscarPersistenceUnitInfo;
+import oscar.electionServices.persistence.OscarPersistenceUnitInfo;
 import oscar.electionServices.model.Vote;
 import oscar.electionServices.persistence.IVoteDAO;
 

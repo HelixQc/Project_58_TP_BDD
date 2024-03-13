@@ -2,7 +2,6 @@ package oscar.electionServices.control;
 
 import oscar.awardService.control.AwardControl;
 import oscar.awardService.control.NominationControl;
-import oscar.awardService.data.AwardNominationRepository;
 import oscar.awardService.model.AwardNomination;
 import oscar.awardService.persistence.JDBC.AwardDAO_DB_JDBC;
 import oscar.awardService.persistence.JDBC.AwardNominationDAO_JDBC;
@@ -12,8 +11,6 @@ import oscar.awardService.persistence.JPA.NominationDAO_JPA;
 import oscar.awardService.persistence.Memory.AwardDAO_Memory;
 import oscar.awardService.persistence.Memory.AwardNominationDAO_Memory;
 import oscar.awardService.persistence.Memory.NominationDAO_Memory;
-import oscar.awardService.view.AwardUI;
-import oscar.electionServices.data.AwardElectorRepository;
 import oscar.electionServices.model.AwardElector;
 import oscar.electionServices.model.Elector;
 import oscar.electionServices.model.Vote;
@@ -27,7 +24,6 @@ import oscar.electionServices.persistence.Memory.ElectorDAO_Memory;
 import oscar.electionServices.persistence.Memory.VoteDAO_Memory;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -70,7 +66,7 @@ not need it for now!!!
         AwardNominationDAO_Memory awardNominationDAOMemory = new AwardNominationDAO_Memory();
         AwardElectorDAO_Memory awardElectorDAOMemory = new AwardElectorDAO_Memory();
 
-        Elector me = ec.wichElectorMemory(electorDAOMemory.readElector());
+        Elector me = ec.whichElectorMemory(electorDAOMemory.readElector());
         System.out.println("Choose the nomination by ID in the list below: ");
         this.nc.showAllNomination();
         int awnser = sc.nextInt();
@@ -108,7 +104,7 @@ not need it for now!!!
         AwardElectorDAO_JDBC awardElectorDAO_jdbc = new AwardElectorDAO_JDBC();
 
 
-        Elector me = ec.wichElectorJDBC(electorDAO_jdbc.readElector());
+        Elector me = ec.whichElectorJDBC(electorDAO_jdbc.readElector());
         System.out.println("Choose the nomination by ID in the list below: ");
         this.nc.showAllNomination();
         int awnser = sc.nextInt();
@@ -150,7 +146,7 @@ not need it for now!!!
         ElectorDAO_JPA electorDAO_jpa = new ElectorDAO_JPA();
         VoteDAO_JPA voteDAO_jpa = new VoteDAO_JPA();
 
-        Elector me = ec.wichElectorJPA(electorDAO_jpa.readElector());
+        Elector me = ec.whichElectorJPA(electorDAO_jpa.readElector());
         System.out.println("Choose the nomination by ID in the list below: ");
         this.nc.showAllNominationJPA();
         int awnser = sc.nextInt();

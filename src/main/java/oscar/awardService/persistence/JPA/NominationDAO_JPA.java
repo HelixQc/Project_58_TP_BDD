@@ -6,10 +6,12 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
 import jakarta.persistence.spi.PersistenceUnitInfo;
 import org.hibernate.jpa.HibernatePersistenceProvider;
-import oscar.OscarPersistenceUnitInfo;
+import oscar.electionServices.persistence.JPA.VoteDAO_JPA;
+import oscar.electionServices.persistence.OscarPersistenceUnitInfo;
 import oscar.awardService.model.Nomination;
 import oscar.awardService.persistence.INominationDAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NominationDAO_JPA implements INominationDAO {
@@ -62,4 +64,12 @@ public class NominationDAO_JPA implements INominationDAO {
         return null;
     }
 
+    public static void main(String[] args) {
+        NominationDAO_JPA test= new NominationDAO_JPA();
+        VoteDAO_JPA daoVote = new VoteDAO_JPA();
+        AwardDAO_JPA award = new AwardDAO_JPA();
+
+        Nomination n = new Nomination(2024,99.9,"Gaby",daoVote.readVote(), award.findAllAward());
+        test.createNomination(n);
+    }
 }

@@ -56,6 +56,15 @@ public class Nomination {
         this.awards = awards;
     }
 
+    //JPA Constructor
+    public Nomination (int year, double obtainedShares, String nominatedWork, List<Vote> votes, List<Award> awards){
+        this.year = year;
+        this.obtainedShares = obtainedShares;
+        this.nominatedWork = nominatedWork;
+        this.votes = votes;
+        this.awards = awards;
+    }
+
     // Getters for all fields
     public int getYear() {
         return year;
