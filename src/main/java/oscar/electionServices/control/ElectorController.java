@@ -6,6 +6,7 @@ import oscar.electionServices.persistence.JDBC.ElectorDAO_JDBC;
 import oscar.electionServices.persistence.JPA.ElectorDAO_JPA;
 import oscar.electionServices.persistence.Memory.ElectorDAO_Memory;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,28 +18,45 @@ public class ElectorController {
     public Elector whichElectorMemory(List<Elector> electors) {
         int weight;
         ElectorDAO_Memory electorDAOMemory = new ElectorDAO_Memory();
-
-        ///Gestion d'exception!!!!
         String yesOrNo;
-        System.out.println("Are you a elector from the list below? ");
-        showElectorListMemory();
 
-        yesOrNo = sc.nextLine();
+        do{
+            try{
+
+                System.out.println("Are you a elector from the list below? ");
+                showElectorListMemory();
+
+                yesOrNo = sc.nextLine();
 
 
-        if (yesOrNo.equalsIgnoreCase("yes")) {
-            System.out.println("Please enter your share weight: ");
-            weight = sc.nextInt();
+                if (yesOrNo.equalsIgnoreCase("yes")) {
 
-            return electorDAOMemory.findElectorByWeight(weight);
-        } else if (yesOrNo.equalsIgnoreCase("no")) {
+                    System.out.println("Please enter your share weight: ");
+                    weight = sc.nextInt();
 
-            return createNewElectorMemory();
+                    while (electorDAOMemory.findElectorByWeight(weight) == null) {
+                        if (electorDAOMemory.findElectorByWeight(weight) == null) {
+                            System.out.println("the elector you choose is not in my database please reselect your elector: ");
+                            weight = sc.nextInt();
+                        }
+                    }
+                        return electorDAOMemory.findElectorByWeight(weight);
 
-        } else {
-            System.out.println("the elector you choose is not in my database please reselect your elector: ");
-            return null;
-        }
+
+                } else if (yesOrNo.equalsIgnoreCase("no")) {
+
+                    return createNewElectorMemory();
+
+                }else{
+                    System.out.println("Please enter Yes or No");
+
+                    sc.nextLine();
+                }
+
+            }catch (InputMismatchException imp){
+                System.out.println("Error of input please try again");
+            }
+        }while(true);
     }
 
 
@@ -47,7 +65,10 @@ public class ElectorController {
 
         ElectorDAO_JDBC electorDAO_jdbc = new ElectorDAO_JDBC();
         int weight = 0;
-        ///Gestion d'exception!!!!
+
+        do{
+            try{
+
         String yesOrNo;
         System.out.println("Are you a elector from the list below? (Yes/No) ");
         showElectorListJDBC();
@@ -58,6 +79,14 @@ public class ElectorController {
         if (yesOrNo.equalsIgnoreCase("yes")) {
             System.out.println("Please enter your share weight: ");
             weight = sc.nextInt();
+
+            while (electorDAO_jdbc.findElectorByWeight(weight) == null) {
+                if (electorDAO_jdbc.findElectorByWeight(weight) == null) {
+                    System.out.println("the elector you choose is not in my database please reselect your elector: ");
+                    weight = sc.nextInt();
+                }
+            }
+
             return electorDAO_jdbc.findElectorByWeight(weight);
 
 
@@ -65,16 +94,16 @@ public class ElectorController {
 
             return  createNewElectorJDBC();
 
-        } else if (electorDAO_jdbc.findElectorByWeight(weight) == null) {
-            System.out.println("the elector you choose is not in my database please reselect your elector: ");
-            weight = sc.nextInt();
-
-            return electorDAO_jdbc.findElectorByWeight(weight);
         }else{
             System.out.println("Please enter Yes or No");
             sc.nextLine();
             return null;
         }
+
+            }catch (InputMismatchException imp){
+                System.out.println("Error of input please try again");
+            }
+        }while(true);
     }
 
 
@@ -83,8 +112,9 @@ public class ElectorController {
 
         ElectorDAO_JPA electorDAO_jpa = new ElectorDAO_JPA();
         int id = 0;
-        ///Gestion d'exception!!!!
         String yesOrNo;
+        do{
+            try{
         System.out.println("Are you a elector from the list below? (Yes/No) ");
         showElectorListJPA();
 
@@ -94,23 +124,25 @@ public class ElectorController {
         if (yesOrNo.equalsIgnoreCase("yes")) {
             System.out.println("Please enter your elector id: ");
             id = sc.nextInt();
-
+            while (electorDAO_jpa.findElectorByWeight(id) == null) {
+                if (electorDAO_jpa.findElectorByWeight(id) == null) {
+                    System.out.println("the elector you choose is not in my database please reselect your elector: ");
+                    id = sc.nextInt();
+                }
+            }
             return electorDAO_jpa.findElectorById(id);
         } else if (yesOrNo.equalsIgnoreCase("no")) {
 
             return createNewElectorJPA();
 
-        } else if (electorDAO_jpa.findElectorById(id) == null) {
-
-            System.out.println("the elector you choose is not in my database please reselect your elector: ");
-            id = sc.nextInt();
-
-            return electorDAO_jpa.findElectorById(id);
         }else{
             System.out.println("Please enter Yes or No");
             sc.nextLine();
-            return electorDAO_jpa.findElectorById(id);
         }
+            }catch (InputMismatchException imp){
+                System.out.println("Error of input please try again");
+            }
+        }while(true);
     }
 
 
@@ -198,4 +230,10 @@ public class ElectorController {
         }
     }
 
+    public static void main(String[] args) {
+        ElectorController test = new ElectorController();
+        ElectorDAO_Memory dao = new ElectorDAO_Memory();
+
+        test.whichElectorMemory(dao.readElector());
+    }
 }
