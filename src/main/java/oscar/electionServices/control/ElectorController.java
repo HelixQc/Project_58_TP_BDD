@@ -198,9 +198,4 @@ public class ElectorController {
         }
     }
 
-    public static void main(String[] args) {
-        ElectorController test =  new ElectorController();
-        ElectorDAO_Memory dao = new ElectorDAO_Memory();
-        test.whichElectorMemory(dao.readElector());
-    }
 }
