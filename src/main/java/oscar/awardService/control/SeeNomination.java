@@ -7,6 +7,8 @@ import oscar.awardService.model.Nomination;
 import oscar.awardService.model.Winner;
 import oscar.awardService.persistence.JDBC.AwardDAO_DB_JDBC;
 import oscar.awardService.persistence.JDBC.AwardNominationDAO_JDBC;
+import oscar.awardService.persistence.JPA.AwardDAO_JPA;
+import oscar.awardService.persistence.JPA.NominationDAO_JPA;
 import oscar.awardService.persistence.Memory.AwardDAO_Memory;
 import oscar.awardService.persistence.Memory.AwardNominationDAO_Memory;
 import oscar.awardService.persistence.Memory.NominationDAO_Memory;
@@ -99,8 +101,43 @@ public class SeeNomination {
     }
 
     public List<Winner> VoteFilterJPA() {
-        return null;
+
+        //A ameliorer puisque la jpa fonctionne differament i think
+        NominationDAO_JPA nominationDAO_JPA = new NominationDAO_JPA();
+        AwardNominationDAO_JDBC awardNominationDAO_jdbc = new AwardNominationDAO_JDBC();
+        AwardDAO_JPA awardDAO_JPA = new AwardDAO_JPA();
+
+        List<AwardNomination> bridgesAwardNomination = awardNominationDAO_jdbc.readAwardNomination();
+        List<Nomination> nominations = nominationDAO_JPA.findAllNomination();
+        List<Award> awards = awardDAO_JPA.findAllAward();
+        double maxShare = 0 ;
+        double totalShare = 0 ;
+        Winner winnerTemp = new Winner();
+        List<Winner> winners = new ArrayList<>();
+
+        for (Award a : awards) {
+            for (Nomination n : nominations) {
+                for (AwardNomination an : bridgesAwardNomination) {
+                    if (a.getId() == an.getAward_id()) {
+                        if (an.getNomination_id() == n.getId()) {
+                            totalShare = calculerShare(n);
+                            if(maxShare < totalShare){
+                                maxShare = totalShare;
+                                winnerTemp = new Winner(a, n , totalShare);
+
+                            }
+                        }
+                    }
+                }
+            }
+            //List the winner
+            winners.add(winnerTemp);
+            maxShare = 0;
+        }
+        return winners;
     }
+
+
 
     public double calculerShare(Nomination nomination) {
         double myShares = 0;
@@ -123,6 +160,7 @@ public class SeeNomination {
             }
         }
     }
+
 }
 
 

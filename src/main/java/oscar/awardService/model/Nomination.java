@@ -24,7 +24,7 @@ public class Nomination {
     @Column(name="nominatedWork")
     private String nominatedWork;
 
-    @OneToMany(mappedBy = "nomination")
+    @OneToMany(mappedBy = "nomination_id")
     private List<Vote> votes;
 
     @ManyToMany

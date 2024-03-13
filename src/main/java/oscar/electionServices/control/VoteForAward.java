@@ -144,6 +144,7 @@ not need it for now!!!
     //Testing needed one test have been done plz delete your test in the db after if it passes!!!
     public void createVoteJPA() {
 
+        AwardElectorDAO_JDBC awardElectorDAO_jdbc = new AwardElectorDAO_JDBC();
         NominationDAO_JPA nominationDAO_jpa = new NominationDAO_JPA();
         AwardDAO_JPA awardDAO_jpa = new AwardDAO_JPA();
         ElectorDAO_JPA electorDAO_jpa = new ElectorDAO_JPA();
@@ -167,12 +168,14 @@ not need it for now!!!
 
         Vote voteTemp = new Vote(me.getWeight(), today, me.getId(), nominationDAO_jpa.findNominationById(awnser).getId());
         voteDAO_jpa.createVote(voteTemp);
-        //this is not supposed to be needed with JPA
-       /*AwardNomination anTemp = new AwardNomination(awardDAO_jpa.findAwardByName(responce).getId() ,nominationDAO_jpa.findNominationById(awnser).getId());
-        AwardElector aeTemp = new AwardElector(awardDAO_jpa.findAwardByName(responce).getId() ,me.getId());*/
+        /*This is not supposed to be needed with JPA butt we made an error at the beginning, and we don't have time for a major update
+       AwardNomination anTemp = new AwardNomination(awardDAO_jpa.findAwardByName(responce).getId() ,nominationDAO_jpa.findNominationById(awnser).getId());*/
+        AwardElector aeTemp = new AwardElector(awardDAO_jpa.findAwardByName(responce).getId() ,me.getId());
+
 
         voteDAO_jpa.createVote(voteTemp);
+        awardElectorDAO_jdbc.createAwardElector(aeTemp);
         System.out.println("The vote have been added with success");
-
     }
+
 }

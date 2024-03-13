@@ -1,5 +1,7 @@
 package oscar.electionServices.model;
 
+
+
 public class AwardElector {
 
     private int award_id;
