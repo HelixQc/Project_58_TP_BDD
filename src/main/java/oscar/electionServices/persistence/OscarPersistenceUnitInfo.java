@@ -1,4 +1,4 @@
-package oscar;
+package oscar.electionServices.persistence;
 
 import jakarta.persistence.SharedCacheMode;
 import jakarta.persistence.ValidationMode;

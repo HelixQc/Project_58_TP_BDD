@@ -6,10 +6,12 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
 import jakarta.persistence.spi.PersistenceUnitInfo;
 import org.hibernate.jpa.HibernatePersistenceProvider;
-import oscar.OscarPersistenceUnitInfo;
+import oscar.electionServices.persistence.JPA.VoteDAO_JPA;
+import oscar.electionServices.persistence.OscarPersistenceUnitInfo;
 import oscar.awardService.model.Nomination;
 import oscar.awardService.persistence.INominationDAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NominationDAO_JPA implements INominationDAO {
