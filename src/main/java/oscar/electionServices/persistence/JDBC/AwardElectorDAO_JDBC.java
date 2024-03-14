@@ -13,6 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AwardElectorDAO_JDBC extends ConnectionDAO implements IAwardElector {
+
+    public AwardElectorDAO_JDBC(){
+        super();
+    }
+
     @Override
     public void createAwardElector(AwardElector ae) {
         try{

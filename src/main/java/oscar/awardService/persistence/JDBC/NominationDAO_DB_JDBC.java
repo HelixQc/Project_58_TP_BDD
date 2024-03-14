@@ -22,6 +22,10 @@ public class NominationDAO_DB_JDBC extends ConnectionDAO implements INominationD
     List<Award> awards = awardDAO_db.findAllAward();
     int maxID = 0;
 
+    public NominationDAO_DB_JDBC(){
+        super();
+    }
+
     @Override
     public Nomination findNominationById(int id) {
         try {

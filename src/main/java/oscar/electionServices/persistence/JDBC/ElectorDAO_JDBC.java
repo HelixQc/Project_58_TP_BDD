@@ -15,6 +15,10 @@ import java.util.List;
 
 public class ElectorDAO_JDBC extends ConnectionDAO implements IElectorDAO {
 
+    public ElectorDAO_JDBC(){
+        super();
+    }
+
     @Override
     public void createElector(Elector e) {
 

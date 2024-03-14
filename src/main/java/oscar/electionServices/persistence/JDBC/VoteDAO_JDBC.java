@@ -1,6 +1,5 @@
 package oscar.electionServices.persistence.JDBC;
 
-
 import oscar.awardService.persistence.ConnectionDAO;
 import oscar.electionServices.persistence.QueryBox;
 import oscar.electionServices.model.Vote;
@@ -16,6 +15,9 @@ import java.util.List;
 
 public class VoteDAO_JDBC extends ConnectionDAO implements IVoteDAO {
 
+    public VoteDAO_JDBC(){
+        super();
+    }
 
     @Override
     public Vote findVoteById(int id) {

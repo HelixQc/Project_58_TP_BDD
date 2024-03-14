@@ -15,12 +15,11 @@ import java.util.List;
  * Implements
  * CRUD
  * */
-public class AwardDAO_DB_JDBC extends ConnectionDAO implements IAwardDAO {
+public  class AwardDAO_DB_JDBC extends ConnectionDAO implements IAwardDAO {
 
     public AwardDAO_DB_JDBC() {
         super();
     }
-
 
     public Award findAwardByID(int id) {
         try {
@@ -39,7 +38,7 @@ public class AwardDAO_DB_JDBC extends ConnectionDAO implements IAwardDAO {
     }
 
     @Override
-    public Award findAwardByName(String name) {
+    public  Award findAwardByName(String name) {
         try {
             PreparedStatement ps = this.connection.prepareStatement(QueryBox.FindAwardByName);
             ps.setString(1, name); // Set the name parameter safely

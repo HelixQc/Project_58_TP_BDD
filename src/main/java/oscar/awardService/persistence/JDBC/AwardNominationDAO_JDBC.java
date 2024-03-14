@@ -13,6 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AwardNominationDAO_JDBC extends ConnectionDAO implements IAwardNomination {
+
+    public AwardNominationDAO_JDBC(){
+        super();
+    }
+
+
     @Override
     public void createAwardNomination(AwardNomination an) {
         try{
