@@ -64,12 +64,4 @@ public class NominationDAO_JPA implements INominationDAO {
         return null;
     }
 
-    public static void main(String[] args) {
-        NominationDAO_JPA test= new NominationDAO_JPA();
-        VoteDAO_JPA daoVote = new VoteDAO_JPA();
-        AwardDAO_JPA award = new AwardDAO_JPA();
-
-        Nomination n = new Nomination(2024,99.9,"Gaby",daoVote.readVote(), award.findAllAward());
-        test.createNomination(n);
-    }
 }
